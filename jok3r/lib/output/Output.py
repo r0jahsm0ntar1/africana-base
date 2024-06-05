@@ -60,9 +60,9 @@ class Output(object):
     def title1(title):
         """Print title level 1"""
         msg  = '\n'
-        msg += '-'*80 + '\n'
-        msg += ' {title}\n'.format(title=title)
-        msg += '-'*80 + '\n'
+        #msg += '-'*80 + '\n'
+        msg += '{title}\n'.format(title=title)
+        #msg += '-'*80 + '\n'
         Output.print(msg, color='light_green', attrs='bold')
 
 

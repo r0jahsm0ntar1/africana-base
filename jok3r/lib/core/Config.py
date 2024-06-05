@@ -5,70 +5,42 @@
 ###
 import colored
 import os
-
+from lib.core.Bcolors import *
 from lib.core.Constants import *
 from lib._version import __version__
 
 #----------------------------------------------------------------------------------------
 # Banner/Help
 
-BANNER = colored.stylize("""
-                     .` 
-                   /dMMs`
-                `oNMMMMMN+
-              -yMMMMMMMMMMm/""", colored.attr('bold')) + colored.stylize("""
-            :hMMMMMMMMMMMMMMd:""", colored.attr('bold')) + colored.stylize("""
-         `+mMMMMho:sNMMMMMMMMMh.""", colored.attr('bold')) + colored.stylize("""
-       .sNMMdo:     `/dMMMMMMMMMy`""", colored.attr('bold')) + colored.stylize("""
-     -yMms/`           -sNMMMMMMMNo`""", colored.attr('bold')) + colored.stylize("""
-    /y/.                 `+mMMMMMMMN+""", colored.attr('bold')) + colored.stylize("""
-                            -yMMMMMMMm/
-             """, colored.attr('bold')) + \
-colored.stylize("..", colored.fg('light_green')+colored.attr('bold')) + colored.stylize(
-  """               `+mMMMMMMd-
-             """, colored.attr('bold')) + \
-colored.stylize("-s+-`", colored.fg('light_green')+colored.attr('bold')) + colored.stylize("""               :yMMMMMMh.
-             """, colored.attr('bold')) + \
-colored.stylize(".ssso/-`", colored.fg('light_green')+colored.attr('bold')) + colored.stylize(
-  """              `omMMMMMs`             """, colored.attr('bold')) + \
-colored.stylize(  """                 
-              """, colored.attr('bold')) + \
-colored.stylize("ossssso/-`", colored.fg('light_green')+colored.attr('bold')) + colored.stylize("""              :hMMMMNo`
-              """, colored.attr('bold')) + \
-colored.stylize("/ssssss/.::-.", colored.fg('light_green')+colored.attr('bold')) + colored.stylize("""             .oNMMMN/
-              """, colored.attr('bold')) + \
-colored.stylize("`sssssso-   -:/:.", colored.fg('light_green')+colored.attr('bold')) + colored.stylize("""            /hMMMm:
-               """, colored.attr('bold')) + \
-colored.stylize("/ssssss+    :/sso+/-`", colored.fg('light_green')+colored.attr('bold')) + colored.stylize("""         .sNMMdsss:
-               """, colored.attr('bold')) + \
-colored.stylize("`ossssss-  : +ssssssso+/:.`", colored.fg('light_green')+colored.attr('bold')) + colored.stylize("""      /dMNs.
-                 """, colored.attr('bold')) + \
-colored.stylize("`.-:/++:/ .ossssssssssssso+/:-.`", colored.fg('light_green')+colored.attr('bold')) + colored.stylize(""" .`
-                       """, colored.attr('bold')) + \
-colored.stylize("oyso+-::://////:::--..``", colored.fg('light_green')+colored.attr('bold')) + colored.stylize("""
-                       -MMMd
-                        sMMN
-                         dMM.
-                         `mMo
-                          `dN
-                           `ho
-                             o-
+BANNER = color() + r"""
+                     _,._
+                 __.'   _)
+                <_,)'.-"a\
+                  /' (    \
+      _.-----..,-'   (`"--^
+     //              |
+    (|   `;      ,   |
+      \   ;.----/   ,/
+       ) // /   | |\ \
+       \ \\`\   | |/ /      Jesus Christ
+        \ \\ \  | |\/  The Lamb that was slain
+         `" `"  `"`         for our sins.
+     __                 _____ _____     _     _
+  __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_
+ |  |  | -_|_ -| | |_ -|   --|     |  _| |_ -|  _|
+ |_____|___|___|___|___|_____|__|__|_| |_|___|_|
+""" + bcolors.ENDC
 
-                 Rojahs Montari (c) 2024
-             https://www.jok3r-framework.com
-    https://github.com/r0jahsm0ntar1/africana-framework
+USAGE = bcolors.GREEN + r"""
 
-[ """, colored.attr('bold')) + colored.stylize("      Network & Web Pentest Automation Framework", colored.fg('light_green')+colored.attr('bold')) + colored.stylize("""        ]""".format(version=__version__), colored.attr('bold'))
-
-USAGE = """
 python3 jok3r.py <command> [<args>]
 
 Supported commands:
-   toolbox    Manage the toolbox
-   info       View supported services/options/checks
-   db         Define missions scopes, keep tracks of targets & view attacks results
-   attack     Run security checks against targets
-"""
+     toolbox : Manage the toolbox
+        info : View supported services/options/checks
+          db : Define missions scopes, keep tracks of targets & view attacks results
+      attack : Run security checks against targets
+""" + bcolors.ENDC
 
 ATTACK_EXAMPLES = colored.stylize('Examples:', colored.attr('bold')) + """
   - Run all security checks against an URL in interactive mode (break before each check):

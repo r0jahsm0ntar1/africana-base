@@ -3,7 +3,7 @@ import sys
 import os
 from sys import version_info
 
-os.chdir('/root/.africana')
+os.chdir('/root/.africana/output')
 if version_info < (3, 0, 0):
     print('[!] Please use Python 3. $ python3 CyberPhish.py')
     sys.exit()
@@ -44,8 +44,8 @@ blue = Fore.CYAN
 
 
 def CurrentDir():
-    path = '/root/.africana'
-    print(green + "[" + white + "+" + green + "]" + white + " Ur Temp Will be Saved @ " + path + '"/TempName.html"\n')
+    path = '/root/.africana/output'
+    #print(green + "[" + white + "+" + green + "]" + white + " Ur Temp Will be Saved @ " + path + '"/TempName.html"\n')
 
 
 no = ["n", "no"]

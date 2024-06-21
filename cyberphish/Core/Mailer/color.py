@@ -1,8 +1,8 @@
-red = ("\033[1;31;40m")
-green = ("\033[1;32;40m")
-white = ("\033[1;37;40m")
-blue = ("\033[1;34;40m")
-yellow = ("\033[1;33;40m")
+red =    "\033[91m"
+green =  "\033[92m"
+white =  "\033[0m"
+blue =   "\033[94m"
+yellow = "\033[40m"
 
 start = (green + "[" + white + "+" + green + "]" + white)
 alert = (green + "[" + red + "!" + green + "]" + white)

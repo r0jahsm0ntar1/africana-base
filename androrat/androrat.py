@@ -13,18 +13,6 @@ except ImportError as e:
     exit()
     
 clearDirec()
-#                       _/﹋\_
-#                       (҂`_´)
-#                      <,︻╦╤─ ҉- [ John 3:16  ]
-#                       _/﹋\_                ]
-#                      [ Jesus Christ said;   ]
-#                      [ Defeat the devil by  ]
-#                      [ fasting and praying. ]
-#
-#
-#
-#
-#         ~>[ Salvation is free. Get it for free. ]<~
 #          __                 _____ _____     _     _
 #       __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_
 #      |  |  | -_|_ -| | |_ -|   --|     |  _| |_ -|  _|

@@ -86,39 +86,29 @@ def print_banner():
     print('\r')
 def print_banner():
     os.system('clear')
-    print(fr'''{YELLOW}
-                       ____
-                    ,dP9CGG88@b,
-                  ,IP  _   Y888@@b,
-                 dIi  (_)   G8888@b
-                dCII  (_)   G8888@@b
-                GCCIi     ,GG8888@@@
-                GGCCCCCCCGGG88888@@@
-                GGGGCCCGGGG88888@@@@...
-                Y8GGGGGG8888888@@@@P.....
-                 Y88888888888@@@@@P......
-                 `Y8888888@@@@@@@P'......
-                    `@@@@@@@@@P'.......
-                       '""'........
-      __                 _____ _____     _     _
-   __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_
-  |  |  | -_|_ -| | |_ -|   --|     |  _| |_ -|  _|
-  |_____|___|___|___|___|_____|__|__|_| |_|___|_|
+    print(fr'''{BLUE}
+
+               .--.       .--.
+           _  '    \     /    '  _
+            '\.===. \.^./ .===./'
+                   \/'"'\/
+                ,  |     |  ,
+               / '\|'-.-'|/' \
+              /    |  \  |    \
+           .-' ,-''|   ; |''-, '-.
+               |   |    \|   |
+               |   |    ;|   |
+               |   \    //   |      {YELLOW}Jesus Christ is{BLUE}
+               |    '._//'   |  {GREEN}The Lamb that was slain{BLUE}
+              .'             '.     {GREEN}sfor our sins.{BLUE}
+           _,'                 ',_     {PURPLE}John 3:16{GREEN}
 
 ''')
-
-    print_meta()
 
 
 
 def print_meta():
-    print(f'{BLUE}   ~>[ blackjack C3 - Part of africana-framework ]<~{END}')
-    print(f'{BLUE} ~>[ Subscribe ] https://youtube.com/@RojahsMontari ]<~{END}\n')
-    print(f'{BLUE}             [ {END}Managed By r0jahsm0ntar1 {BLUE}]{END}\n')
-
-    print(f'{BLUE}                  [ {END}Version:  0xJ {BLUE}]{END}')
-    print(f'{BLUE}                  [ {END}Shells :    8 {BLUE}]{END}')
-    print(f'{BLUE}                  [ {END}Implants:   0 {BLUE}]{END}\n')
+    print(f'{BLUE}  ~>( {END}blackjack C3 - Part of africana-framework {BLUE})<~{END}\n')
 
 class PrompHelp:
     
@@ -815,7 +805,8 @@ def main():
 #            pass
             
     # Initialize essential services
-    print(f'{BLUE}         ~>[{END}{DARKCYAN} Initializing required services {BLUE}]<~{END}\n')
+    print(f'{BLUE}        ~>({END} Initializing required services {BLUE})<~{END}\n')
+    #print_meta()
 
     ''' Init Core '''
     core = Core_Server()

@@ -43,10 +43,10 @@ def RedirectCreator():
     if Creator == 1:
         Url = input(start + "Enter Your Url: " + white)
         FileName = input(start + "Name Of File: " + white)
-        print(alert + " Enter for '/root/.africana/Redirection/'")
+        print(alert + " Enter for '/root/.africana/output/'")
         FileSave = input(start + " Where Do You Want To Save The File?: " + white)
         if FileSave == "":
-             FileLocation = "/root/.africana/Redirection/"
+             FileLocation = "/root/.africana/output/"
         else:
             FileLocation = FileSave
         CompleteLocator = os.path.join(FileLocation, FileName+".html")
@@ -67,10 +67,10 @@ def RedirectCreator():
         
     elif Creator == 2:
         FileName = input(start + "Name Of File: " + white)
-        print(alert + " Enter for '/root/.africana/Redirection/'")
+        print(alert + " Enter for '/root/.africana/output/'")
         FileSave = input(start + " Where Do You Want To Save The File?: " + white)
         if FileSave == "":
-             FileLocation = "/root/.africana/Redirection/"
+             FileLocation = "/root/.africana/output/"
         else:
             FileLocation = FileSave         
         CompleteLocator = os.path.join(FileLocation, FileName+".html")

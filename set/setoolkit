@@ -268,8 +268,8 @@ try:
             update_config()
 
         # update config
-        if main_menu_choice == '6':
-            core.help_menu()
+        #if main_menu_choice == '6':
+        #    core.help_menu()
 
 # handle keyboard interrupts
 except KeyboardInterrupt:

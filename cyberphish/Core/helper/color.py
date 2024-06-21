@@ -1,9 +1,10 @@
 import os
 from colorama import Fore
-red = "\033[1;31;40m"
-green = "\033[1;32;40m"
-white = "\033[1;37;40m"
-blue = "\033[1;34;40m"
+red    = "\033[91m"
+green  = "\033[92m"
+white  = "\033[0m"
+blue   = "\033[94m"
+yellow = "\033[93m"
 
 yellow = Fore.CYAN
 purple = Fore.MAGENTA
@@ -16,5 +17,5 @@ def numbering(num):
   return green + "[" + white + str(num) + green + "]"
 
 def CurrentDir():
-    path = '/root/.africana'
+    path = '/root/.africana/output'
     print(green + "[" + white + "+" + green + "]" + white + " Your Templates Saved @ ~> " + path)

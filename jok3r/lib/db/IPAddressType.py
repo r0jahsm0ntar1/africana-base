@@ -18,7 +18,6 @@ class IPAddressType(types.TypeDecorator):
     way out. 
     """
 
-    cache_ok = True
     impl = types.Integer
 
     def process_bind_param(self, value, dialect):

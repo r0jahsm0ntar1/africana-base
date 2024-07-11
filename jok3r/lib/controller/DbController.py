@@ -58,7 +58,7 @@ class DbController(cmd2.Cmd):
 
         super().__init__(persistent_history_file=DB_HIST_FILE, 
                          persistent_history_length=500)
-	#use_ipython=False
+
         #self.cmdqueue.append('alias help "help -v"')
         self.allow_cli_args = False
 
@@ -67,7 +67,7 @@ class DbController(cmd2.Cmd):
         #del cmd2.Cmd.do_load
         del cmd2.Cmd.do_py
         #del cmd2.Cmd.do_pyscript
-        del cmd2.Cmd.do_set 
+        #del cmd2.Cmd.do_set 
         del cmd2.Cmd.do_shortcuts
 
         self.current_mission = 'default'
@@ -84,9 +84,9 @@ class DbController(cmd2.Cmd):
             logger.error('No mission with this name')
         else:
             self.current_mission = name
-            self.prompt = Output.colored('\nafricana', color='light_green', attrs='bold')+ \
+            self.prompt = Output.colored('jok3rdb', color='light_green', attrs='bold')+ \
                 Output.colored('[{}]'.format(name), color='light_blue', attrs='bold') + \
-                Output.colored('# ', color='light_green', attrs='bold')
+                Output.colored('> ', color='light_green', attrs='bold')
 
             if verbose: 
                 logger.info('Selected mission is now {name}'.format(name=name))

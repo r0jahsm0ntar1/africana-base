@@ -1,10 +1,10 @@
-# This module is part of the Blackjack framework
+# This module is part of the BlackJack framework
 
 class Payload:
 
     info = {
         'Title' : 'Bash read line reverse TCP',
-        'Author' : 'r0jahsm0ntar1',
+        'Author' : 'Unknown',
         'Description' : 'Bash read line reverse TCP',
         'References' : ['https://revshells.com']
     }

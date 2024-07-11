@@ -2,8 +2,8 @@
 #
 # Author: Rojahs Montari (r0jahsm0ntar1) 
 #
-# This script is part of the Blackjack framework: 
-# https://github.com/r0jahsm0ntar1/africana-framework
+# This script is part of the BlackJack framework: 
+# https://github.com/r0jahsm0ntar1/BlackJack
 
 
 import sys, string, base64, os, re, traceback
@@ -28,34 +28,38 @@ system_type = get_system_type()
 # else:
 import readline as global_readline
 
+
 ''' Colors '''
-MAIN = '\001\033[38;5;85m\002'
-GREEN = '\001\033[38;5;82m\002'
-GRAY = PLOAD = '\001\033[38;5;246m\002'
-NAME = '\001\033[38;5;228m\002'
-RED = '\001\033[1;31m\002'
-FAIL = '\001\033[1;91m\002'
-ORANGE = '\001\033[0;38;5;214m\002'
-LRED = '\001\033[0;38;5;196m\002'
-BOLD = '\001\033[1m\002'
-PURPLE = '\001\033[0;38;5;141m\002'
-BLUE = '\001\033[0;38;5;12m\002'
-UNDERLINE = '\001\033[4m\002'
-DARKCYAN = '\033[36m'
-UNSTABLE = '\001\033[5m\002'
-YELLOW = '\033[93m'
-END = '\001\033[0m\002'
+MAIN        =   '\033[85m'
+DGREEN      =   '\033[32m'
+GRAY = PLOAD =  '\033[90m'
+NAME        =   '\033[228m'
+RED         =   '\033[31m'
+FAIL        =   '\033[91m'
+ORANGE      =   '\033[33m'
+LRED        =   '\033[196m'
+BOLD        =   '\033[1m'
+PURPLE      =   '\033[95m'
+BLUE        =   '\033[94m'
+UNDERLINE   =   '\033[4m'
+DARKCYAN    =   '\033[36m'
+UNSTABLE    =   '\033[5m'
+YELLOW      =   '\033[93m'
+DARKGREY    =   '\033[90m'
+ITALIC      =   '\033[3m'
+GREEN       =   '\033[92m'
+END         =   '\033[0m'
 
 ''' MSG Prefixes '''
-INFO = f'{MAIN}Info{END}'
-WARN = f'{ORANGE}Warning{END}'
-IMPORTANT = f'{ORANGE}Important{END}'
-FAILED = f'{RED}Fail{END}'
-ERR = f'{LRED}Error{END}'
-DEBUG = f'{ORANGE}Debug{END}'
-CHAT =f'{BLUE}Chat{END}'
-GRN_BUL = f'[{GREEN}*{END}]'
-META = '[\001\033[38;5;93m\002M\001\033[38;5;129m\002e\001\033[38;5;165m\002t\001\033[38;5;201m\002a\001\033[0m\002]'
+INFO        = f'{MAIN}Info{END}'
+WARN        = f'{ORANGE}Warning{END}'
+IMPORTANT   = f'{ORANGE}Important{END}'
+FAILED      = f'{RED}Fail{END}'
+ERR         = f'{LRED}Error{END}'
+DEBUG       = f'{ORANGE}Debug{END}'
+CHAT        = f'{BLUE}Chat{END}'
+GRN_BUL     = f'{END}[{GREEN}*{END}]'
+META        = '[\001\033[38;5;93m\002M\001\033[38;5;129m\002e\001\033[38;5;165m\002t\001\033[38;5;201m\002a\001\033[0m\002]'
 
 cwd = os.path.dirname(os.path.abspath(__file__))
 
@@ -63,8 +67,9 @@ cwd = os.path.dirname(os.path.abspath(__file__))
 ''' Command Prompt Settings '''
 
 class Main_prompt:
-    
-    original_prompt = prompt = f"{GREEN}({END}africana:{END}{DARKCYAN}framework{END}{GREEN})# {END}{DARKCYAN}{END}"
+
+    original_prompt = prompt = f"{BLUE}╭─{BLUE}({END}africana:{END}{DARKCYAN}framework:{ITALIC}{DARKGREY}BlackJack{END}{BLUE})\n{END}{DARKCYAN}{END}{BLUE}╰─🐀{GREEN}❯ {END}"
+    hoax_prompt = None
     ready = True
     SPACE = '#>SPACE$<#'
     exec_active = False

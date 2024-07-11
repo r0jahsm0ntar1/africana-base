@@ -1,16 +1,16 @@
-# This module is part of the Blackjack framework
+# This module is part of the BlackJack framework
 
 class Payload:
 
     info = {
-        'Title' : 'Windows CMD cURL BlackJack https',
+        'Title' : 'Windows CMD cURL HoaxShell https',
         'Author' : 'Rojahs Montari (r0jahsm0ntar1)',
         'Description' : 'An Https based beacon-like reverse shell that utilizes cURL',
         'References' : ['https://github.com/r0jahsm0ntar1/africana-framework', 'https://revshells.com']
     }
 
     meta = {
-        'handler' : 'blackjack',
+        'handler' : 'hoaxshell',
         'type' : 'cmd-curl-ssl',
         'os' : 'windows',
         'shell' : 'cmd.exe'

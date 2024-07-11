@@ -1,16 +1,16 @@
-# This module is part of the Blackjack framework
+# This module is part of the BlackJack framework
 
 class Payload:
 
     info = {
-        'Title' : 'Windows PowerShell outfile BlackJack - Constraint Language Mode',
+        'Title' : 'Windows PowerShell outfile HoaxShell - Constraint Language Mode',
         'Author' : 'Rojahs Montari (r0jahsm0ntar1)',
         'Description' : 'An Http based beacon-like reverse shell that writes and executes commands from disc and will work even if Constraint Language Mode is enabled on the victim',
         'References' : ['https://github.com/r0jahsm0ntar1/africana-framework', 'https://revshells.com']
     }
 
     meta = {
-        'handler' : 'blackjack',
+        'handler' : 'hoaxshell',
         'type' : 'ps-outfile-cm',
         'os' : 'windows',
         'shell' : 'powershell.exe'
@@ -18,7 +18,7 @@ class Payload:
 
     config = {
         'frequency' : 0.8,
-        'outfile' : "C:\\Users\\$env:USERNAME\\.local\\africs.ps1"
+        'outfile' : "C:\\Users\\$env:USERNAME\\.local\\haxor.ps1"
     }
 
     parameters = {

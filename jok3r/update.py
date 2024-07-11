@@ -82,7 +82,7 @@ if __name__ == '__main__':
             sys.exit(1)
         else:
             logger.success('"pip3 install requirements.txt" finished with success ' \
-                'returncode')
+                'returncode')        
 
     else:
         logger.info('No change in dependencies to install')

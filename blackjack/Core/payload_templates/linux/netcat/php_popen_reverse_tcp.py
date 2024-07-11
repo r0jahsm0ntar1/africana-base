@@ -1,10 +1,10 @@
-# This module is part of the Blackjack framework
+# This module is part of the BlackJack framework
 
 class Payload:
 
     info = {
         'Title' : 'PHP popen reverse TCP',
-        'Author' : 'r0jahsm0ntar1',
+        'Author' : 'Unknown',
         'Description' : 'PHP popen reverse TCP',
         'References' : ['https://revshells.com']
     }

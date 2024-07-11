@@ -61,7 +61,7 @@ echo
 # -----------------------------------------------------------------------------
 # Add Kali repositories if not on Kali (Debian/Ubuntu)
 
-if [[ ! $(grep "deb https://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware" /etc/apt/sources.list) ]]; then 
+if [[ ! $(grep "deb http://http.kali.org/kali kali-rolling main" /etc/apt/sources.list) ]]; then 
     print_blue "[~] Add Kali repository (because missing in /etc/apt/sources.list)"
     cp /etc/apt/sources.list /etc/apt/sources.list.bak
     echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" >> /etc/apt/sources.list
@@ -152,7 +152,6 @@ unzip
 wget
 zlib1g-dev
 "
-
 for package in $PACKAGES; do    
     if [[ ! $(dpkg-query -W -f='${Status}' $package 2>/dev/null | grep "ok installed") ]]; then
         echo
@@ -229,19 +228,23 @@ print_delimiter
 print_blue "[~] Install Python 2.7 + 3 and useful related packages (if missing)"
 
 PACKAGES="
+python
 python2.7
 python3
-python3-venv
+python-pip
 python3-pip
+python-dev
 python3-dev
+python-setuptools
 python3-setuptools
 python3-distutils
-python3-ipy
-python3-nmap
+python-ipy
+python-nmap
 python3-pymysql
 python3-psycopg2
 python3-shodan
 "
+
 for package in $PACKAGES; do    
     if [[ ! $(dpkg-query -W -f='${Status}' $package 2>/dev/null | grep "ok installed") ]]; then
         echo

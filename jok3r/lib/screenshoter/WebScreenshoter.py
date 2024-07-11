@@ -48,8 +48,7 @@ class WebScreenshoter:
         self.user_agent = user_agent
 
         # Selenium Firefox Driver (selenium.webdriver.Firefox)
-        self.driver = None
-        #self.driver = webdriver.Firefox()
+        self.driver = None 
 
 
     def create_driver(self):

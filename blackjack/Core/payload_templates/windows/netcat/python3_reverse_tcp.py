@@ -1,12 +1,12 @@
-# This module is part of the Blackjack framework
+# This module is part of the BlackJack framework
 
 class Payload:
 
     info = {
         'Title' : 'Python3 Reverse TCP',
-        'Author' : 'r0jahsm0ntar1',
+        'Author' : 'Unknown',
         'Description' : 'Python3 Reverse TCP',
-        'References' : ['https://github.com/r0jahsm0ntar1/africana-framework']
+        'References' : ['https://github.com/swisskyrepo/PayloadsAllTheThings']
     }
 
     meta = {

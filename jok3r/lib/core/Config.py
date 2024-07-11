@@ -5,42 +5,50 @@
 ###
 import colored
 import os
-from lib.core.Bcolors import *
+
 from lib.core.Constants import *
 from lib._version import __version__
+
 
 #----------------------------------------------------------------------------------------
 # Banner/Help
 
-BANNER = color() + r"""
-                     _,._
-                 __.'   _)
-                <_,)'.-"a\
-                  /' (    \
-      _.-----..,-'   (`"--^
-     //              |
-    (|   `;      ,   |
-      \   ;.----/   ,/
-       ) // /   | |\ \
-       \ \\`\   | |/ /      Jesus Christ
-        \ \\ \  | |\/  The Lamb that was slain
-         `" `"  `"`         for our sins.
-     __                 _____ _____     _     _
-  __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_
- |  |  | -_|_ -| | |_ -|   --|     |  _| |_ -|  _|
- |_____|___|___|___|___|_____|__|__|_| |_|___|_|
-""" + bcolors.ENDC
+BANNER = colored.stylize("""
 
-USAGE = bcolors.GREEN + r"""
+            `-:/++++/:-.    .-:/++++/:-`
+          .:ohdddmmmmdd.\  /.dddmmmmdddho:.
+        `:ydmmmmmmmmmmmmm\/mmmmmmmmmmmmmmdy:`
+       `+dmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmd+`
+      +dyo+++oshmmmmmmmmmmmmmmmmmmmmhso+++oyd+
+    -+-         .dmmmmmmmmmmmmmmmmd.         -+-
+   ``           `dmmmmmmmmmmmmmmmmd`           ``
+                `dmmmmmmmmmmmmmmmmd`
+                `ymmmmmmmmmmmmmmmmy`
+                  .+dmmmmmmmmmmd+.
+                     /dmmmmmmd/
+                      `odmmdo`
+                        .hh.
 
+          ██╗ ██████╗ ██╗  ██╗██████╗ ██████╗ 
+          ██║██╔═══██╗██║ ██╔╝╚════██╗██╔══██╗
+          ██║██║   ██║█████╔╝  █████╔╝██████╔╝
+     ██   ██║██║   ██║██╔═██╗  ╚═══██╗██╔══██╗
+     ╚█████╔╝╚██████╔╝██║  ██╗██████╔╝██║  ██║  v{version}
+      ╚════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝
+
+     (Network & Web Pentest Automation Framework)
+""".format(version=__version__), colored.fg('dark_green') + colored.attr('bold'))
+
+USAGE = """
 python3 jok3r.py <command> [<args>]
 
 Supported commands:
-     toolbox : Manage the toolbox
-        info : View supported services/options/checks
-          db : Define missions scopes, keep tracks of targets & view attacks results
-      attack : Run security checks against targets
-""" + bcolors.ENDC
+   toolbox    Manage the toolbox
+   info       View supported services/options/checks
+   db         Define missions scopes, keep tracks of targets & view attacks results
+   attack     Run security checks against targets
+   
+"""
 
 ATTACK_EXAMPLES = colored.stylize('Examples:', colored.attr('bold')) + """
   - Run all security checks against an URL in interactive mode (break before each check):
@@ -59,12 +67,12 @@ ATTACK_EXAMPLES = colored.stylize('Examples:', colored.attr('bold')) + """
   python3 jok3r.py attack -m mayhem --profile red-team --fast
 """
 
-DB_INTRO = """[                                                         ]
-[ The local database stores the missions, targets info &  ]
-[ attacks results.This shell allows for easy access to    ]
-[ this database. New missions can be added and scopes can ]
-[ be defined by importing new targets.                    ]
+DB_INTRO = """
+The local database stores the missions, targets info & attacks results.
+This shell allows for easy access to this database. New missions can be added and
+scopes can be defined by importing new targets.
 """
+
 
 #----------------------------------------------------------------------------------------
 # Arguments Parsing Settings

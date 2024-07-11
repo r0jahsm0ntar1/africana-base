@@ -2,8 +2,8 @@
 #
 # Author: Rojahs Montari (r0jahsm0ntar1) 
 #
-# This script is part of the Blackjack framework: 
-# https://github.com/r0jahsm0ntar1/africana-framework
+# This script is part of the BlackJack framework: 
+# https://github.com/r0jahsm0ntar1/BlackJack
 
 import os
 from .common import system_type
@@ -12,9 +12,9 @@ from .settings import Logging_Settings
 main_meta_folder = Logging_Settings.main_meta_folder_unix if system_type in ['Linux', 'Darwin'] else Logging_Settings.main_meta_folder_windows
 
 
-class BlackJack_Implants_Logger:
+class HoaxShell_Implants_Logger:
 
-    generated_implants_file = f'{main_meta_folder}/blackjack_generated_implants.txt'
+    generated_implants_file = f'{main_meta_folder}/hoaxshell_generated_implants.txt'
     generated_implants_file_open = False
 
 
@@ -23,15 +23,15 @@ class BlackJack_Implants_Logger:
 
         try:
 
-            while BlackJack_Implants_Logger.generated_implants_file_open:
+            while HoaxShell_Implants_Logger.generated_implants_file_open:
                 pass
 
             else:
-                BlackJack_Implants_Logger.generated_implants_file_open = True
-                blackjack_generated_implants = open(BlackJack_Implants_Logger.generated_implants_file, 'a')
-                blackjack_generated_implants.write(f'"{id}" : {str(session_meta)}' + ',\n')
-                blackjack_generated_implants.close()
-                BlackJack_Implants_Logger.generated_implants_file_open = False
+                HoaxShell_Implants_Logger.generated_implants_file_open = True
+                hoaxshell_generated_implants = open(HoaxShell_Implants_Logger.generated_implants_file, 'a')
+                hoaxshell_generated_implants.write(f'"{id}" : {str(session_meta)}' + ',\n')
+                hoaxshell_generated_implants.close()
+                HoaxShell_Implants_Logger.generated_implants_file_open = False
 
         except:
             pass
@@ -41,19 +41,19 @@ class BlackJack_Implants_Logger:
     @staticmethod
     def retrieve_past_sessions_data():
 
-        if os.path.exists(BlackJack_Implants_Logger.generated_implants_file):
+        if os.path.exists(HoaxShell_Implants_Logger.generated_implants_file):
 
             try:
 
-                while BlackJack_Implants_Logger.generated_implants_file_open:
+                while HoaxShell_Implants_Logger.generated_implants_file_open:
                     pass
 
                 else:
-                    BlackJack_Implants_Logger.generated_implants_file_open = True
-                    blackjack_generated_implants = open(BlackJack_Implants_Logger.generated_implants_file, 'r')
-                    session_data = blackjack_generated_implants.read()
-                    blackjack_generated_implants.close()
-                    BlackJack_Implants_Logger.generated_implants_file_open = False
+                    HoaxShell_Implants_Logger.generated_implants_file_open = True
+                    hoaxshell_generated_implants = open(HoaxShell_Implants_Logger.generated_implants_file, 'r')
+                    session_data = hoaxshell_generated_implants.read()
+                    hoaxshell_generated_implants.close()
+                    HoaxShell_Implants_Logger.generated_implants_file_open = False
                     return '{' + session_data.strip(',\n') + '}'
 
             except Exception as e:
@@ -67,8 +67,8 @@ class BlackJack_Implants_Logger:
 def clear_metadata():
 
     try:
-        if os.path.exists(BlackJack_Implants_Logger.generated_implants_file):
-            os.remove(BlackJack_Implants_Logger.generated_implants_file)
+        if os.path.exists(HoaxShell_Implants_Logger.generated_implants_file):
+            os.remove(HoaxShell_Implants_Logger.generated_implants_file)
     except:
         return False
     

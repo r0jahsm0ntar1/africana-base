@@ -2,8 +2,8 @@
 #
 # Author: Rojahs Montari (r0jahsm0ntar1) 
 #
-# This script is part of the Blackjack framework: 
-# https://github.com/r0jahsm0ntar1/africana-framework
+# This script is part of the BlackJack framework: 
+# https://github.com/r0jahsm0ntar1/BlackJack
 
 
 import os
@@ -29,13 +29,13 @@ class Core_Server_Settings:
     # Seconds to wait for cmd output when executing commands against shell sessions of sibling servers.
     timeout_for_command_output = 30
 
-    # Allows any Blackjack client (sibling server) to connect to your instance without prompting you for verification.
+    # Allows any BlackJack client (sibling server) to connect to your instance without prompting you for verification.
     # You can configure it on start-up with the --insecure option.
     insecure = False
     
 
 
-class Blackjack_Settings:
+class Hoaxshell_Settings:
     
     bind_address = '0.0.0.0'
     bind_port = 8080
@@ -85,22 +85,22 @@ class TCP_Sock_Handler_Settings:
 
     # Check if connection is random socket connection by assessing the hostname value received.
     # This filter automatically rejects TCP reverse connection if they fail to pass validation tests.
-    hostname_filter = False
+    hostname_filter = True
     hostname_filter_warning_delivered = False
 
 
 
 class Payload_Generator_Settings:
-    
+    pass
     # Set to false in order to parse domains as LHOST when generating commands
-    validate_lhost_as_ip = False
+    # validate_lhost_as_ip = True --> DEPRECATED
 
 
 
 class Logging_Settings:
 
-    main_meta_folder_unix = f'{os.path.expanduser("~")}/.local/Blackjack_meta'
-    main_meta_folder_windows = f'{os.path.expanduser("~")}/.local/Blackjack_meta'
+    main_meta_folder_unix = f'{os.path.expanduser("~")}/.local/BlackJack_meta'
+    main_meta_folder_windows = f'{os.path.expanduser("~")}/.local/BlackJack_meta'
 
 
 

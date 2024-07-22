@@ -15,40 +15,32 @@ from lib._version import __version__
 
 BANNER = colored.stylize("""
 
-            `-:/++++/:-.    .-:/++++/:-`
-          .:ohdddmmmmdd.\  /.dddmmmmdddho:.
-        `:ydmmmmmmmmmmmmm\/mmmmmmmmmmmmmmdy:`
-       `+dmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmd+`
-      +dyo+++oshmmmmmmmmmmmmmmmmmmmmhso+++oyd+
-    -+-         .dmmmmmmmmmmmmmmmmd.         -+-
-   ``           `dmmmmmmmmmmmmmmmmd`           ``
-                `dmmmmmmmmmmmmmmmmd`
-                `ymmmmmmmmmmmmmmmmy`
-                  .+dmmmmmmmmmmd+.
-                     /dmmmmmmd/
-                      `odmmdo`
-                        .hh.
+                `-:/++++/:-.    .-:/++++/:-`
+              .:ohdddmmmmdd.\  /.dddmmmmdddho:.
+            `:ydmmmmmmmmmmmmm\/mmmmmmmmmmmmmmdy:`
+           `+dmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmd+`
+          +dyo+++oshmmmmmmmmmmmmmmmmmmmmhso+++oyd+
+        -+-         .dmmmmmmmmmmmmmmmmd.         -+-
+       ``           `dmmmmmmmmmmmmmmmmd`           ``
+                    `dmmmmmmmmmmmmmmmmd`
+                    `ymmmmmmmmmmmmmmmmy`
+                      .+dmmmmmmmmmmd+.
+                         /dmmmmmmd/
+                          `odmmdo`
+                            .hh.""", colored.fg('cyan')) + colored.stylize("""
+         __                 _____ _____     _     _
+      __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_
+     |  |  | -_|_ -| | |_ -|   --|     |  _| |_ -|  _|
+     |_____|___|___|___|___|_____|__|__|_| |_|___|_| """, colored.fg('yellow')) + colored.stylize("""v{version} """.format(version=__version__), colored.fg('red')) + colored.stylize("""\n
+    ~>( """, colored.fg('blue')) + colored.stylize("""Network & Web Pentest Automation Framework """, colored.fg('white')) + colored.stylize(""")<~\n""", colored.fg('blue'))
 
-          ██╗ ██████╗ ██╗  ██╗██████╗ ██████╗ 
-          ██║██╔═══██╗██║ ██╔╝╚════██╗██╔══██╗
-          ██║██║   ██║█████╔╝  █████╔╝██████╔╝
-     ██   ██║██║   ██║██╔═██╗  ╚═══██╗██╔══██╗
-     ╚█████╔╝╚██████╔╝██║  ██╗██████╔╝██║  ██║  v{version}
-      ╚════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝
-
-     (Network & Web Pentest Automation Framework)
-""".format(version=__version__), colored.fg('dark_green') + colored.attr('bold'))
-
-USAGE = """
-python3 jok3r.py <command> [<args>]
+USAGE = """python3 jok3r.py <command> [<args>]
 
 Supported commands:
    toolbox    Manage the toolbox
    info       View supported services/options/checks
    db         Define missions scopes, keep tracks of targets & view attacks results
-   attack     Run security checks against targets
-   
-"""
+   attack     Run security checks against targets"""
 
 ATTACK_EXAMPLES = colored.stylize('Examples:', colored.attr('bold')) + """
   - Run all security checks against an URL in interactive mode (break before each check):
@@ -67,11 +59,9 @@ ATTACK_EXAMPLES = colored.stylize('Examples:', colored.attr('bold')) + """
   python3 jok3r.py attack -m mayhem --profile red-team --fast
 """
 
-DB_INTRO = """
-The local database stores the missions, targets info & attacks results.
-This shell allows for easy access to this database. New missions can be added and
-scopes can be defined by importing new targets.
-"""
+DB_INTRO = """The local database stores the missions, targets info & attacks results.
+This shell allows for easy access to this database. New missions can be
+added and scopes can be defined by importing new targets."""
 
 
 #----------------------------------------------------------------------------------------

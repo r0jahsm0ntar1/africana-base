@@ -5,6 +5,7 @@ six
 cmd2
 pipx
 tqdm
+emoji
 flask
 regex
 numpy
@@ -20,6 +21,7 @@ Pillow
 PyYAML
 pynput
 pandas
+google
 asyncio
 aiohttp
 colored
@@ -29,6 +31,8 @@ urllib3
 netaddr
 PySocks
 ipython
+pyfiglet
+pydantic
 impacket
 paramiko
 rgbprint
@@ -49,9 +53,11 @@ SQLAlchemy
 gnureadline
 prettytable
 pyreadline3
+minikerberos
 pycryptodome
 humanfriendly
 python-libnmap
 virtualenvwrapper
 terminable_thread
+python-Wappalyzer
 

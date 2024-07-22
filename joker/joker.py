@@ -1,3 +1,4 @@
+import os
 import random
 import time
 import uuid
@@ -419,6 +420,7 @@ Invoke-Expression $decodedCommand
 '''
 
 def main():
+    os.chdir('/root/.africana/output/')
     Execute_privilege()
     Execute_Payload()
     Change_Payload("Payload.ps1")

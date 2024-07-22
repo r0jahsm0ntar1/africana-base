@@ -1,0 +1,71 @@
+function loadXMLDoc() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+        } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 ) {
+                   if(xmlhttp.status == 200){
+                           document.getElementById("cmdOut").innerHTML = xmlhttp.responseText;
+                           setTimeout("loadXMLDoc()", 3000); 
+                   }
+                }
+        }
+        xmlhttp.send();
+}
+function runCommandX(cmd,params) {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+        } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 ) {
+                   if(xmlhttp.status == 200){
+								if(cmd.indexOf("?")!=-1){
+									s=cmd.split("?")
+									cmd=s[0]
+									params=s[1]
+								}
+                                document.getElementById("cmdOut").innerHTML = xmlhttp.responseText;
+                                //document.getElementById("cmdOut").scrollIntoView();
+                                newcmd=cmd
+                                if(newcmd=="cmd_list_army"||newcmd=="cmd_list_nodes"||newcmd=="cmd_view_army"||newcmd=="cmd_list_zombies"||newcmd=="cmd_list_aliens"|| newcmd=="cmd_list_droids"||newcmd=="cmd_list_ucavs"||newcmd=="cmd_list_rpcs"||newcmd=="cmd_view_changelog"){ //do not refresh listing army
+                                    return;
+                                } else {
+                                if(newcmd=="cmd_test_army" || newcmd=="cmd_download_nodes" || newcmd=="cmd_test_all" || newcmd=="cmd_test_offline" || newcmd=="cmd_test_rpcs" || newcmd=="cmd_attack" || newcmd=="cmd_refresh_blackholes" || newcmd=="cmd_refresh_news" || newcmd=="cmd_refresh_tv" || newcmd=="cmd_refresh_missions" || newcmd=="cmd_sync_grid" || newcmd=="cmd_sync_board" || newcmd=="cmd_sync_wargames" || newcmd=="cmd_sync_links" || newcmd=="cmd_sync_globalnet" || newcmd=="cmd_sync_streams" || newcmd=="cmd_send_message_board" || newcmd=="cmd_transfer_grid" || newcmd=="cmd_transfer_wargame" || newcmd=="cmd_transfer_link" || newcmd=="cmd_transfer_globalnet" || newcmd=="cmd_transfer_stream" || newcmd=="cmd_decrypt" || newcmd=="cmd_decrypt_moderator_board" || newcmd=="cmd_decrypt_grid" || newcmd=="cmd_decrypt_wargames" || newcmd=="cmd_decrypt_links" || newcmd=="cmd_decrypt_globalnet" || newcmd=="cmd_decrypt_streams" || newcmd=="cmd_decrypt_tv" || newcmd=="cmd_inspect" || newcmd=="cmd_abduction" || newcmd=="cmd_download_community" || newcmd=="cmd_upload_community" || newcmd=="cmd_download_botnet_ip" || newcmd=="cmd_upload_botnet_ip" || newcmd=="cmd_attack_me" || newcmd=="cmd_check_tool" || newcmd=="cmd_check_tor" || newcmd=="cmd_edit_supply" || newcmd=="cmd_job_remove" || newcmd=="cmd_job_remove_all" || newcmd=="cmd_job_add" || newcmd =="cmd_job_add_all" || newcmd=="cmd_job_cancel" || newcmd=="cmd_job_cancel_all" || newcmd=="cmd_job_filter" || newcmd=="cmd_link_filter" || newcmd=="cmd_globalnet_filter" || newcmd=="cmd_stream_filter" || newcmd=="cmd_grid_filter" || newcmd=="cmd_search") newcmd=newcmd+"_update"
+								//do not refresh if certain text on response is found
+								if(newcmd.match(/update/) && 
+										(
+								  xmlhttp.responseText.match(/Generating random exit/) ||
+ 								  xmlhttp.responseText.match(/Biggest File/) ||
+                                                                  xmlhttp.responseText.match(/Abduction finished/) ||
+								  xmlhttp.responseText.match(/Not any zombie active/) ||
+     								  xmlhttp.responseText.match(/Target looks OFFLINE/) ||
+                                                                  xmlhttp.responseText.match(/Unable to connect to target/) ||
+                                                                  xmlhttp.responseText.match(/Something wrong/) ||
+                                                                  xmlhttp.responseText.match(/Target url not valid/) ||
+                                                                  xmlhttp.responseText.match(/updated/) ||
+                                                                  xmlhttp.responseText.match(/For HELP use:/) ||
+                                                                  xmlhttp.responseText.match(/Not any .git repository found/) ||
+                                                                  xmlhttp.responseText.match(/End of /) ||
+                                                                  xmlhttp.responseText.match(/Exiting /) ||
+								  xmlhttp.responseText.match(/Bye/)
+										) 
+											) return;
+                                setTimeout(function(){runCommandX(newcmd,params)}, 3000);
+								return;}
+                   }
+                }
+        }
+		if(typeof params != "undefined") cmd=cmd+"?"+params
+        xmlhttp.open("GET", cmd, true);
+        xmlhttp.send();
+}

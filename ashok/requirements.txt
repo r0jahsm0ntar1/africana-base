@@ -1,0 +1,3 @@
+python-Wappalyzer
+requests
+google

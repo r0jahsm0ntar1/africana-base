@@ -1,0 +1,1 @@
+{"name":"www.example.com.","type":"A","class":"IN","status":"NOERROR","data":{"answers":[{"ttl":1590,"type":"A","class":"IN","name":"www.example.com.","data":"93.184.215.14"}]},"resolver":"119.29.29.29:53"}

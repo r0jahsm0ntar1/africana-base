@@ -50,7 +50,7 @@ filtered_strings = None
 redirects = False
 
 #Verbose allowed
-verbose = False
+verbose = True
 
 #Insecure requests
 secure = True

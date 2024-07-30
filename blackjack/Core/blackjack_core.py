@@ -788,7 +788,7 @@ class Sessions_Manager:
 # -------------- Hoaxshell Server -------------- #
 class Hoaxshell(BaseHTTPRequestHandler):
 
-    server_name = '....................HoaxShell Multi-Handler]'
+    server_name = f'{BLUE}....................HoaxShell Multi-Handler]{END}'
     header_id = Hoaxshell_Settings._header
     server_unique_id = None
     command_pool = {}
@@ -1426,7 +1426,7 @@ def initiate_hoax_server():
 
 class Core_Server:
 
-    server_name = '................................Team Server]'
+    server_name = f'{BLUE}................................Team Server]{END}'
     acknowledged_servers = []
     sibling_servers = {}
     requests = {}
@@ -2294,7 +2294,7 @@ class Core_Server:
 
 class TCP_Sock_Multi_Handler:
 
-    server_name = '...................Netcat TCP Multi-Handler]'
+    server_name = f'{BLUE}...................Netcat TCP Multi-Handler]{END}'
     listen = True
     listener_initialized = None
 
@@ -3163,7 +3163,7 @@ class File_Smuggler_Http_Handler(BaseHTTPRequestHandler):
 
 class File_Smuggler:
 
-    server_name = '.........................HTTP File Smuggler]'
+    server_name = f'{BLUE}.........................HTTP File Smuggler]{END}'
     file_transfer_tickets = {}
 
     def __init__(self):

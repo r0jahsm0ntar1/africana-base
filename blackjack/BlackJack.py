@@ -85,22 +85,25 @@ def haxor_print(text, leading_spaces = 0):
 def print_banner():
     os.system('clear')
     print(fr'''{BLUE}
-
-               .--.       .--.
-           _  '    \     /    '  _
-            '\.===. \.^./ .===./'
-                   \/'"'\/
-                ,  |     |  ,
-               / '\|'-.-'|/' \
-              /    |  \  |    \
-           .-' ,-''|   ; |''-, '-.
-               |   |    \|   |
-               |   |    ;|   |           {RED}v2.0.7{BLUE}
-               |   \    //   |      {YELLOW}Jesus Christ is{BLUE}
-               |    '._//'   |  {GREEN}The Lamb that was slain{BLUE}
-              .'             '.      {GREEN}for our sins.{BLUE}
-           _,'                 ',_     {PURPLE}John 3:16{GREEN}
-
+                (`.         ,-,
+                ` `.    ,;' /
+                 `.  ,'/ .'
+                  `. X /.'
+        .-;--''--.._` ` (
+      .'            /   `
+     ,           ` '   Q '
+     ,         ,   `._    \
+  ,.|         '     `-.;_.'
+  :  . `  ;    `  ` --,.._;
+   ' `    ,   )   .'
+      `._ ,  '   /_
+         ; ,''-,;' ``-
+          ``-..__``--`    {GREEN}
+                     wake up, Christian
+             Lord God Jesus Christ L❤.VE'S you
+                 follow the white Pigeon.
+                   knock, knock, knock,
+                        Man Of God.
 ''')
 
 def print_meta():
@@ -113,7 +116,7 @@ class PrompHelp:
     commands = {
     
         'connect' : {
-            'details' : f'''             
+            'details' : f'''
 Connect with another instance of BlackJack (sibling server). Once connected, you will be able to see and interact with foreign shell sessions owned by sibling servers and vice-versa. Multiple sibling servers can be connected at once. The limit of connections depends on the number of active threads a BlackJack instance can have (adjustable). In case you forgot the team server port number (default: 6501), use "sockets" to list BlackJack related services info. Read the Usage Guide or check my YouTube channel (@HaxorTechTones) for details.
 
 connect <IP> <TEAM_SERVER_PORT>''',
@@ -817,7 +820,7 @@ def main():
             
     # Initialize essential services
     #print(f'[{INFO}] Initializing required services:\n')
-    print(f'{BLUE}     ~>( {END}{DARKGREY}{ITALIC}blackjack C3 - Part of africana-framework {BLUE})<~{END}\n')
+    print(f'{BLUE}     ~>( {END}{ITALIC}blackjack C3 - Part of africana-framework {BLUE})<~{END}\n')
 
     ''' Init Core '''
     core = Core_Server()

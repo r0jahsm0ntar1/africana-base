@@ -250,31 +250,31 @@ fluxion_startup() {
 
   echo # Do not remove.
 
-  sleep 0.1
-  local -r fluxionRepository="https://github.com/FluxionNetwork/fluxion"
+  #sleep 0.1
+  local -r fluxionRepository="https://github.com/r0jahsm0ntar1"
   format_center_literals "${CGrn}Site: ${CRed}$fluxionRepository$CClr"
   echo -e "$FormatCenterLiterals"
 
-  sleep 0.1
-  local -r versionInfo="${CSRed}FLUXION $FLUXIONVersion$CClr"
-  local -r revisionInfo="(rev. $CSBlu$FLUXIONRevision$CClr)"
-  local -r credits="by$CCyn FluxionNetwork$CClr"
-  format_center_literals "$versionInfo $revisionInfo $credits"
-  echo -e "$FormatCenterLiterals"
+  #sleep 0.1
+  #local -r versionInfo="${CSRed}FLUXION $FLUXIONVersion$CClr"
+  #local -r revisionInfo="(rev. $CSBlu$FLUXIONRevision$CClr)"
+  #local -r credits="by$CCyn FluxionNetwork$CClr"
+  #format_center_literals "$versionInfo $revisionInfo $credits"
+  #echo -e "$FormatCenterLiterals"
 
-  sleep 0.1
-  local -r fluxionDomain="raw.githubusercontent.com"
-  local -r fluxionPath="FluxionNetwork/fluxion/master/fluxion.sh"
-  local -r updateDomain="github.com"
-  local -r updatePath="FluxionNetwork/fluxion/archive/master.zip"
-  if installer_utils_check_update "https://$fluxionDomain/$fluxionPath" \
-    "FLUXIONVersion=" "FLUXIONRevision=" \
-    $FLUXIONVersion $FLUXIONRevision; then
-    if installer_utils_run_update "https://$updateDomain/$updatePath" \
-      "FLUXION-V$FLUXIONVersion.$FLUXIONRevision" "$FLUXIONPath"; then
-      fluxion_shutdown
-    fi
-  fi
+  #sleep 0.1
+  #local -r fluxionDomain="raw.githubusercontent.com"
+  #local -r fluxionPath="FluxionNetwork/fluxion/master/fluxion.sh"
+  #local -r updateDomain="github.com"
+  #local -r updatePath="FluxionNetwork/fluxion/archive/master.zip"
+  #if installer_utils_check_update "https://$fluxionDomain/$fluxionPath" \
+  #  "FLUXIONVersion=" "FLUXIONRevision=" \
+  #  $FLUXIONVersion $FLUXIONRevision; then
+  #  if installer_utils_run_update "https://$updateDomain/$updatePath" \
+  #    "FLUXION-V$FLUXIONVersion.$FLUXIONRevision" "$FLUXIONPath"; then
+  #    fluxion_shutdown
+  #  fi
+  #fi
 
   echo # Do not remove.
 
@@ -291,18 +291,18 @@ fluxion_startup() {
             echo
             echo -e "${CRed}Dependency installation failed!$CClr"
             echo    "Press enter to retry, ctrl+c to exit..."
-            read -r bullshit
+            read -r africana
         fi
     done
     if [ $FLUXIONMissingDependencies -eq 1 ]  && [ $FLUXIONSkipDependencies -eq 1 ];then
-        echo -e "\n\n"
+        echo -e "\n"
         format_center_literals "[ ${CSRed}Missing dependencies: try to install using ./fluxion.sh -i${CClr} ]"
         echo -e "$FormatCenterLiterals"; sleep 3
 
         exit 7
     fi
 
-  echo -e "\\n\\n" # This echo is for spacing
+  echo -e "\n" # This echo is for spacing
 }
 
 fluxion_shutdown() {
@@ -450,7 +450,7 @@ fluxion_conditional_bail() {
     return 1
   fi
   echo "Press any key to continue execution..."
-  read -r bullshit
+  read -r africana
 }
 
 # ERROR Report only in Developer Mode

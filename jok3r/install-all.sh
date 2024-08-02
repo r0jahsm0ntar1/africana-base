@@ -47,7 +47,7 @@ fi
 # -----------------------------------------------------------------------------
 
 print_blue "[~] Running dependencies install script..."
-./install-dependencies.sh
+bash install-dependencies.sh
 if [ $? -eq 0 ]; then
     print_green "[+] Dependencies install script exited with success returncode"
 else

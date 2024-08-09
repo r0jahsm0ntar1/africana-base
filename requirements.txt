@@ -8,6 +8,7 @@ pipx
 tqdm
 lxml
 fire
+wget
 emoji
 flask
 regex
@@ -29,6 +30,7 @@ PyYAML
 pynput
 pandas
 google
+pathlib
 treelib
 chardet
 certifi

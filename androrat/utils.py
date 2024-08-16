@@ -355,7 +355,7 @@ def connection_checker(socket,queue):
     return conn,addr
 
 def build(ip,port,output,ngrok=False,ng=None,icon=None):
-    print(banner)
+    #print(banner)
     editor = "Compiled_apk"+direc+"smali"+direc+"com"+direc+"example"+direc+"reverseshell2"+direc+"config.smali"
     try:
         file = open(editor,"r").readlines()

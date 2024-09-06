@@ -17,6 +17,7 @@ scapy
 updog
 exrex
 psutil
+PyPDF2
 loguru
 future
 pycurl
@@ -43,6 +44,7 @@ urllib3
 netaddr
 PySocks
 ipython
+pwntools
 pyfiglet
 pydantic
 impacket
@@ -76,6 +78,7 @@ humanfriendly
 beautifulsoup4
 python-libnmap
 win32-setctime
+fake-useragent
 virtualenvwrapper
 terminable_thread
 python-Wappalyzer

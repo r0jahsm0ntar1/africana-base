@@ -123,10 +123,9 @@ connect <IP> <TEAM_SERVER_PORT>''',
             'least_args' : 2,
             'max_args' : 2
         },
-                
-                
+
         'generate' : {
-            'details' : f'''         
+            'details' : f'''
 Generate a reverse shell command. This function has been redesigned to use payload templates, which you can find in BlackJack/Core/payload_templates and edit or create your own.
 
 Main logic:
@@ -142,11 +141,10 @@ generate payload=linux/hoaxshell/sh_curl lhost=eth0
 - Ultimately, one should edit the templates and add obfuscated versions of the commands for AV evasion.''',
             'least_args' : 0, # Intentionally set to 0 so that the Payload_Generator class can inform users about missing arguments
             'max_args' : 7
-        },            
-
+        },
 
         'exec' : {
-            'details' : f'''             
+            'details' : f'''
 Execute a command or file against an active backdoor session. Files are executed by being http requested from the Http File Smuggler. The feature works regardless if the session is owned by you or a sibling server.
     
 exec <COMMAND or LOCAL FILE PATH> <SESSION ID or ALIAS>
@@ -989,7 +987,8 @@ def main():
                         PrompHelp.print_detailed(cmd_list[1]) if cmd_list[1] in PrompHelp.commands.keys() \
                         else print(f'Command {cmd_list[1] if len(cmd_list[1]) <= 10 else f"{cmd_list[1][0:4]}..{cmd_list[1][-4:]}" } does not exist.')
                                                         
-        
+                if cmd == '0':
+                   sys.exit(1)
 
                 elif cmd == 'id':
                     print(f'Server unique id: {ORANGE}{core.return_server_uniq_id()}{END}')

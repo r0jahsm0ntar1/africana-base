@@ -955,10 +955,8 @@ class Hoaxshell(BaseHTTPRequestHandler):
 
 
 
-                    elif cmd_list[0] in ['exit', 'quit']:
+                    elif cmd_list[0] in ['exit', 'quit', '0']:
                         raise KeyboardInterrupt
-
-
 
                     elif  cmd_list[0] == 'cmdinspector':
 

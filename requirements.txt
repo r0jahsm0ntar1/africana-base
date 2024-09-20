@@ -9,6 +9,7 @@ tqdm
 lxml
 fire
 wget
+bbot
 emoji
 flask
 regex

@@ -1,0 +1,2 @@
+# Hydra v9.5 run at 2024-09-17 11:37:26 on 127.0.0.1 http-get (hydra -L /root/.africana/africana-base/crackers/wordlists/cybrute/user.txt -P /root/.africana/africana-base/crackers/wordlists/cybrute/pass.txt -f -q -e ns -o Output/127.0.0.1/http-get_127.0.0.1.txt -I -V -t 16 127.0.0.1 http-get /)
+[80][http-get] host: 127.0.0.1   login: admin   password: anonymous

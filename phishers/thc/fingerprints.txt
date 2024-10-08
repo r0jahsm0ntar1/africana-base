@@ -1,0 +1,39 @@
+0xFFFFFFFF
+
+
+
+ADOBE VICTIM FINGERPRINTS => Informations 
+/////////////////////////////////////////////////////// 
+IP: 127.0.0.1 
+Full-Date: 07-10-2024 12:55:49 
+Country:  
+Region:  
+City:  
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0 
+OS-System: Linux 
+/////////////////////////////////////////////////////// 
+
+
+AMAZON VICTIM FINGERPRINTS => Informations 
+/////////////////////////////////////////////////////// 
+IP: 127.0.0.1 
+Full-Date: 07-10-2024 12:57:08 
+Country:  
+Region:  
+City:  
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0 
+OS-System: Linux 
+/////////////////////////////////////////////////////// 
+
+
+DISCORD VICTIM FINGERPRINTS => Informations 
+/////////////////////////////////////////////////////// 
+IP: 127.0.0.1 
+Full-Date: 07-10-2024 01:00:21 
+Country:  
+Region:  
+City:  
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0 
+OS-System: Linux 
+/////////////////////////////////////////////////////// 
+

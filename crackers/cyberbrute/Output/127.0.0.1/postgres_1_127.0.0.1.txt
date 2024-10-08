@@ -1,1 +1,0 @@
-# Hydra v9.5 run at 2024-09-17 11:37:29 on 127.0.0.1 postgres (hydra -C /root/.africana/africana-base/crackers/wordlists/cybrute/postgres_up.txt -e ns -o Output/127.0.0.1/postgres_1_127.0.0.1.txt -I -V -t 16 127.0.0.1 postgres)

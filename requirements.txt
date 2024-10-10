@@ -17,6 +17,8 @@ numpy
 scapy
 updog
 exrex
+getch
+Pillow
 psutil
 PyPDF2
 loguru
@@ -27,7 +29,6 @@ flake8
 py3DNS
 pproxy
 shodan
-Pillow
 PyYAML
 pynput
 pandas
@@ -80,6 +81,10 @@ beautifulsoup4
 python-libnmap
 win32-setctime
 fake-useragent
+alive_progress
 virtualenvwrapper
 terminable_thread
 python-Wappalyzer
+pex @ git+https://github.com/EntySec/Pex
+badges @ git+https://github.com/EntySec/Badges
+hatsploit @ git+https://github.com/EntySec/HatSploit

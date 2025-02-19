@@ -1,8 +1,0 @@
-/accessible/..;/admin
-/.;/admin
-/admin;/
-/admin/~
-/./admin/./
-/admin?param
-/%2e/admin
-/admin#

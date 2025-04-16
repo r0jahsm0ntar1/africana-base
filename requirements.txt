@@ -71,7 +71,7 @@ SQLAlchemy
 gnureadline
 prettytable
 pyreadline3
-pyshorteners
+#pyshorteners
 cryptography
 minikerberos
 pycryptodome

@@ -1,6 +1,14 @@
-![image](https://github.com/r0jahsm0ntar1/africana-framework/assets/108395400/29e4c734-43d0-4ede-969b-2d8756b0a6c4)
+# Africana Framework
+[![Golang](https://pkg.go.dev/static/frontend/badge/badge.svg)](https://www.python.org/) 
+<img src="https://img.shields.io/badge/PowerShell-%E2%89%A5%20v3.0-blue">
+<img src="https://img.shields.io/badge/Developed%20on-kali%20linux-blueviolet">
+[![License](https://img.shields.io/badge/License-CC%20Attr--NonCommercial%204.0-red)](https://github.com/r0jahsm0ntar1/africana-framework/blob/main/readme/license)
+<img src="https://img.shields.io/badge/Maintained%3F-Yes-96c40f">
 
-# 🌐 africana-framework. Made simple but Lethal! 🌐
+## Purpose:
+Africana Framework is an open-source, community-driven cybersecurity toolkit designed for ethical penetration testing and vulnerability assessment. It automates the detection of security flaws across a wide range of network and web technologies, including all networks, system anonymity, and web bug hunting. The framework aims to empower security professionals and researchers to identify and mitigate security risks effectively. (Africana instances running on different machines).
+
+##The framework's main features include:
 
     A    F    R    I    C    A    N    A    Framework.
     *    *    *    *    *    *    *    *    *
@@ -16,16 +24,12 @@
     +----------------------------------------- 9. About The Author Of Africana And Free Pentesting Tricks, Materials. Very Nice Essential Things Just Try Nine.
 
 
-* Africana-framework is a REDTEAM Penetration Testing Framework written in pure Go lang & Pure Python3. 
-* It aims to make penetration testing easier for testers by covering a wide range of attack vectors including;
- web exploitation, WiFi attacks, phishing, malware generation, social engineering attacks, password cracking, and internal network attacks.
-
 # Disclaimer: 
 🚧 Hacking is addictive😂, Yoh! "With Great power."👀 You know the drill. 🚧
 
-- * Africana is strictly designed for educational purposes only. If you think you're about to become the next cyber-vigilante, think again.**<br>
-- * This tool won't magically turn you into a hacking wizard overnight. It's more like a virtual playground for learning the art (and science) of ethical hacking.**<br>
-- * 🙅‍♂️ Don't even think about using this tool for anything illegal or malicious. The cyber police will find you, and they won't be amused.**
+- Africana is strictly designed for educational purposes only. If you think you're about to become the next cyber-vigilante, think again.**<br>
+- This tool won't magically turn you into a hacking wizard overnight. It's more like a virtual playground for learning the art (and science) of ethical hacking.**<br>
+- 🙅‍♂️ Don't even think about using this tool for anything illegal or malicious. The cyber police will find you, and they won't be amused.**
 
 ## Features
 - 🔒 System Security Configuration with Tor, Privoxy, Squid, Macchanger, Dnsleak, etc.
@@ -40,14 +44,47 @@
 Before you begin, ensure you have met the following requirements:
 **Golang:** Africana is written in Golang, so make sure you have it installed on your machine.
 
-```bash
-sudo apt update -y
-sudo apt install golang git apt -y
-```
 ## Installation Ubuntu, Kali & all Debian based distros;
 
 ```bash
 sudo apt update -y
+sudo apt install git golang -y
+```
+```bash
+sudo git clone https://github.com/r0jahsm0ntar1/africana-framework --depth 1
+```
+```bash
+cd africana-framework
+```
+```bash
+make; mv afrconsole /usr/local/bin/africana; afrconsole -h
+```
+
+## Installation in all Arch based distros;
+```bash
+sudo pacman -Syu
+sudo pacman -Sy git golang
+```
+```bash
+sudo git clone https://github.com/r0jahsm0ntar1/africana-framework --depth 1
+```
+```bash
+cd africana-framework
+```
+```bash
+make; mv afrconsole /usr/local/bin/africana; afrconsole -h
+```
+## Installation in tmux on Android based distros;
+```bash
+pkg update
+pkg upgrade
+termux-setup-storage
+pkg install wget
+wget -O install-nethunter-termux https://offs.ec/2MceZWr
+chmod +x install-nethunter-termux
+./install-nethunter-termux
+nethunter
+sudo apt update && sudo apt full-upgrade -y
 sudo apt install golang -y
 ```
 ```bash
@@ -57,30 +94,15 @@ sudo git clone https://github.com/r0jahsm0ntar1/africana-framework --depth 1
 cd africana-framework
 ```
 ```bash
-sudo go build ./africana.go; mv africana /usr/local/bin
-```
-
-## Installation in all Arch based distros;
-```bash
-sudo pacman -Syu
-sudo pacman -Sy golang git
-```
-```bash
-sudo git clone https://github.com/r0jahsm0ntar1/africana-framework --depth 1
-```
-```bash
-cd africana-framework
-```
-```bash
-sudo go build ./africana.go; mv africana /usr/local/bin
+make; mv afrconsole /usr/local/bin/africana; afrconsole -h
 ```
 
 ## The script should be run as a super user do(sudo) for root permissions .
 ```bash
-sudo africana -i
+sudo afrconsole
 ```
 
-## For Python version. Prerequisites try;
+## For Python version. Prerequisites try; DEPRICATED USE GO VERSION
 
 Before you begin, ensure you have met the following requirements:
 **Python3:** Africana is written in Golang, so make sure you have it installed on your machine.
@@ -102,7 +124,7 @@ sudo git clone https://github.com/r0jahsm0ntar1/africana-framework -b africs --d
 cd africana-framework
 ```
 ```bash
-sudo python3 installer.py
+python3 installer.py
 ```
 
 ## Installation in all Arch based distros;
@@ -127,38 +149,24 @@ sudo africana
 ![image](https://github.com/r0jahsm0ntar1/africana-framework/assets/108395400/0d58991f-a8b3-4fd9-966c-db84480e7d9c)
 
 ## About the Author
-                               .--,
-                           ,.-( (o)\
-                          /   .)/\ ')
-                        .',./'/   )/
-                    ()=///=))))==()
-                      /
-                        __                 _____ _____     _     _ 
-                     __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_ 
-                    |  |  | -_|_ -| | |_ -|   --|     |  _| |_ -|  _|
-        Addicted to |_____|___|___|___|___|_____|__|__|_| |_|___|_|
-    +------------------------------------------------------------------------------+
-    |               With great power comes great responsibility.                   |
-    +------------------------------------------------------------------------------+
-    |        I am Rojahs Montari. A devoted Christian Studied Education In         |
-    |         Kenyatta University Kenya. Got Persionate In Cybersecurity           |
-    |        I Then Furthered My Skills By Research, Practice & Expirience.        |
-    |                      Thanks To Ippsec Hack TheBox.                           |
-    |   I Am Working As A Teacher, Cybersecurity Consoltant, Software Engineer.    |
-    +------------------------------------------------------------------------------+
-    
-## Youtube [ please subscribe ]
-![image](https://github.com/r0jahsm0ntar1/africana-framework/assets/108395400/bdc012a1-be87-43b1-bc51-e0a96ed983b3)
- - https://youtube.com/@RojahsMontari
+                       .--,
+                   ,.-( (o)\
+                  /   .)/\ ')
+                .',./'/   )/
+            ()=///=))))==()
+              /
+                __                 _____ _____     _     _ 
+             __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_ 
+            |  |  | -_|_ -| | |_ -|   --|     |  _| |_ -|  _|
+Addicted to |_____|___|___|___|___|_____|__|__|_| |_|___|_|
++---------------------------------------------------------------------+
+|             With great power comes great responsibility.            |
++---------------------------------------------------------------------+
+|   I am Rojahs Montari. A devoted Christian Studied Education In     |
+|    Kenyatta University Kenya. Got Persionate In Cybersecurity       |
+|    I Then Furthered My Skills By Research, Practice & Expirience.   |
+|     Self employed, Cybersecurity Consoltant, Software Engineer.     |
++---------------------------------------------------------------------+
 
-## Contact
-![image](https://github.com/r0jahsm0ntar1/africana-framework/assets/108395400/25488d08-dd35-4585-9541-f73a4465dec9)
-- RojahsMontari@gmail.com.
-
-## Twiter
-![image](https://github.com/r0jahsm0ntar1/africana-framework/assets/108395400/85612c98-0198-4720-8666-9c3218026e4c)
-- https://twitter.com/r0jahsm0ntar1
-
-## Facebook
-![image](https://github.com/r0jahsm0ntar1/africana-framework/assets/108395400/fb288e21-1f57-4de9-ac43-381de11e8dc7)
-- https://web.facebook.com/RojahMontari
+  ## 💰 You can help me by Donating
+[![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/r0jahsm0ntar1) [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/r0jahsm0ntar1) [![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://patreon.com/r0jahsm0ntar1) [![Ko-Fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/r0jahsm0ntar1) 

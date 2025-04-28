@@ -1880,7 +1880,7 @@ if(-not $isAdmin) {
 }
 
 +---------------------------------------------------------+
-    Windows Version                        Product Key    |
+|   Windows Version                        Product Key    |
 |:------------------------|:------------------------------|
 | Windows 8               | 46V6N-VCBYR-KT9KT-6Y4YF-QGJYH |
 | Windows 8 Professional  | V7C3N-3W6CM-PDKR2-KW8DQ-RJMRD |

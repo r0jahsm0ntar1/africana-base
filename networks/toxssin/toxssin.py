@@ -250,38 +250,24 @@ def chill():
 	pass
 
 
-skull = '''
-                 uuuuuuu
-             uu$$$$$$$$$$$uu
-          uu$$$$$$$$$$$$$$$$$uu
-         u$$$$$$$$$$$$$$$$$$$$$u
-        u$$$$$$$$$$$$$$$$$$$$$$$u
-       u$$$$$$$$$$$$$$$$$$$$$$$$$u
-       u$$$$$$$$$$$$$$$$$$$$$$$$$u
-       u$$$$$$"   "$$$"   "$$$$$$u
-       "$$$$"      u$u       $$$$"
-        $$$u       u$u       u$$$
-        $$$u      u$$$u      u$$$
-         "$$$$uu$$$   $$$uu$$$$"
-          "$$$$$$$"   "$$$$$$$"
-            u$$$$$$$u$$$$$$$u
-             u$"$"$"$"$"$"$u
-  uuu        $$u$ $ $ $ $u$$       uuu
- u$$$$        $$$$$u$u$u$$$       u$$$$
-  $$$$$uu      "$$$$$$$$$"     uu$$$$$$
-u$$$$$$$$$$$uu    """""    uuuu$$$$$$$$$$
-$$$$"""$$$$$$$$$$uuu   uu$$$$$$$$$"""$$$"
- """      ""$$$$$$$$$$$uu ""$"""
-           uuuu ""$$$$$$$$$$uuu
-  u$$$uuu$$$$$$$$$uu ""$$$$$$$$$$$uuu$$$
-  $$$$$$$$$$""""           ""$$$$$$$$$$$"
-   "$$$$$"                      ""$$$$""
-     $$$"                         $$$$"
+skull = r'''
+     _      xxxx      _
+    /_;-.__ / _\  _.-;_\
+       '-._ ''_/''.-'
+           '\   /'
+            |  /
+           /-.(
+           \_._\
+            \ \ ;
+             > |/
+            / //
+            |//
+            \(\
 '''
 
 
 # -------------- Basic Settings -------------- #
-prompt = "toxssin > "
+prompt = "Toxssin > "
 session_folder = {}
 msg_log = {}
 verbose = True if args.verbose else False
@@ -721,7 +707,7 @@ def main():
 			
 		print(f'[{get_dt_prefix()[1]}] [{INFO}] Type "help" to get a list of the available commands.{END}')
 		print(f'[{get_dt_prefix()[1]}] [{INFO}] All sessions are logged by default.{END}')
-		print(f'[{get_dt_prefix()[1]}] [{INFO}] Awaiting XSS GET request for {handler}{END}')
+		print(f'[{get_dt_prefix()[1]}] [{INFO}] Awaiting XSS GET request for {handler}{END}\n')
 			
 		toxssin_server = Thread(target = httpd.serve_forever, args = ())
 		toxssin_server.daemon = True

@@ -9,7 +9,6 @@ tqdm
 lxml
 fire
 wget
-bbot
 emoji
 flask
 regex
@@ -71,7 +70,7 @@ SQLAlchemy
 gnureadline
 prettytable
 pyreadline3
-pyshorteners
+#pyshorteners
 cryptography
 minikerberos
 pycryptodome

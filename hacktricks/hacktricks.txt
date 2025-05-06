@@ -1879,6 +1879,9 @@ if(-not $isAdmin) {
     return
 }
 
+tar cvf archive.tar.gz --use-compress-program='gzip -9' *.csv
+tar xvf archive.tar.gz
+
 +---------------------------------------------------------+
 |   Windows Version                        Product Key    |
 |:------------------------|:------------------------------|

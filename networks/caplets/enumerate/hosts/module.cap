@@ -1,0 +1,21 @@
+# enumerate.hosts
+set enumerate.hosts.output enumerate/hosts/session1.hosts.log
+
+# events.stream
+events.stream off
+set events.stream.output enumerate/hosts/session1.events.stream.output
+events.stream on
+
+# net.sniff
+set net.sniff.verbose false
+net.sniff on
+
+# http.proxy
+set http.proxy.script enumerate/hosts/module.js
+set http.proxy.port 8022
+http.proxy on
+
+# ticker
+set ticker.commands enumerate.hosts.save
+set ticker.period 60
+ticker on

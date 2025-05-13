@@ -70,7 +70,6 @@ SQLAlchemy
 gnureadline
 prettytable
 pyreadline3
-#pyshorteners
 cryptography
 minikerberos
 pycryptodome
@@ -80,6 +79,6 @@ beautifulsoup4
 python-libnmap
 win32-setctime
 fake-useragent
+python-Wappalyzer
 virtualenvwrapper
 terminable_thread
-python-Wappalyzer

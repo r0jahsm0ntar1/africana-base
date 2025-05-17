@@ -1,2 +1,4 @@
 __pycache__
 *.pyc
+exploits/windows/listeners/meterpeter/Update-KB5005101.ps1
+/websites/pdtm

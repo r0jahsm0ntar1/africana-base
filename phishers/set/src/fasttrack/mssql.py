@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # coding=utf-8
 import _mssql
 import binascii
@@ -345,7 +345,7 @@ def deploy_hex2binary(ipaddr, port, username, password):
                     pass
 
                 # start a threaded webserver in the background
-                subprocess.Popen("python3 src/html/fasttrack_http_server.py", shell=True)
+                subprocess.Popen("python src/html/fasttrack_http_server.py", shell=True)
                 # grab the port options
 
                 # if core.check_options("PORT=") != 0:
@@ -390,7 +390,7 @@ def deploy_hex2binary(ipaddr, port, username, password):
     # if pexpect doesnt exit right then it freaks out
     if choice1 == "1":
         if os.path.isfile(os.path.join(core.userconfigpath, "set.payload")):
-            os.system("python3 ../../payloads/set_payloads/listener.py")
+            os.system("python ../../payloads/set_payloads/listener.py")
         try:
             # interact with the child process through pexpect
             child2.interact()

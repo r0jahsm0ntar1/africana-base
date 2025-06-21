@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # coding=utf-8
 #
 #
@@ -26,7 +26,7 @@ core.debug_msg(core.mod_name(), "printing 'text.powershell menu'", 5)
 show_powershell_menu = core.create_menu(text.powershell_text, text.powershell_menu)
 powershell_menu_choice = input(core.setprompt(["29"], ""))
 
-if powershell_menu_choice != "0":
+if powershell_menu_choice != "99":
     # specify ipaddress of reverse listener
     #ipaddr = core.grab_ipaddress()
     ipaddr = input("Enter the IPAddress or DNS name for the reverse host: ")

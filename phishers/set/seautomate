@@ -1,4 +1,4 @@
-#! /usr/bin/python3
+#!/usr/bin/env python
 # coding=utf-8
 
 import sys
@@ -75,7 +75,7 @@ if os.path.isfile(filename):
         print("[*] Spawning SET in a threaded process...")
         cmd = find_executable('python3') or find_executable('python')
         child = pexpect.spawn("{} setoolkit".format(cmd))
-        child.expect("0\) Exit the Social-Engineer Toolkit")
+        child.expect("99\) Exit the Social-Engineer Toolkit")
         with open(filename) as fileopen:
             for line in fileopen:
                 line = line.rstrip()

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # coding=utf-8
 import os
 import subprocess
@@ -32,7 +32,7 @@ except ImportError:
 
 
 def usage():
-    print("""
+    print(r"""
 .______       __   _______         _______ .__   __.  __    __  .___  ___.
 |   _  \     |  | |       \       |   ____||  \ |  | |  |  |  | |   \/   |
 |  |_)  |    |  | |  .--.  |      |  |__   |   \|  | |  |  |  | |  \  /  |

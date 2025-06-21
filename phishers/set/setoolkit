@@ -1,4 +1,4 @@
-#! /usr/bin/python3
+#!/usr/bin/env python3
 # coding=utf-8
 import os
 import re
@@ -94,11 +94,11 @@ if operating_system == "posix":
 if not os.path.isdir(os.path.join(core.userconfigpath, "reports")):
     os.makedirs(os.path.join(core.userconfigpath, "reports"))
 
-# check to see if we have python3-pycryptodome
+# check to see if we have python-pycrypto
 try:
-    from Cryptodome.Cipher import AES
+    from Crypto.Cipher import AES
 except ImportError:
-    print("[!] The python3-pycryptodome python module not installed. You will lose the ability to use multi-pyinjector.")
+    print("[!] The python-pycrypto python module not installed. You will lose the ability to use multi-pyinjector.")
     pass
 
 #
@@ -195,8 +195,8 @@ try:
         core.show_banner(define_version, '1')
         show_main_menu = core.create_menu(text.main_text, text.main_menu)
 
-        # special case of list item 0
-        print('\n 0) Exit the Social-Engineer Toolkit\n')
+        # special case of list item 99
+        print('\n  99) Exit the Social-Engineer Toolkit\n')
 
         # main core menu
         main_menu_choice = (input(core.setprompt("0", "")))
@@ -227,7 +227,7 @@ try:
             pause = input("Press {return} to continue.")
 
         # quit out
-        if main_menu_choice == 'exit' or main_menu_choice == "0" or main_menu_choice == "quit":
+        if main_menu_choice == 'exit' or main_menu_choice == "99" or main_menu_choice == "quit":
             core.exit_set()
             # cleans up stale processes from SET
             try:

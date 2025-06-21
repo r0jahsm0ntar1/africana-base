@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # for client emails
 import smtplib
 import os
@@ -193,7 +193,7 @@ print ("""
    1.  E-Mail Attack Single Email Address
    2.  E-Mail Attack Mass Mailer
 
-   0. Return to main menu.
+   99. Return to main menu.
    """)
 option1 = input(setprompt(["1"], ""))
 
@@ -312,7 +312,7 @@ if option1 == '2':
         setprompt(["1"], "Path to the file to import into SET"))
 
 # exit mass mailer menu
-if option1 == '0':
+if option1 == '99':
     exit_set()
 
 print(("""\n  1. Use a %s Account for your email attack.\n  2. Use your own server or open relay\n""" %
@@ -419,8 +419,8 @@ def mail(to, subject, text, attach, prioflag1, prioflag2):
             input("Press {return} to view error message.")
             print(str(e))
             try:
-                mailServer.docmd("AUTH LOGIN", base64.b64encode(provideruser.encode('utf-8')))
-                mailServer.docmd(base64.b64encode(pwd.encode('utf-8')), "")
+                mailServer.docmd("AUTH LOGIN", base64.b64encode(provideruser))
+                mailServer.docmd(base64.b64encode(pwd), "")
             except Exception as e:
                 print(str(e))
                 try:

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # PDF spear phishing attack here
 
 import subprocess
@@ -323,7 +323,7 @@ if exploit == "dll_hijacking":
             time.sleep(1)
             subprocess.Popen("mkdir %s/web_clone;cp src/html/msf.exe %s/web_clone/x" % (
                 userconfigpath, userconfigpath), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
-            child = pexpect.spawn("python3 src/html/web_server.py")
+            child = pexpect.spawn("python src/html/web_server.py")
 
     # if we are using apache
     if apache == 1:

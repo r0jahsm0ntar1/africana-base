@@ -20,9 +20,9 @@ Africana Framework is an open-source, community-driven cybersecurity toolkit des
     |    |    |    |    +--------------------- 5. Wifi Attack Vectors Both Automated & Manual. With Wifite, Airgeddon, Bettercap, Wifipumpkin3.
     |    |    |    + ------------------------- 6. Password, Hash Cracking With AirCrack-ng, John And Hashcat More Will Be Added As The Tool Grows.
     |    |    + ------------------------------ 7. Social Engenearing Attacks With Setoolkit, Goodginx, AdvancedPhishing, Gophish, Anonphisher. Others Will Be Added.
-    |    +------------------------------------ 8. Website Attack Vectors With Dnsrecon, Wafw00f, Whatweb, Httpx, Paramspider, Nuclei, BBot, SSlscan, Sqlmap, Xsserscan, Dalfox, Dirsearch, Commix, Osmedeus etc.
+    |    +------------------------------------ 8. Website Attack Vectors With Dnsrecon, Wafw00f, Whatweb, Httpx, Paramspider, Nuclei, BBot, SSlscan, Sqlmap, Xsserscan, Dalfox, Dirsearch, Commix etc.
     +----------------------------------------- 9. About the author of Africana and free pentesting tricks, Materials.
-    []---------------------------------------- 10. That one place you really need to be. Very nice essential things just try ten.
+    []----------------------------------------10. That one place you really need to be. Very nice essential things just try ten.
 ```
 
 # Disclaimer: 
@@ -101,46 +101,6 @@ make; mv afrconsole /usr/local/bin/; afrconsole -h
 ## The script should be run as a super user do(sudo) for root permissions .
 ```bash
 sudo afrconsole
-```
-
-## For Python version. Prerequisites try; DEPRICATED USE GO VERSION
-
-Before you begin, ensure you have met the following requirements:
-**Python3:** Africana is written in Golang, so make sure you have it installed on your machine.
-
-```bash
-sudo apt update -y
-sudo apt install python3 git apt -y
-```
-## Installation Ubuntu, Kali & all Debian based distros;
-
-```bash
-sudo apt update -y
-sudo apt install python3 -y
-```
-```bash
-sudo git clone https://github.com/r0jahsm0ntar1/africana-framework -b africs --depth 1
-```
-```bash
-cd africana-framework
-```
-```bash
-python3 installer.py
-```
-
-## Installation in all Arch based distros;
-```bash
-sudo pacman -Syu
-sudo pacman -Sy python3 git
-```
-```bash
-sudo git clone https://github.com/r0jahsm0ntar1/africana-framework -b africs --depth 1
-```
-```bash
-cd africana-framework
-```
-```bash
-sudo python3 installer.py
 ```
 
 ## The script should be run as a super user do(sudo) for root permissions .

@@ -2,9 +2,9 @@
 # EASY-INSTALL-ENTRY-SCRIPT: 'ghauri==1.4.2','console_scripts','ghauri'
 import re
 import sys
-
+from ghauri import *
 # for compatibility with easy_install; see #2198
-#__requires__ = 'ghauri==1.4.2'
+__requires__ = 'ghauri'
 
 try:
     from importlib.metadata import distribution
@@ -30,4 +30,4 @@ globals().setdefault('load_entry_point', importlib_load_entry_point)
 
 if __name__ == '__main__':
     sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
-    sys.exit(load_entry_point('ghauri==1.4.2', 'console_scripts', 'ghauri')())
+    sys.exit(load_entry_point('ghauri', 'console_scripts', 'ghauri')())

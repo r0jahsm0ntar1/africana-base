@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 ##########################################################################
 #
 #
@@ -37,7 +37,7 @@
 
 
 import urllib
-from Cryptodome.Cipher import AES
+from Crypto.Cipher import AES
 import sys
 import os
 import http.client
@@ -65,7 +65,7 @@ secret = "(3j^%sh@hd3hDH2u3h@*!~h~2&^lk<!L"
 # random junk
 random = "sdfdsfdsdfsfd@#2$"
 # create a cipher object using the random secret
-cipher = AES.new(secret, AES.MODE_ECB)
+cipher = AES.new(secret)
 
 # TURN THIS ON IF YOU WANT PROXY SUPPORT
 PROXY_SUPPORT = "OFF"

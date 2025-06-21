@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import subprocess
 from src.core.setcore import *
 from src.core.menu.text import *

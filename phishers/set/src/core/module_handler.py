@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 # module_handler.py
 
@@ -33,13 +33,13 @@ for name in glob.glob("modules/*.py"):
             line = "  " + str(counter) + ". " + line
             print(line)
 
-print("\n  0. Return to the previous menu\n")
+print("\n  99. Return to the previous menu\n")
 choice = raw_input(setprompt(["9"], ""))
 
 if choice == 'exit':
     exit_set()
 
-if choice == '0':
+if choice == '99':
     menu_return = "true"
 
 # throw error if not integer

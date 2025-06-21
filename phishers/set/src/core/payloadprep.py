@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ############################################
 # Code behind the SET interactive shell and RATTE
 ############################################

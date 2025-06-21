@@ -1,0 +1,12 @@
+06/20/2025 10:50:28 AM - Responder Started: ['Responder.py', '-I', 'eth0']
+06/20/2025 10:50:28 AM - [*] 
+06/20/2025 10:50:28 AM - [*] 
+06/20/2025 10:50:28 AM - [*] 
+06/20/2025 10:50:29 AM - [*] Started listening on 192.168.217.128:443 (UDP)
+06/20/2025 10:50:29 AM - [*] Forwarding connections to 192.168.217.128:445 (TCP)
+06/20/2025 03:15:59 PM - Responder Started: ['Responder.py', '-I', 'eth0', '-Pdv']
+06/20/2025 03:15:59 PM - [*] 
+06/20/2025 03:15:59 PM - [*] 
+06/20/2025 03:15:59 PM - [*] 
+06/20/2025 03:16:00 PM - [*] Started listening on 192.168.217.128:443 (UDP)
+06/20/2025 03:16:00 PM - [*] Forwarding connections to 192.168.217.128:445 (TCP)

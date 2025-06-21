@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 #
 # This file clones a website for SET to use in conjunction with the java
 # applet attack.
@@ -36,7 +36,7 @@ track_email = check_config("TRACK_EMAIL_ADDRESSES=").lower()
 if check_options("IPADDR=") != 0:
     ipaddr = check_options("IPADDR=")
 else:
-    ipaddr = eval(input("Enter your IP address: "))
+    ipaddr = input("Enter your IP address: ")
     update_options("IPADDR=" + ipaddr)
 
 # Define base value
@@ -162,8 +162,8 @@ try:
                     html = urllib.request.urlopen(req).read()
                     # if length isnt much then we didnt get the site cloned
                 except AttributeError:
-                    req = urllib.request.Request(url, headers=headers)
-                    html = urllib.request.urlopen(req).read()
+                    req = urllib2.Request(url, headers=headers)
+                    html = urllib2.urlopen(req).read()
 
                 if len(html) > 1:
                     # if the site has cloned properly
@@ -411,7 +411,7 @@ try:
                     shutil.copyfile(
                         userconfigpath + "web_clone/index.html.new", userconfigpath + "web_clone/index.html")
                 time.sleep(1)
-            fileopen = open(userconfigpath + "web_clone/index.html", "r", encoding='utf-8', errors='ignore').readlines()
+            fileopen = open(userconfigpath + "web_clone/index.html", "r").readlines()
             filewrite = open(userconfigpath + "web_clone/index.html.new", "w")
             counter = 0
             for line in fileopen:

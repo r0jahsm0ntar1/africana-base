@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import smtplib
 import os
 import getpass
@@ -131,7 +131,7 @@ print ("""
     1.  E-Mail Attack Single Email Address
     2.  E-Mail Attack Mass Mailer
 
-    0. Return to main menu.
+    99. Return to main menu.
    """)
 
 option1 = input(setprompt(["5"], ""))
@@ -332,10 +332,10 @@ if option1 == '2':
                 break
 
 # exit mass mailer menu
-if option1 == '0':
+if option1 == '99':
     print("Returning to main menu...")
 
-if option1 != "0":
+if option1 != "99":
     print(("""\n  1. Use a %s Account for your email attack.\n  2. Use your own server or open relay\n""" % (
         email_provider)))
     relay = input(setprompt(["1"], ""))
@@ -460,18 +460,14 @@ def mail(to, subject, prioflag1, prioflag2, text):
         # try logging in with base64 encoding here
         import base64
         try:
-            #py2 compatability
             mailServer.docmd("AUTH LOGIN", base64.b64encode(provideruser.encode()))
             mailServer.docmd(base64.b64encode(pwd.encode()), "")
-        except:
-            try:
-                #py3 compatability
-                mailServer.docmd("AUTH LOGIN", base64.b64encode(provideruser.encode('utf-8')))
-                mailServer.docmd(base64.b64encode(pwd.encode('utf-8')), "")
-            # except exceptions and print incorrect password
-            except Exception as e:
-                print_warning("It appears your password was incorrect.\nPrinting response: " + (str(e)))
-                return_continue()
+
+        # except exceptions and print incorrect password
+        except Exception as e:
+            print_warning(
+                "It appears your password was incorrect.\nPrinting response: " + (str(e)))
+            return_continue()
 
     if sendmail == 1:
         mailServer.sendmail(from_address, to, io.getvalue())
@@ -483,7 +479,7 @@ if option1 == '1':
     # if we specify to track users, this will replace the INSERTUSERHERE with
     # the "TO" field.
     if track_email.lower() == "on":
-        body_new = body_new.replace("INSERTUSERHERE", base64.b64encode(to.encode()))
+        body_new = body_new.replace("INSERTUSERHERE", str(base64.b64encode(to.encode())))
     # call the function to send email
     try:
         mail(to, subject, prioflag1, prioflag2, body_new)
@@ -509,7 +505,7 @@ if option1 == '2':
         # if we specify to track users, this will replace the INSERTUSERHERE
         # with the "TO" field.
         if track_email.lower() == "on":
-            body_new = body_new.replace("INSERTUSERHERE", base64.b64encode(to.encode()))
+            body_new = body_new.replace("INSERTUSERHERE", str(base64.b64encode(to.encode())))
         # send the actual email
         time_delay = check_config("TIME_DELAY_EMAIL=").lower()
         time.sleep(int(time_delay))
@@ -519,7 +515,7 @@ if option1 == '2':
         print_status("Sent e-mail number: " +
                      (str(email_num)) + " to address: " + to)
 
-if option1 != "0":
+if option1 != "99":
     # finish up here
     print_status("SET has finished sending the emails")
     return_continue()

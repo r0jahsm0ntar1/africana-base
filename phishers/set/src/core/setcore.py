@@ -1,4 +1,4 @@
-# !/usr/bin/env python3
+#!/usr/bin/env python
 #
 # Centralized core modules for SET
 #
@@ -43,14 +43,14 @@ try:
 except:
     raw_input = input
 
-# check to see if we have python3-pycryptodome
+# check to see if we have python-pycrypto
 try:
-    from Cryptodome.Cipher import AES
+    from Crypto.Cipher import AES
 
 except ImportError:
 
     print(
-        "[!] The python3-pycryptodome python module not installed. You will lose the ability for encrypted communications.")
+        "[!] The python-pycrypto python module not installed. You will lose the ability for encrypted communications.")
     pass
 
 # get the main SET path
@@ -168,11 +168,11 @@ else:
 def setprompt(category, text):
     # if no special prompt and no text, return plain prompt
     if category == '0' and text == "":
-        return bcolors.UNDERL + bcolors.DARKCYAN + "set" + bcolors.ENDC + " ❯ "
+        return bcolors.UNDERL + bcolors.DARKCYAN + "set" + bcolors.ENDC + "> "
     # if the loop is here, either category or text was positive
     # if it's the category that is blank...return prompt with only the text
     if category == '0':
-        return bcolors.UNDERL + bcolors.DARKCYAN + "set" + bcolors.ENDC + " ❯ " + text + ": "
+        return bcolors.UNDERL + bcolors.DARKCYAN + "set" + bcolors.ENDC + "> " + text + ": "
     # category is NOT blank
     else:
         # initialize the base 'set' prompt
@@ -184,7 +184,7 @@ def setprompt(category, text):
                 prompt += ":" + bcolors.UNDERL + \
                     bcolors.DARKCYAN + level + bcolors.ENDC
             promptstring = str(prompt)
-            promptstring += " > "
+            promptstring += ">"
             return promptstring
         # if there is both a category AND text
         else:
@@ -194,7 +194,7 @@ def setprompt(category, text):
                 prompt += ":" + bcolors.UNDERL + \
                     bcolors.DARKCYAN + level + bcolors.ENDC
             promptstring = str(prompt)
-            promptstring = promptstring + " ❯ " + text + ": "
+            promptstring = promptstring + "> " + text + ": "
             return promptstring
 
 
@@ -300,7 +300,7 @@ class create_menu:
                 else:
                     print(('  %s) %s' % (menunum, option)))
             else:
-                print('\n  0) Return to Main Menu\n')
+                print('\n  99) Return to Main Menu\n')
         return
 
 
@@ -505,26 +505,24 @@ def update_set():
 
     if backbox == "BackBox":
         print_status(
-            "You are running Africana which maintains SET updates.")
+            "You are running BackBox Linux which already implements SET updates.")
         print_status(
-            "You are running Africana which maintains SET updates.")
+            "No need for further operations, just update your system.")
         time.sleep(2)
 
     elif kali == "Kali":
-        print_status("You are running Africana which maintains SET updates.")
+        print_status("You are running Kali Linux which maintains SET updates.")
         time.sleep(2)
 
     # if we aren't running Kali or BackBox :(
     else:
-        #print_info("Kali or BackBox Linux not detected, manually updating..")
-        #print_info("Updating the Social-Engineer Toolkit, be patient...")
-        #print_info("Performing cleanup first...")
-        #subprocess.Popen("git clean -fd", shell=True).wait()
-        #print_info("Updating... This could take a little bit...")
-        #subprocess.Popen("git pull", shell=True).wait()
-        #print_status("The updating has finished, returning to main menu..")
-        #time.sleep(2)
-        print_status("You are running Africana which maintains SET updates.")
+        print_info("Kali or BackBox Linux not detected, manually updating..")
+        print_info("Updating the Social-Engineer Toolkit, be patient...")
+        print_info("Performing cleanup first...")
+        subprocess.Popen("git clean -fd", shell=True).wait()
+        print_info("Updating... This could take a little bit...")
+        subprocess.Popen("git pull", shell=True).wait()
+        print_status("The updating has finished, returning to main menu..")
         time.sleep(2)
 
 #
@@ -869,10 +867,10 @@ def show_banner(define_version, graphic):
 """ + bcolors.GREEN + """        Welcome to the Social-Engineer Toolkit (SET).
          The one stop shop for all of your SE needs.
 """)
-    print(bcolors.BOLD + """   The Social-Engineer Toolkit is a product of TrustedSec.\n\n             Visit: """ +
+    print(bcolors.BOLD + """   The Social-Engineer Toolkit is a product of TrustedSec.\n\n           Visit: """ +
           bcolors.GREEN + """https://www.trustedsec.com\n""" + bcolors.ENDC)
-    #print(bcolors.BLUE + """   It's easy to update using the PenTesters Framework! (PTF)\nVisit """ + bcolors.YELLOW +
-#          """https://github.com/trustedsec/ptf""" + bcolors.BLUE + """ to update all your tools!\n\n""" + bcolors.ENDC)
+    print(bcolors.BLUE + """   It's easy to update using the PenTesters Framework! (PTF)\nVisit """ + bcolors.YELLOW +
+          """https://github.com/trustedsec/ptf""" + bcolors.BLUE + """ to update all your tools!\n\n""" + bcolors.ENDC)
 
     # here we check if  there is a new version of SET - if there is, then
     # display a banner
@@ -908,10 +906,10 @@ def show_banner(define_version, graphic):
         # we use this as a hack job to add a delay and kill if updates are
         # taking too long
         p = multiprocessing.Process(target=pull_version)
-        #p.start()
+        p.start()
 
         # Wait for 5 seconds or until process finishes
-        #p.join(8)
+        p.join(8)
 
         # If thread is still active
         if p.is_alive():
@@ -927,50 +925,278 @@ def show_banner(define_version, graphic):
 
 
 def show_graphic():
-    menu = random.randrange(1, 4)
-    if menu == 1:
-        print(bcolors.GREEN + r"""
-                  ________________________
-                  __  ___/__  ____/__  __/
-                  _____ \__  __/  __  /
-                  ____/ /_  /___  _  /
-                  /____/ /_____/  /_/
-
-          __         .' '.
-        _/__)        .   .       .
-       (8|)_}}- .      .        .
-        `\__)    '. . ' ' .  . '
-
-""" + bcolors.ENDC)
-        return
-
+    menu = random.randrange(2, 15)
     if menu == 2:
         print(bcolors.YELLOW + r"""
-                      __,,,,_
-       _ __..-;''`--/'/ /.',-`-.
-   (`/' ` |  \ \ \\ / / / / .-'/`,_
-  /'`\ \   |  \ | \| // // / -.,/_,'-,
- /<7' ;  \ \  | ; ||/ /| | \/    |`-/,/-.,_,/')
-/  _.-, `,-\,__|  _-| / \ \/|_/  |    '-/.;.\'
-`-`  f/ ;      / __/ \__ `/ |__/ |
-     `-'      |  -| =|\_  \  |-' |
-           __/   /_..-' `  ),'  //
-          ((__.-'((___..-'' \__.'
-""" + bcolors.ENDC)
+                 .--.  .--. .-----.
+                : .--': .--'`-. .-'
+                `. `. : `;    : :
+                 _`, :: :__   : :
+                `.__.'`.__.'  :_;   """ + bcolors.ENDC)
         return
+
     if menu == 3:
+        print(bcolors.GREEN + r"""
+          _______________________________
+         /   _____/\_   _____/\__    ___/
+         \_____  \  |    __)_   |    |
+         /        \ |        \  |    |
+        /_______  //_______  /  |____|
+                \/         \/            """ + bcolors.ENDC)
+        return
+
+    if menu == 4:
+        print(bcolors.BLUE + r"""
+            :::===  :::===== :::====
+            :::     :::      :::====
+             =====  ======     ===
+                === ===        ===
+            ======  ========   ===
+""" + bcolors.ENDC)
+
+    if menu == 5:
+        print(bcolors.RED + r"""
+           ..######..########.########
+           .##....##.##..........##...
+           .##.......##..........##...
+           ..######..######......##...
+           .......##.##..........##...
+           .##....##.##..........##...
+           ..######..########....##...  """ + bcolors.ENDC)
+        return
+
+    if menu == 6:
+        print(bcolors.PURPLE + r'''
+         .M"""bgd `7MM"""YMM MMP""MM""YMM
+        ,MI    "Y   MM    `7 P'   MM   `7
+        `MMb.       MM   d        MM
+          `YMMNq.   MMmmMM        MM
+        .     `MM   MM   Y  ,     MM
+        Mb     dM   MM     ,M     MM
+        P"Ybmmd"  .JMMmmmmMMM   .JMML.''' + bcolors.ENDC)
+        return
+
+    if menu == 7:
         print(bcolors.YELLOW + r"""
-   .      .-~\
-   / `-'\.'    `- :
-   |    /          `._
-   |   |   .-.        {
-    \  |   `-'         `.
-     \ |                /
-~-.`. \|            .-~_
-    .\-.\       .-~      \
-     `-'/~~ -.~          /
-   .-~/|`-._ /~~-.~ -- ~
-  /  |  \    ~- . _\
+              ________________________
+              __  ___/__  ____/__  __/
+              _____ \__  __/  __  /
+              ____/ /_  /___  _  /
+              /____/ /_____/  /_/     """ + bcolors.ENDC)
+        return
+
+    if menu == 8:
+        print(bcolors.RED + r'''
+          !\_________________________/!\
+          !!                         !! \
+          !! Social-Engineer Toolkit !!  \
+          !!                         !!  !
+          !!          Free           !!  !
+          !!                         !!  !
+          !!          #hugs          !!  !
+          !!                         !!  !
+          !!      By: TrustedSec     !!  /
+          !!_________________________!! /
+          !/_________________________\!/
+             __\_________________/__/!_
+            !_______________________!/
+          ________________________
+         /oooo  oooo  oooo  oooo /!
+        /ooooooooooooooooooooooo/ /
+       /ooooooooooooooooooooooo/ /
+      /C=_____________________/_/''' + bcolors.ENDC)
+
+    if menu == 9:
+        print(bcolors.YELLOW + """
+         01011001011011110111010100100000011100
+         10011001010110000101101100011011000111
+         10010010000001101000011000010111011001
+         10010100100000011101000110111100100000
+         01101101011101010110001101101000001000
+         00011101000110100101101101011001010010
+         00000110111101101110001000000111100101
+         10111101110101011100100010000001101000
+         01100001011011100110010001110011001000
+         00001110100010110100101001001000000101
+         01000110100001100001011011100110101101
+         11001100100000011001100110111101110010
+         00100000011101010111001101101001011011
+         10011001110010000001110100011010000110
+         01010010000001010011011011110110001101
+         10100101100001011011000010110101000101
+         01101110011001110110100101101110011001
+         01011001010111001000100000010101000110
+         11110110111101101100011010110110100101
+         11010000100000001010100110100001110101
+         011001110111001100101010""" + bcolors.ENDC)
+
+    if menu == 10:
+        print(bcolors.GREEN + """
+                          .  ..
+                       MMMMMNMNMMMM=
+                   .DMM.           .MM$
+                 .MM.                 MM,.
+                 MN.                    MM.
+               .M.                       MM
+              .M   .....................  NM
+              MM   .8888888888888888888.   M7
+             .M    88888888888888888888.   ,M
+             MM       ..888.MMMMM    .     .M.
+             MM         888.MMMMMMMMMMM     M
+             MM         888.MMMMMMMMMMM.    M
+             MM         888.      NMMMM.   .M
+              M.        888.MMMMMMMMMMM.   ZM
+              NM.       888.MMMMMMMMMMM    M:
+              .M+      .....              MM.
+               .MM.                     .MD
+                 MM .                  .MM
+                  $MM                .MM.
+                    ,MM?          .MMM
+                       ,MMMMMMMMMMM
+                https://www.trustedsec.com""" + bcolors.ENDC)
+
+    if menu == 11:
+        print(bcolors.backBlue + r"""
+                          _                                           J
+                         /-\                                          J
+                    _____|#|_____                                     J
+                   |_____________|                                    J
+                  |_______________|                                   E
+                 ||_POLICE_##_BOX_||                                  R
+                 | |-|-|-|||-|-|-| |                                  O
+                 | |-|-|-|||-|-|-| |                                  N
+                 | |_|_|_|||_|_|_| |                                  I
+                 | ||~~~| | |---|| |                                  M
+                 | ||~~~|!|!| O || |                                  O
+                 | ||~~~| |.|___|| |                                  O
+                 | ||---| | |---|| |                                  O
+                 | ||   | | |   || |                                  O
+                 | ||___| | |___|| |                                  !
+                 | ||---| | |---|| |                                  !
+                 | ||   | | |   || |                                  !
+                 | ||___| | |___|| |                                  !
+                 |-----------------|                                  !
+                 |   Timey Wimey   |                                  !
+                 -------------------                                  !""" + bcolors.ENDC)
+
+    if menu == 12:
+        print(bcolors.YELLOW + r'''
+           ,..-,
+         ,;;f^^"""-._
+        ;;'          `-.
+       ;/               `.
+       ||  _______________\_______________________
+       ||  |HHHHHHHHHHPo"~~\"o?HHHHHHHHHHHHHHHHHHH|
+       ||  |HHHHHHHHHP-._   \,'?HHHHHHHHHHHHHHHHHH|
+        |  |HP;""?HH|    """ |_.|HHP^^HHHHHHHHHHHH|
+        |  |HHHb. ?H|___..--"|  |HP ,dHHHPo'|HHHHH|
+        `| |HHHHHb.?Hb    .--J-dHP,dHHPo'_.rdHHHHH|
+         \ |HHHi.`;;.H`-./__/-'H_,--'/;rdHHHHHHHHH|
+           |HHHboo.\ `|"\"/"\" '/\ .'dHHHHHHHHHHHH|
+           |HHHHHHb`-|.  \|  \ / \/ dHHHHHHHHHHHHH|
+           |HHHHHHHHb| \ |\   |\ |`|HHHHHHHHHHHHHH|
+           |HHHHHHHHHb  \| \  | \| |HHHHHHHHHHHHHH|
+           |HHHHHHHHHHb |\  \|  |\|HHHHHHHHHHHHHHH|
+           |HHHHHHHHHHHb| \  |  / dHHHHHHHHHHHHHHH|
+           |HHHHHHHHHHHHb  \/ \/ .fHHHHHHHHHHHHHHH|
+           |HHHHHHHHHHHHH| /\ /\ |HHHHHHHHHHHHHHHH|
+           |""""""""""""""""""""""""""""""""""""""|
+           |,;=====.     ,-.  =.       ,=,,=====. |
+           |||     '    //"\\   \\   //  ||     ' |
+           |||         ,/' `\.  `\. ,/'  ``=====. |
+           |||     .   //"""\\   \\_//    .     |||
+           |`;=====' =''     ``=  `-'     `=====''|
+           |______________________________________|
+	''')
+
+    if menu == 13:
+        print(bcolors.RED + r"""
+                      ..:::::::::..
+                  ..:::aad8888888baa:::..
+              .::::d:?88888888888?::8b::::.
+            .:::d8888:?88888888??a888888b:::.
+          .:::d8888888a8888888aa8888888888b:::.
+         ::::dP::::::::88888888888::::::::Yb::::
+        ::::dP:::::::::Y888888888P:::::::::Yb::::
+       ::::d8:::::::::::Y8888888P:::::::::::8b::::
+      .::::88::::::::::::Y88888P::::::::::::88::::.
+      :::::Y8baaaaaaaaaa88P:T:Y88aaaaaaaaaad8P:::::
+      :::::::Y88888888888P::|::Y88888888888P:::::::
+      ::::::::::::::::888:::|:::888::::::::::::::::
+      `:::::::::::::::8888888888888b::::::::::::::'
+       :::::::::::::::88888888888888::::::::::::::
+        :::::::::::::d88888888888888:::::::::::::
+         ::::::::::::88::88::88:::88::::::::::::
+          `::::::::::88::88::88:::88::::::::::'
+            `::::::::88::88::P::::88::::::::'
+              `::::::88::88:::::::88::::::'
+                 ``:::::::::::::::::::''
+                      ``:::::::::''""" + bcolors.ENDC)
+
+    if menu == 14:
+        print(bcolors.BOLD + """
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XX                                                                          XX
+XX   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   XX
+XX   MMMMMMMMMMMMMMMMMMMMMssssssssssssssssssssssssssMMMMMMMMMMMMMMMMMMMMM   XX
+XX   MMMMMMMMMMMMMMMMss'''                          '''ssMMMMMMMMMMMMMMMM   XX
+XX   MMMMMMMMMMMMyy''                                    ''yyMMMMMMMMMMMM   XX
+XX   MMMMMMMMyy''                                            ''yyMMMMMMMM   XX
+XX   MMMMMy''                                                    ''yMMMMM   XX
+XX   MMMy'                                                          'yMMM   XX
+XX   Mh'                                                              'hM   XX
+XX   -                                                                  -   XX
+XX                                                                          XX
+XX   ::                                                                ::   XX
+XX   MMhh.        ..hhhhhh..                      ..hhhhhh..        .hhMM   XX
+XX   MMMMMh   ..hhMMMMMMMMMMhh.                .hhMMMMMMMMMMhh..   hMMMMM   XX
+XX   ---MMM .hMMMMdd:::dMMMMMMMhh..        ..hhMMMMMMMd:::ddMMMMh. MMM---   XX
+XX   MMMMMM MMmm''      'mmMMMMMMMMyy.  .yyMMMMMMMMmm'      ''mmMM MMMMMM   XX
+XX   ---mMM ''             'mmMMMMMMMM  MMMMMMMMmm'             '' MMm---   XX
+XX   yyyym'    .              'mMMMMm'  'mMMMMm'              .    'myyyy   XX
+XX   mm''    .y'     ..yyyyy..  ''''      ''''  ..yyyyy..     'y.    ''mm   XX
+XX           MN    .sMMMMMMMMMss.   .    .   .ssMMMMMMMMMs.    NM           XX
+XX           N`    MMMMMMMMMMMMMN   M    M   NMMMMMMMMMMMMM    `N           XX
+XX            +  .sMNNNNNMMMMMN+   `N    N`   +NMMMMMNNNNNMs.  +            XX
+XX              o+++     ++++Mo    M      M    oM++++     +++o              XX
+XX                                oo      oo                                XX
+XX           oM                 oo          oo                 Mo           XX
+XX         oMMo                M              M                oMMo         XX
+XX       +MMMM                 s              s                 MMMM+       XX
+XX      +MMMMM+            +++NNNN+        +NNNN+++            +MMMMM+      XX
+XX     +MMMMMMM+       ++NNMMMMMMMMN+    +NMMMMMMMMNN++       +MMMMMMM+     XX
+XX     MMMMMMMMMNN+++NNMMMMMMMMMMMMMMNNNNMMMMMMMMMMMMMMNN+++NNMMMMMMMMM     XX
+XX     yMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy     XX
+XX   m  yMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy  m   XX
+XX   MMm yMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy mMM   XX
+XX   MMMm .yyMMMMMMMMMMMMMMMM     MMMMMMMMMM     MMMMMMMMMMMMMMMMyy. mMMM   XX
+XX   MMMMd   ''''hhhhh       odddo          obbbo        hhhh''''   dMMMM   XX
+XX   MMMMMd             'hMMMMMMMMMMddddddMMMMMMMMMMh'             dMMMMM   XX
+XX   MMMMMMd              'hMMMMMMMMMMMMMMMMMMMMMMh'              dMMMMMM   XX
+XX   MMMMMMM-               ''ddMMMMMMMMMMMMMMdd''               -MMMMMMM   XX
+XX   MMMMMMMM                   '::dddddddd::'                   MMMMMMMM   XX
+XX   MMMMMMMM-                                                  -MMMMMMMM   XX
+XX   MMMMMMMMM                                                  MMMMMMMMM   XX
+XX   MMMMMMMMMy                                                yMMMMMMMMM   XX
+XX   MMMMMMMMMMy.                                            .yMMMMMMMMMM   XX
+XX   MMMMMMMMMMMMy.                                        .yMMMMMMMMMMMM   XX
+XX   MMMMMMMMMMMMMMy.                                    .yMMMMMMMMMMMMMM   XX
+XX   MMMMMMMMMMMMMMMMs.                                .sMMMMMMMMMMMMMMMM   XX
+XX   MMMMMMMMMMMMMMMMMMss.           ....           .ssMMMMMMMMMMMMMMMMMM   XX
+XX   MMMMMMMMMMMMMMMMMMMMNo         oNNNNo         oNMMMMMMMMMMMMMMMMMMMM   XX
+XX                                                                          XX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    .o88o.                               o8o                .
+    888 `"                               `"'              .o8
+   o888oo   .oooo.o  .ooooo.   .ooooo.  oooo   .ooooo.  .o888oo oooo    ooo
+    888    d88(  "8 d88' `88b d88' `"Y8 `888  d88' `88b   888    `88.  .8'
+    888    `"Y88b.  888   888 888        888  888ooo888   888     `88..8'
+    888    o.  )88b 888   888 888   .o8  888  888    .o   888 .    `888'
+   o888o   8""888P' `Y8bod8P' `Y8bod8P' o888o `Y8bod8P'   "888"      d8'
+                                                                .o...P'
+                                                                `XER0'
 """ + bcolors.ENDC)
 
 #
@@ -990,7 +1216,7 @@ def set_check():
         if match1:
             return False
 
-# if the user specifies 0
+# if the user specifies 99
 
 
 def menu_back():
@@ -1139,7 +1365,7 @@ def kill_proc(port, flag):
     proc = subprocess.Popen("netstat -antp | grep '%s'" %
                             (port), shell=True, stdout=subprocess.PIPE)
     stdout_value = proc.communicate()[0]
-    a = re.search("\d+/%s" % (flag), stdout_value)
+    a = re.search(r"\d+/%s" % (flag), stdout_value)
     if a:
         b = a.group()
         b = b.replace("/%s" % (flag), "")
@@ -1469,7 +1695,7 @@ def encryptAES(secret, data):
     EncodeAES = lambda c, s: base64.b64encode(c.encrypt(pad(s)))
     DecodeAES = lambda c, e: c.decrypt(base64.b64decode(e)).rstrip(PADDING)
 
-    cipher = AES.new(secret, AES.MODE_ECB)
+    cipher = AES.new(secret)
 
     aes = EncodeAES(cipher, data)
     return str(aes)
@@ -1577,7 +1803,7 @@ def printCIDR(c):
 
 def validateCIDRBlock(b):
     # appropriate format for CIDR block ($prefix/$subnet)
-    p = re.compile("^([0-9]{1,3}\.){0,3}[0-9]{1,3}(/[0-9]{1,2}){1}$")
+    p = re.compile(r"^([0-9]{1,3}\.){0,3}[0-9]{1,3}(/[0-9]{1,2}){1}$")
     if not p.match(b):
         return False
     # extract prefix and subnet size

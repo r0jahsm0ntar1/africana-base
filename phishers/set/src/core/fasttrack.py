@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 from src.core.setcore import *
 from src.core.menu import text
 import subprocess
@@ -22,7 +22,7 @@ try:
         create_menu(text.fasttrack_text, text.fasttrack_menu)
         attack_vector = raw_input(setprompt(["19"], ""))
 
-        if attack_vector == "0" or attack_vector == "quit" or attack_vector == "exit":
+        if attack_vector == "99" or attack_vector == "quit" or attack_vector == "exit":
             break
 
         #
@@ -231,7 +231,7 @@ try:
                                 # increment counter
                                 counter = counter + 1
 
-                        print("\n 0. Return back to the main menu.\n")
+                        print("\n   99. Return back to the main menu.\n")
                         # select the server to interact with
                         select_server = raw_input(
                             setprompt(["19", "21", "22"], "Select the SQL server to interact with [1]"))
@@ -240,7 +240,7 @@ try:
                             break
                         if select_server == "":
                             select_server = "1"
-                        if select_server == "0":
+                        if select_server == "99":
                             break
                         counter = 1
                         for success in master_names:
@@ -252,13 +252,13 @@ try:
                                 # ipaddr + "," + username + "," + str(port) +
                                 # "," + passwords
                                     print(
-                                        "\nHow do you want to deploy the binary via debug (win2k, winxp, win2003) and/or powershell (vista,win7,2008,2012) or just a shell\n\n   1. Deploy Backdoor to System\n   2. Standard Windows Shell\n\n 0. Return back to the main menu.\n")
+                                        "\nHow do you want to deploy the binary via debug (win2k, winxp, win2003) and/or powershell (vista,win7,2008,2012) or just a shell\n\n   1. Deploy Backdoor to System\n   2. Standard Windows Shell\n\n   99. Return back to the main menu.\n")
                                     option = raw_input(
                                         setprompt(["19", "21", "22"], "Which deployment option do you want [1]"))
                                     if option == "":
                                         option = "1"
-                                    # if 0 then break
-                                    if option == "0":
+                                    # if 99 then break
+                                    if option == "99":
                                         break
                                     # specify we are using the fasttrack
                                     # option, this disables some features
@@ -408,7 +408,7 @@ try:
         #
         if attack_vector == "4":
             # load drac menu
-            subprocess.Popen("python3 %s/src/fasttrack/delldrac.py" %
+            subprocess.Popen("python %s/src/fasttrack/delldrac.py" %
                              (definepath), shell=True).wait()
 
         #
@@ -417,7 +417,7 @@ try:
         #
         #
         if attack_vector == "5":
-            print (""".______       __   _______         _______ .__   __.  __    __  .___  ___.
+            print (r""".______       __   _______         _______ .__   __.  __    __  .___  ___.
 |   _  \     |  | |       \       |   ____||  \ |  | |  |  |  | |   \/   |
 |  |_)  |    |  | |  .--.  |      |  |__   |   \|  | |  |  |  | |  \  /  |
 |      /     |  | |  |  |  |      |   __|  |  . `  | |  |  |  | |  |\/|  |
@@ -430,7 +430,7 @@ try:
             print("\n")
             ipaddr = raw_input(
                 setprompt(["31"], "Enter the IP address of server (or quit to exit)"))
-            if ipaddr == "0" or ipaddr == "quit" or ipaddr == "exit":
+            if ipaddr == "99" or ipaddr == "quit" or ipaddr == "exit":
                 break
             print_status(
                 "Next you can automatically brute force the user accounts. If you do not want to brute force, type no at the next prompt")
@@ -472,7 +472,7 @@ try:
                 stop_rid = "15000"
             print_status(
                 "Launching RID_ENUM to start enumerating user accounts...")
-            subprocess.Popen("python3 src/fasttrack/ridenum.py %s %s %s %s" %
+            subprocess.Popen("python src/fasttrack/ridenum.py %s %s %s %s" %
                              (ipaddr, start_rid, stop_rid, dict), shell=True).wait()
 
             # once we are finished, prompt.

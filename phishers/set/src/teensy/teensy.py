@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # coding=utf-8
 ############################
 #
@@ -153,7 +153,7 @@ if payload_counter == 1:
                          shell=True).wait()
 
         if operating_system != "windows":
-            child = pexpect.spawn("python3 src/html/web_server.py")
+            child = pexpect.spawn("python src/html/web_server.py")
 
     else:
         subprocess.Popen("cp {0} {1}".format(metasploit_exec_path, os.path.join(webclone_path + "x.exe")), shell=True).wait()

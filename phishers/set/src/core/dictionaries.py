@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """ Python lists used for quick conversion of user input
     to strings used by the toolkit
 

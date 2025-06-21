@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import re
 import sys
 import os
@@ -116,7 +116,7 @@ while a == 1:
     print("   5. Web Jacking Attack Method" + toggleflag_webjacking)
     print("   6. Use them all - A.K.A. 'Tactical Nuke'")
     print("   7. I'm finished and want to proceed with the attack")
-    print("\n  0. Return to Main Menu\n")
+    print("\n  99. Return to Main Menu\n")
 
     profile = input(
         setprompt(["2", "16"], "Enter selections one at a time (7 to finish)"))
@@ -135,7 +135,7 @@ while a == 1:
         profile = "10"
 
     # if you want to return to main menu
-    if profile == "0":
+    if profile == "99":
         break
 
     # trigger invalid option
@@ -370,13 +370,13 @@ if harvester == "on" or tabnabbing == "on" or webjacking == "on":
     if java_applet == "on" or meta_attack == "on":
         pexpect_flag = "on"
         a = subprocess.Popen(
-            "python3 src/webattack/harvester/harvester.py", shell=True)
+            "python src/webattack/harvester/harvester.py", shell=True)
 
 # start stuff for mlitm
 if mlitm == "on":
     sys.path.append("src/webattack/mlitm")
     if java_applet == "on" or meta_attack == "on":
-        a = subprocess.Popen("python3 src/mlitm/mlitm.py")
+        a = subprocess.Popen("python src/mlitm/mlitm.py")
     else:
         debug_msg(me, "importing 'src.mlitm.mlitm'", 1)
         try:

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 ######################################################
 #
 # Main files for the HTA attack vector within SET

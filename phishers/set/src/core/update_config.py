@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import sys
 
 """
@@ -97,7 +97,7 @@ def update_config():
     new_config = open("/etc/setoolkit/set_config.py", "w")
     timestamp = str(datetime.datetime.now())
 
-    new_config.write("""#!/usr/bin/python3\n
+    new_config.write("""#!/usr/bin/python\n
 #######################################################################
 ##                    DO NOT MODIFY THIS FILE                        ##
 #######################################################################

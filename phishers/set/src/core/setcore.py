@@ -906,18 +906,18 @@ def show_banner(define_version, graphic):
         # we use this as a hack job to add a delay and kill if updates are
         # taking too long
         p = multiprocessing.Process(target=pull_version)
-        p.start()
+        #p.start()
 
         # Wait for 5 seconds or until process finishes
-        p.join(8)
+        #p.join(8)
 
         # If thread is still active
-        if p.is_alive():
-            print(
-                bcolors.RED + " Unable to check for new version of SET (is your network up?)\n" + bcolors.ENDC)
+        #if p.is_alive():
+        #    print(
+        #        bcolors.RED + " Unable to check for new version of SET (is your network up?)\n" + bcolors.ENDC)
             # terminate the process
-            p.terminate()
-            p.join()
+        #    p.terminate()
+        #    p.join()
 
     except Exception as err:
         print(err)

@@ -66,7 +66,7 @@ while exploit == "INVALID":
     # converting the user returned value to the metasploit string
     # here we specify if its a pdf or rtf
 
-    if exploit == 'exit':
+    if exploit == "exit":
         exit_set()
 
     if exploit == "":
@@ -107,7 +107,7 @@ if exploit == "exploit/windows/fileformat/adobe_pdf_embedded_exe" or exploit == 
 
     choicepdf = raw_input(setprompt(["4"], ""))
 
-    if choicepdf == 'exit': exit_set()
+    if choicepdf == "exit": exit_set()
 
     if choicepdf == '1':
         # define if user wants to use their own pdf or built in one
@@ -146,7 +146,7 @@ if exploit_counter == 0:
     payload = raw_input(setprompt(["4"], ""))
     noencode = 0
 
-    if payload == 'exit':
+    if payload == "exit":
         exit_set()
 
     if payload == "":

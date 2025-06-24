@@ -38,7 +38,7 @@ for line in fileopen:
 print("\n")
 choice = input(setprompt(["2", "15"], ""))
 
-if choice == 'exit':
+if choice == "exit":
     exit_set()
 
 if choice == "":

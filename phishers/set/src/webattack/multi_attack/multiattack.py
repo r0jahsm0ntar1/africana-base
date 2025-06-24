@@ -135,7 +135,7 @@ while a == 1:
         profile = "10"
 
     # if you want to return to main menu
-    if profile == "99":
+    if profile == "0":
         break
 
     # trigger invalid option

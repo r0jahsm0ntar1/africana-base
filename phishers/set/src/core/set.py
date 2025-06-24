@@ -56,11 +56,11 @@ try:
        #
         debug_msg(me, "printing 'text.main'", 5)
         show_main_menu = create_menu(text.main_text, text.main)
-        # special case of list item 99
-        print('\n  99) Return back to the main menu.\n')
+        # special case of list item 0
+        print('\n  0) Return back to the main menu.\n')
         main_menu_choice = (raw_input(setprompt("0", "")))
 
-        if main_menu_choice == 'exit':
+        if main_menu_choice == "exit":
             break
 
         if operating_system == "windows" or msf_path == False:
@@ -83,7 +83,7 @@ try:
                         text.spearphish_text, text.spearphish_menu)
                     spearphish_menu_choice = raw_input(setprompt(["1"], ""))
 
-                    if spearphish_menu_choice == 'exit':
+                    if spearphish_menu_choice == "exit":
                         exit_set()
 
                     if spearphish_menu_choice == 'help':
@@ -114,8 +114,8 @@ try:
                         debug_msg(
                             me, "calling function 'custom_template' from 'src.core.setcore'", 3)
                         custom_template()
-                    # Spearphish menu choice 99
-                    if spearphish_menu_choice == '99':
+                    # Spearphish menu choice 0
+                    if spearphish_menu_choice == "0":
                         break
 
  #
@@ -134,7 +134,7 @@ try:
                     text.webattack_text, text.webattack_menu)
                 attack_vector = raw_input(setprompt(["2"], ""))
                 choice3 = ""
-                if attack_vector == 'exit':
+                if attack_vector == "exit":
                     exit_set()
 
                 if attack_vector == "":
@@ -151,7 +151,7 @@ try:
                         break
 
                 # Web Attack menu choice 9: Return to the Previous Menu
-                if attack_vector == '99':
+                if attack_vector == "0":
                     break
 
                 try:
@@ -181,13 +181,13 @@ try:
                 #if attack_vector != "7":
                 debug_msg(me, "printing 'text.webattack_vectors_menu'", 5)
                 show_webvectors_menu = create_menu(text.webattack_vectors_text, text.webattack_vectors_menu)
-                print('  99) Return to Webattack Menu\n')
+                print('  0) Return to Webattack Menu\n')
                 choice3 = raw_input(setprompt(["2"], ""))
 
-                if choice3 == 'exit':
+                if choice3 == "exit":
                     exit_set()
 
-                if choice3 == "99":
+                if choice3 == "0":
                     break
 
                 if choice3 == "quit" or choice3 == '4':
@@ -846,10 +846,10 @@ this is how networking works.
                 text.infectious_text, text.infectious_menu)
             infectious_menu_choice = raw_input(setprompt(["3"], ""))
 
-            if infectious_menu_choice == 'exit':
+            if infectious_menu_choice == "exit":
                 exit_set()
 
-            if infectious_menu_choice == "99":
+            if infectious_menu_choice == "0":
                 menu_back()
 
             if infectious_menu_choice == "":
@@ -888,7 +888,7 @@ this is how networking works.
                     module_reload(src.core.payloadgen.solo)
 
             # if we aren't exiting, then launch autorun
-            if infectious_menu_choice != "99":
+            if infectious_menu_choice != "0":
                 try:
                     import src.autorun.autolaunch
                 except:
@@ -927,13 +927,13 @@ this is how networking works.
             show_teensy_menu = create_menu(text.teensy_text, text.teensy_menu)
             teensy_menu_choice = raw_input(setprompt(["6"], ""))
 
-            if teensy_menu_choice == 'exit':
+            if teensy_menu_choice == "exit":
                 exit_set()
 
             # if not return to main menu
             yes_or_no = ''
 
-            if teensy_menu_choice != "99":
+            if teensy_menu_choice != "0":
                 # set our teensy info file in program junk
                 filewrite = open(userconfigpath + "teensy", "w")
                 filewrite.write(teensy_menu_choice + "\n")
@@ -1032,7 +1032,7 @@ this is how networking works.
                         me, "importing '-----file-----'", 1)
                     import src.teensy.ino_gen
 
-            if teensy_menu_choice == "99":
+            if teensy_menu_choice == "0":
                 teensy_menu_choice = None
 
         #
@@ -1116,7 +1116,7 @@ this is how networking works.
                                     import stop_wifiattack
 
                             # if we want to return to the main menu
-                            if wireless_menu_choice == "99":
+                            if wireless_menu_choice == "0":
                                 print (" [*] Returning to the main menu ...")
                                 break
 
@@ -1143,8 +1143,8 @@ deploy the QRCode to your victim. For example, generate a QRCode of the SET Java
 and send the QRCode via a mailer.
 """)
                 url = raw_input(
-                    "Enter the URL you want the QRCode to go to (99 to exit): ")
-                if url != "99":
+                    "Enter the URL you want the QRCode to go to (0 to exit): ")
+                if url != "0":
                     # if the reports directory does not exist then create it
                     if not os.path.isdir("%s/reports" % (userconfigpath)):
                         os.makedirs("%s/reports" % (userconfigpath))
@@ -1176,8 +1176,8 @@ and send the QRCode via a mailer.
             except:
                 import module_handler
 
-        # Main Menu choice 99: Exit the Social-Engineer Toolkit
-        if main_menu_choice == '99':
+        # Main Menu choice 0: Exit the Social-Engineer Toolkit
+        if main_menu_choice == "0":
             break
 
 # handle keyboard interrupts

@@ -168,11 +168,11 @@ else:
 def setprompt(category, text):
     # if no special prompt and no text, return plain prompt
     if category == '0' and text == "":
-        return bcolors.UNDERL + bcolors.DARKCYAN + "set" + bcolors.ENDC + "> "
+        return bcolors.UNDERL + bcolors.DARKCYAN + "set" + bcolors.ENDC + " > "
     # if the loop is here, either category or text was positive
     # if it's the category that is blank...return prompt with only the text
     if category == '0':
-        return bcolors.UNDERL + bcolors.DARKCYAN + "set" + bcolors.ENDC + "> " + text + ": "
+        return bcolors.UNDERL + bcolors.DARKCYAN + "set" + bcolors.ENDC + " > " + text + ": "
     # category is NOT blank
     else:
         # initialize the base 'set' prompt
@@ -184,7 +184,7 @@ def setprompt(category, text):
                 prompt += ":" + bcolors.UNDERL + \
                     bcolors.DARKCYAN + level + bcolors.ENDC
             promptstring = str(prompt)
-            promptstring += ">"
+            promptstring += " > "
             return promptstring
         # if there is both a category AND text
         else:
@@ -215,8 +215,7 @@ def yesno_prompt(category, text):
 
 
 def return_continue():
-    print(("\n      Press " + bcolors.RED +
-           "<return> " + bcolors.ENDC + "to continue"))
+    print(("\n      Press " + bcolors.RED + "<return> " + bcolors.ENDC + "to continue"))
     pause = raw_input()
 
 # DEBUGGING #############
@@ -243,7 +242,7 @@ def debug_msg(currentModule, message, msgType):
                   currentModule + "': " + message + bcolors.ENDC)
 
             if DEBUG_LEVEL == 2 or DEBUG_LEVEL == 4 or DEBUG_LEVEL == 6:
-                raw_input("waiting for <ENTER>\n")
+                raw_input("waiting for <ENTER>")
 
 
 def mod_name():
@@ -531,17 +530,17 @@ def update_set():
 
 
 def help_menu():
-    fileopen = open("README.md", "r").readlines()
+    fileopen = open("readme/license", "r").readlines()
     for line in fileopen:
         line = line.rstrip()
         print(line)
-    fileopen = open("readme/CREDITS", "r").readlines()
-    print("\n")
-    for line in fileopen:
-        line = line.rstrip()
-        print(line)
-    return_continue()
 
+    fileopen = open("readme/credits", "r").readlines()
+    for line in fileopen:
+        line = line.rstrip()
+        print(line)
+
+    return_continue()
 
 #
 # This is a small area to generate the date and time
@@ -856,21 +855,23 @@ def show_banner(define_version, graphic):
     #else:
     #    os.system("clear")
 
-    print(bcolors.BLUE + """
-[---]        The Social-Engineer Toolkit (""" + bcolors.YELLOW + """SET""" + bcolors.BLUE + """)         [---]
-[---]        Created by:""" + bcolors.RED + """ David Kennedy """ + bcolors.BLUE + """(""" + bcolors.YELLOW + """ReL1K""" + bcolors.BLUE + """)         [---]
-                      Version: """ + bcolors.RED + """%s""" % (define_version) + bcolors.BLUE + """
-                    Codename: '""" + bcolors.YELLOW + """Maverick""" + bcolors.ENDC + bcolors.BLUE + """'
-[---]        Follow us on Twitter: """ + bcolors.PURPLE + """@TrustedSec""" + bcolors.BLUE + """         [---]
-[---]        Follow me on Twitter: """ + bcolors.PURPLE + """@HackingDave""" + bcolors.BLUE + """        [---]
-[---]       Homepage: """ + bcolors.YELLOW + """https://www.trustedsec.com""" + bcolors.BLUE + """       [---]
-""" + bcolors.GREEN + """        Welcome to the Social-Engineer Toolkit (SET).
-         The one stop shop for all of your SE needs.
-""")
-    print(bcolors.BOLD + """   The Social-Engineer Toolkit is a product of TrustedSec.\n\n           Visit: """ +
-          bcolors.GREEN + """https://www.trustedsec.com\n""" + bcolors.ENDC)
-    print(bcolors.BLUE + """   It's easy to update using the PenTesters Framework! (PTF)\nVisit """ + bcolors.YELLOW +
-          """https://github.com/trustedsec/ptf""" + bcolors.BLUE + """ to update all your tools!\n""" + bcolors.ENDC)
+#    print(bcolors.BLUE + """
+#[---]        The Social-Engineer Toolkit (""" + bcolors.YELLOW + """SET""" + bcolors.BLUE + """)         [---]
+#[---]        Created by:""" + bcolors.RED + """ David Kennedy """ + bcolors.BLUE + """(""" + bcolors.YELLOW + """ReL1K""" + bcolors.BLUE + """)         [---]
+#                      Version: """ + bcolors.RED + """%s""" % (define_version) + bcolors.BLUE + """
+#                    Codename: '""" + bcolors.YELLOW + """Maverick""" + bcolors.ENDC + bcolors.BLUE + """'
+#[---]        Follow us on Twitter: """ + bcolors.PURPLE + """@TrustedSec""" + bcolors.BLUE + """         [---]
+#[---]        Follow me on Twitter: """ + bcolors.PURPLE + """@HackingDave""" + bcolors.BLUE + """        [---]
+#[---]       Homepage: """ + bcolors.YELLOW + """https://www.trustedsec.com""" + bcolors.BLUE + """       [---]
+#""" + bcolors.GREEN + """        Welcome to the Social-Engineer Toolkit (SET).
+#         The one stop shop for all of your SE needs.
+#""")
+#    print(bcolors.BOLD + """\n   The Social-Engineer Toolkit is a product of TrustedSec.\n\n           Visit: """ +
+#          bcolors.GREEN + """https://www.trustedsec.com\n""" + bcolors.ENDC)
+#    print(bcolors.BLUE + """   It's easy to update using the PenTesters Framework! (PTF)\nVisit """ + bcolors.YELLOW +
+#          """https://github.com/trustedsec/ptf""" + bcolors.BLUE + """ to update all your tools!\n""" + bcolors.ENDC)
+
+    print(bcolors.BLUE + """\n   The Social-Engineer Toolkit is a product of TrustedSec.\nVisit """ + bcolors.YELLOW + """https://www.trustedsec.com """ + bcolors.BLUE + "Now in " + bcolors.ENDC + """Africana Framework!\n""" + bcolors.ENDC)
 
     # here we check if  there is a new version of SET - if there is, then
     # display a banner

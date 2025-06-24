@@ -22,7 +22,7 @@ try:
         create_menu(text.fasttrack_text, text.fasttrack_menu)
         attack_vector = raw_input(setprompt(["19"], ""))
 
-        if attack_vector == "99" or attack_vector == "quit" or attack_vector == "exit":
+        if attack_vector == "0" or attack_vector == "quit" or attack_vector == "exit":
             break
 
         #
@@ -240,7 +240,7 @@ try:
                             break
                         if select_server == "":
                             select_server = "1"
-                        if select_server == "99":
+                        if select_server == "0":
                             break
                         counter = 1
                         for success in master_names:
@@ -258,7 +258,7 @@ try:
                                     if option == "":
                                         option = "1"
                                     # if 99 then break
-                                    if option == "99":
+                                    if option == "0":
                                         break
                                     # specify we are using the fasttrack
                                     # option, this disables some features
@@ -430,7 +430,7 @@ try:
             print("\n")
             ipaddr = raw_input(
                 setprompt(["31"], "Enter the IP address of server (or quit to exit)"))
-            if ipaddr == "99" or ipaddr == "quit" or ipaddr == "exit":
+            if ipaddr == "0" or ipaddr == "quit" or ipaddr == "exit":
                 break
             print_status(
                 "Next you can automatically brute force the user accounts. If you do not want to brute force, type no at the next prompt")

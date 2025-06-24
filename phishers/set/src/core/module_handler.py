@@ -36,10 +36,10 @@ for name in glob.glob("modules/*.py"):
 print("\n  99. Return to the previous menu\n")
 choice = raw_input(setprompt(["9"], ""))
 
-if choice == 'exit':
+if choice == "exit":
     exit_set()
 
-if choice == '99':
+if choice == "0":
     menu_return = "true"
 
 # throw error if not integer

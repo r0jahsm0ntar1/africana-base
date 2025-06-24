@@ -2,6 +2,7 @@ tld
 bs4
 tld
 six
+jwt
 idna
 cmd2
 pipx
@@ -9,13 +10,17 @@ tqdm
 lxml
 fire
 wget
+urwid
+ping3
 emoji
 flask
 regex
 numpy
 scapy
 updog
+PyQt5
 exrex
+dnslib
 psutil
 PyPDF2
 loguru
@@ -31,6 +36,7 @@ PyYAML
 pynput
 pandas
 google
+dhcplib
 aioquic
 pathlib
 treelib
@@ -45,6 +51,8 @@ urllib3
 netaddr
 PySocks
 ipython
+aiofiles
+tabulate
 pwntools
 pyfiglet
 pydantic
@@ -74,12 +82,14 @@ pyreadline3
 cryptography
 minikerberos
 pycryptodome
+flask_restful
 humanfriendly
 pycryptodomex
 beautifulsoup4
 python-libnmap
 win32-setctime
 fake-useragent
+isc_dhcp_leases
 python-Wappalyzer
 virtualenvwrapper
 terminable_thread

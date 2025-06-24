@@ -6,8 +6,6 @@
 import os
 import sys
 
-
-
 # check where we are and load default directory
 if os.path.isdir("/usr/local/share/setoolkit"):
     if not os.path.isfile("se-toolkit"):

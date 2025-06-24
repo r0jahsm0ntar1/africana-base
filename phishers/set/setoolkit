@@ -167,7 +167,7 @@ try:
 
     # initial user menu
     if not os.path.isfile("src/agreement4"):
-        with open("readme/LICENSE") as fileopen:
+        with open("readme/license") as fileopen:
             for line in fileopen:
                 print((line.rstrip()))
 
@@ -195,8 +195,8 @@ try:
         core.show_banner(define_version, '1')
         show_main_menu = core.create_menu(text.main_text, text.main_menu)
 
-        # special case of list item 99
-        print('\n  99) Exit the Social-Engineer Toolkit\n')
+        # special case of list item 0
+        print('\n  0) Exit the Social-Engineer Toolkit\n')
 
         # main core menu
         main_menu_choice = (input(core.setprompt("0", "")))
@@ -227,7 +227,7 @@ try:
             pause = input("Press {return} to continue.")
 
         # quit out
-        if main_menu_choice == 'exit' or main_menu_choice == "99" or main_menu_choice == "quit":
+        if main_menu_choice == "exit" or main_menu_choice == "0" or main_menu_choice == "quit":
             core.exit_set()
             # cleans up stale processes from SET
             try:

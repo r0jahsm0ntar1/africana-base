@@ -136,7 +136,7 @@ print ("""
 
 option1 = input(setprompt(["5"], ""))
 
-if option1 == 'exit':
+if option1 == "exit":
     exit_set()
 
 if option1 == '1' or option1 == '2':
@@ -268,7 +268,7 @@ if option1 == '1' or option1 == '2':
                 ["1"], "Enter the body of the message, type END (capitals) when finished"))
             # loop through until they are finished with the body of the subject
             # line
-            while body != 'exit':
+            while body != "exit":
                 try:
 
                     body += ("\n")
@@ -332,10 +332,10 @@ if option1 == '2':
                 break
 
 # exit mass mailer menu
-if option1 == '99':
+if option1 == "0":
     print("Returning to main menu...")
 
-if option1 != "99":
+if option1 != "0":
     print(("""\n  1. Use a %s Account for your email attack.\n  2. Use your own server or open relay\n""" % (
         email_provider)))
     relay = input(setprompt(["1"], ""))
@@ -515,7 +515,7 @@ if option1 == '2':
         print_status("Sent e-mail number: " +
                      (str(email_num)) + " to address: " + to)
 
-if option1 != "99":
+if option1 != "0":
     # finish up here
     print_status("SET has finished sending the emails")
     return_continue()

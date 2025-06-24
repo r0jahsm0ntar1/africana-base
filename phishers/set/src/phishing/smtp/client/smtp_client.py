@@ -312,7 +312,7 @@ if option1 == '2':
         setprompt(["1"], "Path to the file to import into SET"))
 
 # exit mass mailer menu
-if option1 == '99':
+if option1 == "0":
     exit_set()
 
 print(("""\n  1. Use a %s Account for your email attack.\n  2. Use your own server or open relay\n""" %

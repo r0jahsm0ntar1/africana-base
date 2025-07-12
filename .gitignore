@@ -2,3 +2,7 @@ __pycache__
 *.pyc
 exploits/windows/listeners/meterpeter/Update-KB5005101.ps1
 /websites/pdtm
+networks/responder/logs/Poisoners-Session.log
+networks/responder/logs/Config-Responder.log
+networks/responder/logs/Poisoners-Session.log
+networks/responder/logs/Responder-Session.log

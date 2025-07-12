@@ -131,7 +131,7 @@ print ("""
     1.  E-Mail Attack Single Email Address
     2.  E-Mail Attack Mass Mailer
 
-    99. Return to main menu.
+    0. Return to main menu.
    """)
 
 option1 = input(setprompt(["5"], ""))

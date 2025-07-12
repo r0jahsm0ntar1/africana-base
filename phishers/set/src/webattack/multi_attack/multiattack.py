@@ -116,7 +116,7 @@ while a == 1:
     print("   5. Web Jacking Attack Method" + toggleflag_webjacking)
     print("   6. Use them all - A.K.A. 'Tactical Nuke'")
     print("   7. I'm finished and want to proceed with the attack")
-    print("\n  99. Return to Main Menu\n")
+    print("\n  0. Return to Main Menu\n")
 
     profile = input(
         setprompt(["2", "16"], "Enter selections one at a time (7 to finish)"))

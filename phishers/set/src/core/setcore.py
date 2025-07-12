@@ -299,7 +299,7 @@ class create_menu:
                 else:
                     print(('  %s) %s' % (menunum, option)))
             else:
-                print('\n  99) Return to Main Menu\n')
+                print('\n  0) Return to Main Menu\n')
         return
 
 
@@ -1151,7 +1151,7 @@ def set_check():
         if match1:
             return False
 
-# if the user specifies 99
+# if the user specifies 0
 
 
 def menu_back():

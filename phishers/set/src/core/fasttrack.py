@@ -231,7 +231,7 @@ try:
                                 # increment counter
                                 counter = counter + 1
 
-                        print("\n   99. Return back to the main menu.\n")
+                        print("\n   0. Return back to the main menu.\n")
                         # select the server to interact with
                         select_server = raw_input(
                             setprompt(["19", "21", "22"], "Select the SQL server to interact with [1]"))
@@ -252,12 +252,12 @@ try:
                                 # ipaddr + "," + username + "," + str(port) +
                                 # "," + passwords
                                     print(
-                                        "\nHow do you want to deploy the binary via debug (win2k, winxp, win2003) and/or powershell (vista,win7,2008,2012) or just a shell\n\n   1. Deploy Backdoor to System\n   2. Standard Windows Shell\n\n   99. Return back to the main menu.\n")
+                                        "\nHow do you want to deploy the binary via debug (win2k, winxp, win2003) and/or powershell (vista,win7,2008,2012) or just a shell\n\n   1. Deploy Backdoor to System\n   2. Standard Windows Shell\n\n   0. Return back to the main menu.\n")
                                     option = raw_input(
                                         setprompt(["19", "21", "22"], "Which deployment option do you want [1]"))
                                     if option == "":
                                         option = "1"
-                                    # if 99 then break
+                                    # if 0 then break
                                     if option == "0":
                                         break
                                     # specify we are using the fasttrack

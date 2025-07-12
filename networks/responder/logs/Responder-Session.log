@@ -10,3 +10,15 @@
 06/20/2025 03:15:59 PM - [*] 
 06/20/2025 03:16:00 PM - [*] Started listening on 192.168.217.128:443 (UDP)
 06/20/2025 03:16:00 PM - [*] Forwarding connections to 192.168.217.128:445 (TCP)
+07/02/2025 08:56:30 PM - Responder Started: ['Responder.py', '-I', 'eth0', '-Pdv']
+07/02/2025 08:56:30 PM - [*] 
+07/02/2025 08:56:30 PM - [*] 
+07/02/2025 08:56:30 PM - [*] 
+07/02/2025 08:56:31 PM - [*] Started listening on 192.168.27.128:443 (UDP)
+07/02/2025 08:56:31 PM - [*] Forwarding connections to 192.168.27.128:445 (TCP)
+07/09/2025 12:06:59 PM - Responder Started: ['Responder.py', '-I', 'eth0', '-Pdv']
+07/09/2025 12:06:59 PM - [*] 
+07/09/2025 12:06:59 PM - [*] 
+07/09/2025 12:06:59 PM - [*] 
+07/09/2025 12:06:59 PM - [*] Started listening on 192.168.207.128:443 (UDP)
+07/09/2025 12:06:59 PM - [*] Forwarding connections to 192.168.207.128:445 (TCP)

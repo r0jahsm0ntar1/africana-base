@@ -16,7 +16,7 @@ banner
 echo -e "\n\n${White}[${Red}LazyAircrack${White}] Please run the tool as root or use sudo.\n"
 exit 1
 fi
-clear
+#clear
 }
 
 checkDependencies () {        ##### Check if aircrack-ng is installed or not #####

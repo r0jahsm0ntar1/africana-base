@@ -73,6 +73,7 @@ texttable
 enlighten
 GitPython
 ansi2html
+legacy-cgi
 tldextract
 validators
 SQLAlchemy

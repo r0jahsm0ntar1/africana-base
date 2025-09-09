@@ -6,3 +6,5 @@ networks/responder/logs/Poisoners-Session.log
 networks/responder/logs/Config-Responder.log
 networks/responder/logs/Poisoners-Session.log
 networks/responder/logs/Responder-Session.log
+/exploits/androids/listeners/teardroid
+/websites/discovery

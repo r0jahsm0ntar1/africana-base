@@ -22,3 +22,35 @@
 07/09/2025 12:06:59 PM - [*] 
 07/09/2025 12:06:59 PM - [*] Started listening on 192.168.207.128:443 (UDP)
 07/09/2025 12:06:59 PM - [*] Forwarding connections to 192.168.207.128:445 (TCP)
+08/23/2025 10:12:10 AM - Responder Started: ['Responder.py', '-I', 'eth0', '-Pdv']
+08/23/2025 10:12:10 AM - [*] 
+08/23/2025 10:12:10 AM - [*] 
+08/23/2025 10:12:10 AM - [*] 
+08/23/2025 10:12:10 AM - [*] Started listening on 192.168.41.129:443 (UDP)
+08/23/2025 10:12:10 AM - [*] Forwarding connections to 192.168.41.129:445 (TCP)
+08/23/2025 10:16:55 AM - Responder Started: ['Responder.py', '-I', 'eth0', '-Pdv']
+08/23/2025 10:16:55 AM - [*] 
+08/23/2025 10:16:55 AM - [*] 
+08/23/2025 10:16:55 AM - [*] 
+08/23/2025 10:16:55 AM - [*] Started listening on 192.168.41.129:443 (UDP)
+08/23/2025 10:16:55 AM - [*] Forwarding connections to 192.168.41.129:445 (TCP)
+08/23/2025 10:16:56 AM - [*] [DHCP] Found DHCP server IP: 192.168.41.254, now waiting for incoming requests...
+08/23/2025 11:24:57 AM - Responder Started: ['Responder.py', '-I', 'eth0', '-Pdv']
+08/23/2025 11:24:57 AM - [*] 
+08/23/2025 11:24:57 AM - [*] 
+08/23/2025 11:24:57 AM - [*] 
+08/23/2025 11:24:57 AM - [*] Started listening on 192.168.41.129:443 (UDP)
+08/23/2025 11:24:57 AM - [*] Forwarding connections to 192.168.41.129:445 (TCP)
+08/23/2025 11:24:58 AM - [*] [DHCP] Found DHCP server IP: 192.168.41.254, now waiting for incoming requests...
+08/25/2025 09:07:31 AM - Responder Started: ['Responder.py', '-I', 'eth0', '-Pdv']
+08/25/2025 09:07:31 AM - [*] 
+08/25/2025 09:07:31 AM - [*] 
+08/25/2025 09:07:31 AM - [*] 
+08/25/2025 09:07:31 AM - [*] Started listening on 192.168.41.129:443 (UDP)
+08/25/2025 09:07:31 AM - [*] Forwarding connections to 192.168.41.129:445 (TCP)
+09/01/2025 09:19:57 AM - Responder Started: ['Responder.py', '-I', 'eth0', '-Pdv']
+09/01/2025 09:19:57 AM - [*] 
+09/01/2025 09:19:57 AM - [*] 
+09/01/2025 09:19:57 AM - [*] 
+09/01/2025 09:19:58 AM - [*] Started listening on 192.168.159.135:443 (UDP)
+09/01/2025 09:19:58 AM - [*] Forwarding connections to 192.168.159.135:445 (TCP)

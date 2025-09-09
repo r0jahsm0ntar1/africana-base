@@ -16,9 +16,9 @@ class Ifconfig(Dependency):
         from ..util.process import Process
 
         command = ['ifconfig', interface]
-        if type(args) is list:
+        if type(args) == list:
             command.extend(args)
-        elif type(args) is 'str':
+        elif type(args) == 'str':
             command.append(args)
         command.append('up')
 

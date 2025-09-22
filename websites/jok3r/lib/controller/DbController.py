@@ -84,9 +84,7 @@ class DbController(cmd2.Cmd):
             logger.error('No mission with this name')
         else:
             self.current_mission = name
-            self.prompt = Output.colored('jok3rdb', color='light_green', attrs='bold')+ \
-                Output.colored('[{}]'.format(name), color='light_blue', attrs='bold') + \
-                Output.colored('> ', color='light_green', attrs='bold')
+            self.prompt = Output.colored('jok3rdb ', color='white', attrs='bold') + Output.colored('(', color='white') + Output.colored('{}'.format(name), color='red', attrs='bold') + Output.colored(')', color='white') + Output.colored(' > ', color='light_green')
 
             if verbose: 
                 logger.info('Selected mission is now {name}'.format(name=name))

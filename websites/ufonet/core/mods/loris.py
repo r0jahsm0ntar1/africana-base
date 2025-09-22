@@ -42,7 +42,7 @@ def setupSocket(self, ip):
     for l in resp:
         if "Location:".encode('utf-8') in l:
             try:
-                ip = re.findall('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', l)[0] # extract new redirect url
+                ip = re.findall(r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', l)[0] # extract new redirect url
                 try:
                     ip = socket.gethostbyname(ip)
                 except:

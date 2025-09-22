@@ -13,7 +13,7 @@ from lib._version import __version__
 #----------------------------------------------------------------------------------------
 # Banner/Help
 
-BANNER = colored.stylize("""
+BANNER = colored.stylize(r"""
 
                 `-:/++++/:-.    .-:/++++/:-`
               .:ohdddmmmmdd.\  /.dddmmmmdddho:.
@@ -27,12 +27,11 @@ BANNER = colored.stylize("""
                       .+dmmmmmmmmmmd+.
                          /dmmmmmmd/
                           `odmmdo`
-                            .hh.""", colored.fg('cyan')) + colored.stylize("""
-         __                 _____ _____     _     _
-      __|  |___ ___ _ _ ___|     |  |  |___|_|___| |_
-     |  |  | -_|_ -| | |_ -|   --|     |  _| |_ -|  _|
-     |_____|___|___|___|___|_____|__|__|_| |_|___|_| """, colored.fg('yellow')) + colored.stylize("""v{version} """.format(version=__version__), colored.fg('red')) + colored.stylize("""\n
-    ~>( """, colored.fg('blue')) + colored.stylize("""Network & Web Pentest Automation Framework """, colored.fg('white')) + colored.stylize(""")<~\n""", colored.fg('blue'))
+                            .hh.
+
+""", colored.fg('cyan')) + colored.stylize("""                         v{version} """.format(version=__version__), colored.fg('red')) + colored.stylize("""
+           Network & Web Pentest Automation Framework
+""", colored.fg('white'))
 
 USAGE = """python3 jok3r.py <command> [<args>]
 
